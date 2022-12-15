@@ -12,24 +12,8 @@
   align-items: center;
 }
 
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
 .title a {
-  color: #0070f3;
+  color: #000000;
   text-decoration: none;
 }
 
@@ -51,9 +35,11 @@
 }
 
 .description {
-  margin: 4rem 0;
+  margin-top: 4rem 0;
+  margin-bottom: 0.2em;
   line-height: 1.5;
   font-size: 1.5rem;
+  width: 100%;
 }
 
 .code {
@@ -88,7 +74,7 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
+  color: #f30000;
   border-color: #0070f3;
 }
 
@@ -126,4 +112,32 @@
   .logo img {
     filter: invert(1);
   }
+}
+
+@media (max-width: 449px) {
+  .main {
+    margin-top: 10vh;
+  }
+}
+.titlep {
+  margin: 1rem 0;
+  line-height: 1.5;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+}
+
+.contact {
+  display: grid;
+}
+.contactbutton {
+  min-height: 3em;
+  font-size: 1em;
+  width: 20%;
+  border-radius: 10px;
+  box-shadow: 5px 10px rgb(133, 132, 132);
+}
+
+.contactcontainer {
+  justify-content: center;
 }

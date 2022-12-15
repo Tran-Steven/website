@@ -1,0 +1,43 @@
+.wrapper {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(13px);
+}
+
+.navbar {
+  position: center;
+  color: #fff;
+  padding: 0 20px;
+  height: 50px;
+  border-bottom: 1px solid rgb(202, 201, 201);
+}
+
+.navcontent {
+  line-height: 50px;
+  margin-left: 25px;
+}
+
+.navcontent a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-family: Open Sans;
+  font-weight: 500;
+}
+.navcontent .navname {
+  float: left;
+}
+
+.navcontent .menu {
+  display: inline-block;
+  float: right;
+  line-height: 20px;
+}
+.menucontent {
+  display: flex;
+  gap: 1.5em;
+  margin-right: 40px;
+}
