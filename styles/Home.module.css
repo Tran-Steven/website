@@ -200,4 +200,7 @@
   .grid p {
     color: #000000;
   }
+  .grid {
+    background-color: rgb(225, 220, 220);
+  }
 }

@@ -26,3 +26,8 @@
   position: absolute;
   margin-bottom: 20px;
 }
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: rgb(149, 148, 148);
+  }
+}
