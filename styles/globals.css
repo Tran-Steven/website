@@ -27,3 +27,6 @@ a {
     background: black;
   }
 }
+textarea {
+  resize: none;
+}
