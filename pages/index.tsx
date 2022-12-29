@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Steven Tran's Website</title>
+        <title>Steven Tran&apos;s Website</title>
         <meta
           name="Steven Tran's Portfolio Website."
           content="A website that is acts as both a portfolio and a get to know me."
@@ -15,7 +15,7 @@ export default function Home() {
 
       <header></header>
       <main className={styles.main} id="aboutme">
-        <h1 className={styles.title}>Hi, I'm Steven.</h1>
+        <h1 className={styles.title}>Hi, I&apos;m Steven.</h1>
         <p className={styles.titlep}>CS Student at UGA</p>
         <div className={styles.aboutme}>
           <h2 className={styles.aboutmetitle}>Based in Metro-Atlanta.</h2>
