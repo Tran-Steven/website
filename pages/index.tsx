@@ -56,7 +56,7 @@ export default function Home() {
             </a>
 
             <a
-              href="https://github.com/Tran-Steven"
+              href="https://github.com/Tran-Steven?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.card}
