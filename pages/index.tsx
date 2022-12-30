@@ -81,6 +81,7 @@ export default function Home() {
               method="POST"
               data-netlify="true"
             >
+              <input type="hidden" name="form-name" value="Contact" />
               <input type="text" name="name" placeholder="Name" />
               <input type="email" name="email" placeholder="Email" />
               <br />
