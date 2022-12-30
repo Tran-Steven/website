@@ -58,7 +58,6 @@
   flex-wrap: wrap;
   max-width: 800px;
   background-color: rgb(251, 251, 253);
-  border-radius: 50px;
 }
 
 .card {
@@ -137,6 +136,7 @@
   width: 70%;
   justify-content: center;
   margin: auto;
+  background-color: rgb(251, 251, 253);
 }
 .contactcontainer {
   display: flex;

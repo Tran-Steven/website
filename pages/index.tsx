@@ -77,7 +77,7 @@ export default function Home() {
             <form
               autoComplete="off"
               className={styles.formstyle}
-              name="contact"
+              name="Contact"
               method="POST"
               data-netlify="true"
             >
