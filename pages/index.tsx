@@ -80,6 +80,8 @@ export default function Home() {
               name="Contact"
               method="POST"
               data-netlify="true"
+netlify-honeypot="bot-field"
+data-netlify-recaptcha="true"
             >
               <input type="hidden" name="form-name" value="Contact" />
               <input type="text" name="name" placeholder="Name" />
