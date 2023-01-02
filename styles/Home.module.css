@@ -203,7 +203,10 @@
   .grid {
     background-color: rgb(225, 220, 220);
   }
-  .contactdescription{
+  .contactdescription {
     color: #000000;
-    }
+  }
+}
+.hidden {
+  display: none;
 }

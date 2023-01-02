@@ -83,6 +83,14 @@ export default function Home() {
               netlify-honeypot="bot-field"
               data-netlify-recaptcha="true"
             >
+              <p className={styles.hidden}>
+                <label>
+                  Don’t fill this out if you’re human:{" "}
+                  <input name="bot-field" />
+                </label>
+              </p>
+
+              <div data-netlify-recaptcha="true" />
               <input type="hidden" name="form-name" value="Contact" />
               <input type="text" name="name" placeholder="Name" />
               <input type="email" name="email" placeholder="Email" />
