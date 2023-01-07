@@ -41,3 +41,14 @@
   gap: 1.5em;
   margin-right: 40px;
 }
+@media (max-width: 448px) {
+  .navname {
+    display: none;
+  }
+  .navcontent .menu {
+    float: none;
+    margin-left: 0;
+    align-items: center;
+    display: flex;
+  }
+}

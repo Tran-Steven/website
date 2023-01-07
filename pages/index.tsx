@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 export default function Home() {
   return (
@@ -81,16 +82,13 @@ export default function Home() {
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
-              data-netlify-recaptcha="true"
             >
               <p className={styles.hidden}>
                 <label>
-                  Don’t fill this out if you’re human:{" "}
+                  Don&apos;t fill this out if you&apos;re human:{" "}
                   <input name="bot-field" />
                 </label>
               </p>
-
-              <div data-netlify-recaptcha="true" />
               <input type="hidden" name="form-name" value="Contact" />
               <input type="text" name="name" placeholder="Name" />
               <input type="email" name="email" placeholder="Email" />
@@ -100,7 +98,7 @@ export default function Home() {
                 name="message"
                 placeholder="Type your message here"
                 rows={5}
-              ></textarea>
+              />
 
               <p>
                 <button className={styles.contactbutton} type="submit">

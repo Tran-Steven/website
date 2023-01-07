@@ -58,6 +58,7 @@
   flex-wrap: wrap;
   max-width: 800px;
   background-color: rgb(251, 251, 253);
+  border-radius: 5px 10px;
 }
 
 .card {
@@ -137,6 +138,7 @@
   justify-content: center;
   margin: auto;
   background-color: rgb(251, 251, 253);
+  border-radius: 7px;
 }
 .contactcontainer {
   display: flex;
@@ -144,6 +146,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 7px;
 }
 .contactbutton {
   min-height: 3em;
@@ -151,6 +154,7 @@
   width: 20%;
   border-radius: 10px;
   box-shadow: 1px 2px rgb(197, 197, 197);
+  background-color: #2f2e2e;
 }
 
 .projectstext {
@@ -206,7 +210,12 @@
   .contactdescription {
     color: #000000;
   }
+  .contact,
+  .contactcontainer {
+    background-color: rgb(225, 220, 220);
+  }
 }
+
 .hidden {
   display: none;
 }

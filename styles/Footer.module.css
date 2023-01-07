@@ -28,6 +28,9 @@
 }
 @media (prefers-color-scheme: dark) {
   .container {
-    background-color: rgb(149, 148, 148);
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  .footertext {
+    color: #bea989;
   }
 }
