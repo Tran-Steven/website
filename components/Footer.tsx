@@ -5,6 +5,7 @@ const Footer = () => {
       <div className={footer.content}>
         <ul className={footer.list}>
           <a
+            className={footer.github}
             href="https://github.com/Tran-Steven"
             target="_blank"
             rel="noreferrer"

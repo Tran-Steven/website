@@ -6,7 +6,6 @@
   left: 0;
   z-index: 100;
   text-align: center;
-  align-items: center;
   margin: 10rem 0;
 }
 
@@ -15,13 +14,17 @@
   padding: 0 3rem;
   margin-top: 100px;
   margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
 }
 
 .list a {
   height: 2em;
-  margin-right: 1.2em;
 }
 
+.github {
+  margin-right: 1.2em;
+}
 .footertext {
   bottom: 0;
   position: absolute;
@@ -34,4 +37,7 @@
   .footertext {
     color: #bea989;
   }
+}
+.list {
+  padding-left: 0px;
 }
