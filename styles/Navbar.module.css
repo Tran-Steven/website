@@ -46,9 +46,15 @@
     display: none;
   }
   .navcontent .menu {
+    display: flex;
     float: none;
     margin-left: 0;
-    align-items: center;
-    display: flex;
+    margin-right: 0;
+  }
+  .menucontent {
+    margin-right: 0px;
+  }
+  .navcontent {
+    margin-left: 0;
   }
 }
