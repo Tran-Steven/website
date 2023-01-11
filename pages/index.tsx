@@ -7,8 +7,6 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const { ref: myRef, inView: Visibility, entry } = useInView();
-
   return (
     <div className={styles.container}>
       <div className={styles.scrolltracker}></div>
@@ -27,7 +25,7 @@ export default function Home() {
         <h1 className={styles.title}>Hi, I&apos;m Steven.</h1>
         <p className={styles.titlep}>CS Student at UGA</p>
         <div className={styles.aboutme}>
-          <div ref={myRef} className={styles.hide}>
+          <div className={styles.hide}>
             <Image
               src={atlmorning}
               alt="Atlanta Cityscape Morning with text on it saying from georgia."
@@ -35,12 +33,7 @@ export default function Home() {
             />
           </div>
           <br />
-          <div
-            ref={myRef}
-            className={`${styles.hide} ${
-              Visibility ? styles.show : styles.hidden
-            }`}
-          >
+          <div className={`${styles.hide}`}>
             <h2 className={`${styles.aboutmetitle}`}>
               Based in Metro-Atlanta.
             </h2>
