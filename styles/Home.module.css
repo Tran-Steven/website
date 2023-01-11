@@ -58,7 +58,7 @@
   flex-wrap: wrap;
   max-width: 800px;
   background-color: rgb(251, 251, 253);
-  border-radius: 5px 10px;
+  border-radius: 15px;
 }
 
 .card {
@@ -131,14 +131,16 @@
 }
 
 .contact {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+
   font-family: Open Sans;
   font-weight: 500;
-  width: 70%;
   justify-content: center;
   margin: auto;
   background-color: rgb(251, 251, 253);
-  border-radius: 7px;
+  border-radius: 15px;
 }
 .contactcontainer {
   display: flex;
@@ -146,7 +148,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 7px;
+  border-radius: 13px;
 }
 .contactbutton {
   min-height: 3em;
@@ -154,7 +156,8 @@
   width: 20%;
   border-radius: 10px;
   box-shadow: 1px 2px rgb(197, 197, 197);
-  background-color: #2f2e2e;
+  background-color: #d3d1d1;
+  cursor: pointer;
 }
 
 .projectstext {
@@ -164,7 +167,7 @@
   justify-content: center;
   align-items: center;
   font-family: Open Sans;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 2em;
 }
 
@@ -181,7 +184,7 @@
 
 .aboutmetitle {
   font-family: Open Sans;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 40px;
 }
 
@@ -211,11 +214,70 @@
     color: #000000;
   }
   .contact,
-  .contactcontainer {
+  .contactcontainer,
+  .resume,
+  .resumecontainer {
     background-color: rgb(225, 220, 220);
+  }
+  .contactbutton {
+    background-color: #2f2e2e;
   }
 }
 
 .hidden {
   display: none;
+}
+
+.hide {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+}
+.show {
+  opacity: 1;
+}
+@media (prefers-reduced-motion) {
+  .hide {
+    transition: none;
+  }
+}
+
+.atl {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+}
+.morningtext {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  color: rgb(10, 10, 10);
+  font-size: 10em;
+}
+
+.resume {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+
+  font-family: Open Sans;
+  font-weight: 500;
+  justify-content: center;
+  margin: auto;
+  background-color: rgb(251, 251, 253);
+  border-radius: 15px;
+}
+.resumecontainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
 }
