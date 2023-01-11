@@ -16,7 +16,6 @@ export default function Home() {
           name="Steven Tran's Portfolio Website."
           content="A website that is acts as both a portfolio and a get to know me."
         />
-        <script src="load.ts" type="module" defer />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
