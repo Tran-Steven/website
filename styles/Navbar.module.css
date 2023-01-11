@@ -30,7 +30,6 @@
 .navcontent .navname {
   float: left;
 }
-
 .navcontent .menu {
   display: inline-block;
   float: right;
@@ -52,9 +51,15 @@
     margin-right: 0;
   }
   .menucontent {
+    display: flex;
+    justify-content: center;
     margin-right: 0px;
+    padding-left: 0px;
   }
   .navcontent {
     margin-left: 0;
+  }
+  .menu {
+    justify-content: center;
   }
 }
