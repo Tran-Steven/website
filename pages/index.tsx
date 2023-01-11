@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { useInView } from "react-intersection-observer";
 import atlmorning from "../public/atlantamorning.jpg";
 import atlnight from "../public/atlantanight.jpg";
 import Head from "next/head";
