@@ -9,7 +9,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   let { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.3], ["100%", "0%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], ["90%", "0%"]);
   return (
     <>
       <div className={styles.scrolltracker}></div>
