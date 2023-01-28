@@ -259,24 +259,3 @@
   color: rgb(10, 10, 10);
   font-size: 10em;
 }
-
-.resume {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 800px;
-
-  font-family: Open Sans;
-  font-weight: 500;
-  justify-content: center;
-  margin: auto;
-  background-color: rgb(251, 251, 253);
-  border-radius: 15px;
-}
-.resumecontainer {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 13px;
-}
