@@ -8,8 +8,21 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  /**Opacity fadeout animation tracker */
   let { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.3], ["90%", "0%"]);
+
+  /**Smooth scroll */
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+
   return (
     <>
       <div className={styles.scrolltracker}></div>
