@@ -207,7 +207,7 @@
     color: #000000;
   }
   .grid {
-    background-color: rgb(225, 220, 220);
+    background-color: rgb(193, 189, 189);
   }
   .contactdescription {
     color: #000000;
@@ -216,10 +216,10 @@
   .contactcontainer,
   .resume,
   .resumecontainer {
-    background-color: rgb(225, 220, 220);
+    background-color: rgb(193, 189, 189);
   }
   .contactbutton {
-    background-color: #2f2e2e;
+    background-color: rgb(147, 146, 146);
   }
 }
 .hidden {
