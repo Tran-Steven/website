@@ -6,7 +6,7 @@ import atlmorning from "../public/atlantamorning.jpg";
 import atlnight from "../public/atlantanight.jpg";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-
+import Repos from "../public/repos.png";
 export default function Home() {
   let { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.3], ["90%", "0%"]);

@@ -63,3 +63,15 @@
     justify-content: center;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .wrapper {
+    background-color: rgba(32, 32, 35, 0.3);
+  }
+  .navbar {
+    border-bottom: 1px solid rgba(32, 32, 35);
+  }
+  .navcontent a {
+    color: white;
+  }
+}

@@ -35,9 +35,13 @@
     background-color: rgba(255, 255, 255, 0.7);
   }
   .footertext {
-    color: #bea989;
+    color: #000000;
   }
 }
 .list {
   padding-left: 0px;
+}
+
+.atlnight {
+  width: 100%;
 }
