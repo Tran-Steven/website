@@ -303,11 +303,21 @@
   .repos {
     margin-top: 0px;
     width: 70%;
+    border-radius: 15px;
   }
   .reposmobile {
     font-size: 2rem;
     display: flex;
     text-align: center;
     max-width: 800px;
+  }
+}
+
+@media (max-width: 550px) {
+  .repos {
+    width: 100%;
+  }
+  .reposmobile {
+    font-size: 1.7rem;
   }
 }
