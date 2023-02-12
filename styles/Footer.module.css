@@ -13,7 +13,7 @@
   margin: 0 auto;
   padding: 0 3rem;
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: center;
 }
@@ -44,4 +44,15 @@
 
 .atlnight {
   width: 100%;
+}
+@media (prefers-color-scheme: dark) {
+  .container {
+    background: rgba(32, 32, 35);
+  }
+  .footertext {
+    color: #9a9898;
+  }
+  .github svg {
+    fill: #9a9898;
+  }
 }

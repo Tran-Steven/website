@@ -24,6 +24,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/steven-tran-26735b206/"
             target="_blank"
             rel="noreferrer"
+            className={footer.github}
           >
             <svg
               role="img"
