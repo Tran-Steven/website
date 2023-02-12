@@ -51,6 +51,19 @@ export default function Home() {
               />
             </div>
           </div>
+          <div className={styles.reposmobile}>
+            <h2>Always working on projects and learning new things.</h2>
+          </div>
+          <div className={styles.repos}>
+            <Image
+              src={Repos}
+              alt="List of my repos"
+              className={styles.reposimg}
+            />
+            <h2 className={styles.reposdesktop}>
+              Always working on projects and learning new things.
+            </h2>
+          </div>
           <div className={styles.projects}>
             <h2 className={styles.projectstext} id="projects">
               Check out some of my projects.
@@ -73,7 +86,7 @@ export default function Home() {
               >
                 <h2>League of Wordle &rarr;</h2>
                 <p>
-                  A League of Legends Wordle-like built with React and Node.{" "}
+                  A League of Legends Wordle-like built with React and Node.
                 </p>
               </a>
               <a
@@ -85,7 +98,7 @@ export default function Home() {
                 <h2>MultiPlaylist &rarr;</h2>
                 <p>
                   Website that combine videos and playlists from different
-                  websites and have them all within one accessible playlist.{" "}
+                  websites and have them all within one accessible playlist.
                 </p>
               </a>
 
