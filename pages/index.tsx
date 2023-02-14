@@ -60,6 +60,7 @@ export default function Home() {
               alt="List of my repos"
               className={styles.reposimg}
             />
+
             <h2 className={styles.reposdesktop}>
               Always working on projects and learning new things.
             </h2>
