@@ -19,7 +19,7 @@ export default function Home() {
         <Head>
           <title>Steven&apos;s Portfolio Website</title>
           <meta
-            name="Steven Tran's Portfolio Website."
+            name="Steven Tran"
             content="A website that is acts as both a portfolio and a get to know me."
           />
           <link rel="icon" href="/favicon.ico" />
