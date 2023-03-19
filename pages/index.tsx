@@ -7,6 +7,7 @@ import atlnight from "../public/atlantanight.jpg";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Repos from "../public/repos.png";
+import triangle from "../public/dropdown-icon.svg";
 export default function Home() {
   let { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.3], ["90%", "0%"]);
@@ -17,7 +18,7 @@ export default function Home() {
       <div className={styles.container}>
         <div className={styles.scrolltracker}></div>
         <Head>
-          <title>Steven&apos;s Portfolio Website</title>
+          <title>Steven Tran</title>
           <meta
             name="Steven Tran"
             content="A website that is acts as both a portfolio and a get to know me."
