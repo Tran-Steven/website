@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+
+  font-family: Open Sans;
+  font-weight: 500;
+  justify-content: center;
+  margin: auto;
+  background-color: rgb(245, 245, 247);
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.blurb {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 13px;
+  width: 100%;
+}
+
+.abouttext {
+  margin: 0.8rem;
+  text-align: left;
+  word-wrap: break-word;
+  letter-spacing: 0.4px;
+}
+.aboutheading {
+  margin: 0.8rem;
+  justify-content: left;
+}
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: rgb(193, 189, 189);
+    color: black;
+  }
+}

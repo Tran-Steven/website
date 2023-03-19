@@ -8,10 +8,11 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Repos from "../public/repos.png";
 import triangle from "../public/dropdown-icon.svg";
+import Blurb from "../components/Blurb";
 export default function Home() {
   let { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.3], ["90%", "0%"]);
-
+  const [show, setShow] = useState(false);
   return (
     <>
       <div className={styles.scrolltracker}></div>
@@ -29,7 +30,20 @@ export default function Home() {
         <header></header>
         <main className={styles.main} id="aboutme">
           <h1 className={styles.title}>Hi, I&apos;m Steven.</h1>
-          <p className={styles.titlep}>CS Student at UGA</p>
+          <div className={styles.nameblurb}>
+            <p className={styles.titlep}>CS Student at UGA</p>
+            <button
+              className={styles.dropdownholder}
+              onClick={() => setShow(!show)}
+            >
+              <Image
+                src={triangle}
+                alt="drop down menu"
+                className={styles.drop}
+              />
+            </button>
+          </div>
+          {show ? <Blurb /> : null}
           <div className={styles.aboutme}>
             <motion.div style={{ opacity }}>
               <div className={styles.hide}>

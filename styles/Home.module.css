@@ -113,6 +113,9 @@
   .logo img {
     filter: invert(1);
   }
+  .drop {
+    filter: invert(1);
+  }
 }
 
 @media (max-width: 449px) {
@@ -337,4 +340,24 @@
   .reposmobile {
     font-size: 1.3rem;
   }
+}
+.drop {
+  width: 2rem;
+  height: auto;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.nameblurb {
+  display: flex;
+}
+
+@media (max-width: 479px) {
+  .drop {
+    margin-left: 0rem;
+  }
+}
+
+.dropdownholder {
+  all: unset;
 }
