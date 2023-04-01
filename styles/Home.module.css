@@ -342,6 +342,7 @@
   }
 }
 .drop {
+  animation: MoveUpDown 1s linear infinite;
   width: 2rem;
   height: auto;
   margin-left: 1rem;
@@ -360,4 +361,14 @@
 
 .dropdownholder {
   all: unset;
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
