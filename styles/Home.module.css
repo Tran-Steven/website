@@ -372,3 +372,13 @@
     transform: translateY(-5px);
   }
 }
+
+.drop:hover {
+  animation: enlarge 5s linear 1;
+}
+@keyframes enlarge {
+  0%,
+  100% {
+    transform: translateY(9px) scale(1.2);
+  }
+}
