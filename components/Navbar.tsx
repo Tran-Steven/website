@@ -1,4 +1,6 @@
 import styles from "@styles/Navbar.module.css";
+import { useState } from "react";
+
 const Navbar = () => {
   return (
     <header>

@@ -267,6 +267,10 @@
   background-color: rgb(13, 17, 23);
   border-radius: 50px;
 }
+.secretbutton {
+  all: unset;
+  cursor: pointer;
+}
 .reposmobile {
   font-size: 0rem;
 }

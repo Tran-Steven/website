@@ -1,0 +1,8 @@
+.dragcon {
+  z-index: 1000;
+  position: absolute;
+}
+.con {
+  border: 0.5em rgb(0, 0, 0) solid;
+  border-radius: 10px;
+}
