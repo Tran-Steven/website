@@ -287,9 +287,20 @@
   font-size: 5rem;
 }
 
-@media (max-width: 2000px) {
+@media (min-width: 1400px) {
   .repos {
     max-width: 60%;
+  }
+  .reposdesktop {
+    font-size: 3.3rem;
+  }
+}
+@media (min-width: 1600px) {
+  .repos {
+    max-width: 60%;
+  }
+  .reposdesktop {
+    font-size: 4rem;
   }
 }
 @media (max-width: 1292px) {

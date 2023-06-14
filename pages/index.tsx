@@ -80,7 +80,7 @@ export default function Home() {
           </div>
           <div className={styles.repos}>
             <a
-              href="https://github.com/Tran-Steven?tab=repositories"
+              href="https://github.com/Tran-Steven?tab=repositories/"
               rel="noopener noreferrer"
               target="_blank"
               className={styles.reposimg}
