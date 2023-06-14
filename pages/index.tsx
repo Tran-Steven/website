@@ -79,11 +79,18 @@ export default function Home() {
             <h2>Always working on projects and learning new things.</h2>
           </div>
           <div className={styles.repos}>
-            <Image
-              src={Repos}
-              alt="List of my repos"
+            <a
+              href="https://github.com/Tran-Steven?tab=repositories"
+              rel="noopener noreferrer"
+              target="_blank"
               className={styles.reposimg}
-            />
+            >
+              <Image
+                src={Repos}
+                alt="List of my repos"
+                className={styles.reposimg}
+              />
+            </a>
 
             <h2 className={styles.reposdesktop}>
               Always working on projects and learning new things.

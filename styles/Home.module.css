@@ -287,6 +287,11 @@
   font-size: 5rem;
 }
 
+@media (max-width: 2000px) {
+  .repos {
+    max-width: 60%;
+  }
+}
 @media (max-width: 1292px) {
   .reposdesktop {
     font-size: 4rem;
