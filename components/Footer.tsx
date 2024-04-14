@@ -4,10 +4,10 @@ const Footer = () => {
     <footer className={footer.container}>
       <div className={footer.list2}>
         <div className={footer.innerlist2}>
-          <div className={footer.flex}>
+          <a className={footer.flex} href="https://transteven.com/">
             <p className={footer.logo}>st</p>
             <p>transteven.com</p>
-          </div>
+          </a>
         </div>
         <div className={footer.innerlist2}>
           <ul className={footer.innerlist2text}>
