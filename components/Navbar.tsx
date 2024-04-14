@@ -3,24 +3,30 @@ import { useState } from "react";
 
 const Navbar = () => {
   return (
-    <header>
-      <div className={styles.wrapper}>
-        <div className={styles.navbar}>
-          <div className={styles.navcontent}>
-            <div className={styles.navname}>
-              <a href="#">Steven Tran</a>
-            </div>
-            <div className={styles.menu}>
-              <ul className={styles.menucontent}>
-                <a href="#aboutme">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-              </ul>
-            </div>
-          </div>
+    <header className={styles.wrapper}>
+      <div className={styles.navbar}>
+        <div className={styles.navname}>
+          <a href="#">st</a>
+        </div>
+        <div className={styles.menu}>
+          <ul className={styles.menucontent}>
+            <li>
+              <a href="#aboutme">about</a>
+            </li>
+            <li>
+              <a href="#projects">projects</a>
+            </li>
+            <li>
+              <a href="#contact">contact</a>
+            </li>
+          </ul>
+        </div>
+        <div className={styles.rightContent}>
+          {/* Additional content here, e.g., a theme switcher or login button */}
         </div>
       </div>
     </header>
   );
 };
+
 export default Navbar;
