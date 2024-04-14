@@ -97,6 +97,9 @@
     );
     backdrop-filter: blur(10px);
   }
+  .burger{
+    fill: white;
+  }
   .wrapper a {
     color: white;
   }
