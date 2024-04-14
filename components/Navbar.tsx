@@ -21,9 +21,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className={styles.rightContent}>
-          {/* Additional content here, e.g., a theme switcher or login button */}
-        </div>
+        <div className={styles.rightContent}></div>
       </div>
     </header>
   );
