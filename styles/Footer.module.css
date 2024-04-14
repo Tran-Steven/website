@@ -1,25 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
 .container {
   box-sizing: border-box;
   position: absolute;
   width: 100%;
-  background-color: #f5f5f7;
+  background-color: #fcfcfc;
   left: 0;
   z-index: 100;
   text-align: center;
   margin: 10rem 0;
+  border-top: #e5e7eb 1px solid;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
-
+.innerlist2 {
+  width: 100%;
+}
+.list2 {
+  display: flex;
+  padding: 0;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: rgb(15, 23, 42);
+  font-weight: 500;
+}
+.logo {
+  margin-right: 1rem;
+  font-weight: 300;
+  color: black;
+  text-decoration: none;
+  font-family: "Pacifico", cursive;
+}
+.text {
+  color: rgb(107, 114, 128);
+}
+.list2 ul {
+  text-align: right;
+}
+.list3 {
+  display: flex;
+  justify-content: space-around;
+}
 .content {
   margin: 0 auto;
   padding: 0 3rem;
-  margin-top: 100px;
   margin-bottom: 50px;
   display: flex;
   justify-content: center;
 }
 
-.list a {
+.innerlist2 a {
   height: 2em;
+  padding-left: 0px;
 }
 
 .github {
