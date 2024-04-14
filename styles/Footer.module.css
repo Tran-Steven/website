@@ -1,5 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-
+@font-face {
+  font-family: Pacifico;
+  src: url(../styles/Pacifico-Regular.ttf);
+}
 .container {
   box-sizing: border-box;
   position: absolute;
@@ -88,11 +90,15 @@
 @media (prefers-color-scheme: dark) {
   .container {
     background: rgba(32, 32, 35);
+    border-top: rgb(24, 24, 27) 0px solid;
   }
-  .footertext {
-    color: #9a9898;
+  .flex {
+    color: white;
+  }
+  .logo {
+    color: white;
   }
   .github svg {
-    fill: #9a9898;
+    fill: white;
   }
 }
