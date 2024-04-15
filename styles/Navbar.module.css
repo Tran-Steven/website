@@ -59,7 +59,8 @@
 .burger {
   position: absolute;
   left: 10px;
-  top: 15px;
+  top: 50%;
+  transform: translateY(-50%);
   display: none;
   align-items: center;
   justify-content: center;
@@ -97,7 +98,7 @@
     );
     backdrop-filter: blur(10px);
   }
-  .burger{
+  .burger {
     fill: white;
   }
   .wrapper a {

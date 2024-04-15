@@ -193,11 +193,12 @@
 .formstyle {
   font-family: Open Sans;
   font-weight: 400;
-  margin-left: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .formstyle input,
 .formstyle textarea {
-  width: 80%;
+  width: 100%;
 }
 
 .formstyle textarea {
@@ -368,7 +369,6 @@
   margin-left: 1rem;
   cursor: pointer;
 }
-
 .nameblurb {
   display: flex;
 }
