@@ -40,7 +40,7 @@ export default function Home() {
           </button>
 
           <div className={styles.nameblurb}>
-            <p className={styles.titlep}>CS Student at UGA</p>
+            <p className={styles.titlep}>CS Graduate From UGA</p>
             <button
               className={styles.dropdownholder}
               onClick={() => setShow(!show)}
