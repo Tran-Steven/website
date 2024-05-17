@@ -6,7 +6,7 @@ const Blurb = () => {
         <h2 className={styles.aboutheading}>A little about myself</h2>
         <p className={styles.abouttext}>
           Hey there! I&apos;m Steven, an aspiring full-stack developer, and
-          current Computer Science student at the University of Georgia. I love
+          recent Computer Science graduate from the University of Georgia. I love
           learning new technologies and creating personal projects to practice.
           I enjoy working with Java, TypeScript and React. I keep notes on what
           I&apos;m learning on my{" "}
