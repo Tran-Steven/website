@@ -158,12 +158,12 @@ export default function Home() {
                   Want To Get In Touch?
                 </p>
                 <form
-                 autoComplete="off"
-                 className={styles.formstyle}
-                 name="Contact"
-                 method="POST"
-                 data-netlify="true"
-                 netlify-honeypot="bot-field"
+                  autoComplete="off"
+                  className={styles.formstyle}
+                  name="Contact"
+                  method="POST"
+                  data-netlify="true"
+                  netlify-honeypot="bot-field"
                 >
                   <p className={styles.hidden}>
                     <label>

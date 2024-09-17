@@ -81,3 +81,10 @@
     padding: 0.8rem;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: rgb(193, 189, 189);
+    color: black;
+  }
+}

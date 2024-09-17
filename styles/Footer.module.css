@@ -168,3 +168,37 @@
     text-align: left;
   }
 }
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background-color: rgb(48, 48, 53);
+    color: white;
+    border-top: 1px solid #383c3f;
+  }
+  .sitename {
+    color: white;
+  }
+  .heading {
+    color: white;
+  }
+  .links li a {
+    color: #d1d5db;
+  }
+  .links li a:hover {
+    color: #f3f4f6;
+  }
+  .divider {
+    border-top: 1px solid #4f5459;
+  }
+  .socials a svg {
+    fill: #d1d5db;
+  }
+  .socials a svg:hover {
+    color: #f3f4f6;
+  }
+  .logo {
+    color: rgb(240, 240, 240);
+  }
+  .siteName {
+    color: rgb(240, 240, 240);
+  }
+}
