@@ -1,0 +1,102 @@
+.marqueeContainer {
+  overflow: hidden;
+  width: 100%;
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0 20px 20px;
+}
+
+.marquee {
+  display: flex;
+  animation: marquee 15s linear infinite;
+  width: 200%;
+  justify-content: space-between;
+}
+
+.marqueeContent {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.logo {
+  flex: 0 0 auto;
+  margin: 0 15px;
+}
+
+.logoImage {
+  width: 50px;
+  height: auto;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.logoImage:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .marquee {
+    animation-duration: 20s;
+  }
+
+  .logoImage {
+    width: 40px;
+  }
+
+  .marquee {
+    width: 150%;
+  }
+}
+
+@media (max-width: 480px) {
+  .marquee {
+    animation-duration: 25s;
+  }
+
+  .logoImage {
+    width: 30px;
+  }
+
+  .marquee {
+    width: 120%;
+  }
+}
+
+@media (orientation: landscape) {
+  .marquee {
+    animation-duration: 20s;
+  }
+}
+
+.marqueeContainer::before,
+.marqueeContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  background: linear-gradient(to right, #f5f5f5, transparent);
+  z-index: 2;
+}
+
+.marqueeContainer::after {
+  right: 0;
+  background: linear-gradient(to left, #f5f5f5, transparent);
+}
+
+.marqueeContainer::before {
+  left: 0;
+}
