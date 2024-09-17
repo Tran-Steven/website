@@ -11,7 +11,7 @@ const Blurb = () => {
           University of Georgia focusing in full-stack development. Previously
           doing undergraduate research at the Neuro-Symbolic Computing Lab.
           <br />
-          <br />I keep notes on what I'm learning on my{" "}
+          <br />I keep notes on what I&apos;m learning on my{" "}
           <a
             href="https://steven-tran.notion.site/CS-Concept-Notes-a8ade4543472479ea0f3ff3a5263ad7f"
             rel="noopener noreferrer"
