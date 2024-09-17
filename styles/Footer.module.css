@@ -1,104 +1,170 @@
-@font-face {
-  font-family: Pacifico;
-  src: url(../styles/Pacifico-Regular.ttf);
+.spacer {
+  height: 100px;
 }
-.container {
-  box-sizing: border-box;
-  position: absolute;
+
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+.footer {
   width: 100%;
   background-color: #fcfcfc;
-  left: 0;
-  z-index: 100;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-top: 1.5rem;
-  border-top: #e5e7eb 1px solid;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.05);
 }
-.innerlist2 {
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
+  max-width: 1000px;
+  padding: 0 30px;
 }
-.list2 {
-  display: flex;
-  padding: 0;
-  width: 80%;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem;
-}
-.flex {
+
+.logoContainer {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
-  color: rgb(15, 23, 42);
-  font-weight: 500;
 }
+
 .logo {
-  margin-right: 1rem;
-  font-weight: 300;
+  font-family: "Pacifico", cursive;
+  font-size: 1.8rem;
   color: black;
   text-decoration: none;
-  font-family: "Pacifico", cursive;
-}
-.text {
-  color: rgb(107, 114, 128);
-}
-.list2 ul {
-  text-align: right;
-}
-.list3 {
-  display: flex;
-  justify-content: space-around;
-}
-.content {
-  margin: 0 auto;
-  padding: 0 3rem;
-  margin-bottom: 50px;
-  display: flex;
-  justify-content: center;
 }
 
-.innerlist2 a {
-  height: 2em;
-  padding-left: 0px;
+.siteName {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  color: rgb(15, 23, 42);
+  font-family: "Albert Sans", sans-serif;
+  display: inline-block;
 }
 
-.github {
-  margin-right: 1.2em;
-}
-.footertext {
-  bottom: 0;
-  position: absolute;
-  margin-bottom: 20px;
-}
-@media (prefers-color-scheme: dark) {
-  .container {
-    background-color: rgba(255, 255, 255, 0.7);
-  }
-  .footertext {
-    color: #000000;
-  }
-}
-.list {
-  padding-left: 0px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-.atlnight {
+.heading {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: black;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+}
+
+.links li {
+  margin-bottom: 0.5rem;
+}
+
+.links li a {
+  font-size: 0.9rem;
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.links li a:hover {
+  color: #1f2937;
+}
+
+.divider {
   width: 100%;
+  max-width: 1000px;
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
 }
-@media (prefers-color-scheme: dark) {
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 30px;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.socials a svg {
+  height: 16px;
+  width: 16px;
+  color: #4b5563;
+  transition: color 0.3s ease;
+}
+
+.socials a svg:hover {
+  color: #1f2937;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+@media (max-width: 768px) {
   .container {
-    background: rgba(32, 32, 35);
-    border-top: rgb(24, 24, 27) 0px solid;
+    flex-direction: column;
+    align-items: center;
   }
-  .flex {
-    color: white;
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .logo {
-    color: white;
+
+  .bottom {
+    flex-direction: column;
+    align-items: center;
   }
-  .github svg {
-    fill: white;
+
+  .socials {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: left;
+  }
+
+  .socials {
+    margin-top: 0.5rem;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .copyright {
+    margin-top: 0.5rem;
+    text-align: left;
   }
 }

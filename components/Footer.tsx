@@ -1,25 +1,54 @@
-import footer from "@styles/Footer.module.css";
+import Link from "next/link";
+import styles from "@styles/Footer.module.css";
+
 const Footer = () => {
   return (
-    <footer className={footer.container}>
-      <div className={footer.list2}>
-        <div className={footer.innerlist2}>
-          <a className={footer.flex} href="https://transteven.com/">
-            <p className={footer.logo}>st</p>
-            <p>transteven.com</p>
-          </a>
+    <>
+      <div id="spacer" className={styles.spacer}></div>
+      <footer className={styles.footer}>
+        <div className={styles.container}>
+          <div className={styles.logoContainer}>
+            <a className={styles.logo} href="https://transteven.com/">
+              st
+              <span className={styles.siteName}>transteven.com</span>
+            </a>
+          </div>
+          <div className={styles.grid}>
+            <div>
+              <h2 className={styles.heading}>Sitemap</h2>
+              <ul className={styles.links}>
+                <li>
+                  <Link href="#aboutme">About</Link>
+                </li>
+                <li>
+                  <Link href="#projects">Projects</Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className={styles.heading}>Built With</h2>
+              <ul className={styles.links}>
+                <li>
+                  <a href="https://nextjs.org/">Next.js</a>
+                </li>
+                <li>
+                  <a href="https://www.typescriptlang.org/">TypeScript</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className={footer.innerlist2}>
-          <ul className={footer.innerlist2text}>
+        <hr className={styles.divider} />
+        <div className={styles.bottom}>
+          <div className={styles.socials}>
             <a
-              className={footer.github}
               href="https://github.com/Tran-Steven"
               target="_blank"
               rel="noreferrer"
             >
               <svg
                 role="img"
-                height="1.3em"
+                height="16"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -28,14 +57,13 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.linkedin.com/in/steven-tran-26735b206/"
+              href="https://linkedin.com/in/steven-tran-26735b206/"
               target="_blank"
               rel="noreferrer"
-              className={footer.github}
             >
               <svg
                 role="img"
-                height="1.3em"
+                height="16"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -43,10 +71,14 @@ const Footer = () => {
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
             </a>
-          </ul>
+          </div>
+          <span className={styles.copyright}>
+            © 2024 Steven Tran. All Rights Reserved.
+          </span>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 };
+
 export default Footer;
