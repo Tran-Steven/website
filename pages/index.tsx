@@ -66,7 +66,7 @@ export default function Home() {
             <br />
             <div className={`${styles.hide}`}>
               <h2 className={`${styles.aboutmetitle}`}>
-                Based in Metro-Atlanta.
+                Based in Los Angeles.
               </h2>
               <Image
                 src={atlnight}
