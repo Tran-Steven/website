@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 import Image from "next/image";
 import atlmorning from "../public/atlantamorning.jpg";
-import atlnight from "../public/atlantanight.jpg";
+import atlnight from "../public/dtla.jpg";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Repos from "../public/repos.png";
