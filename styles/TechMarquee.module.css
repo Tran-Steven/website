@@ -1,23 +1,23 @@
 .marqueeContainer {
   overflow: hidden;
   width: 100%;
-  background-color: #f5f5f5;
+  background: transparent;
   box-sizing: border-box;
   position: relative;
   padding: 0 20px 20px;
+  margin-top: 1rem;
 }
 
 .marquee {
   display: flex;
-  animation: marquee 15s linear infinite;
+  animation: marquee 20s linear infinite;
   width: 200%;
   justify-content: space-between;
 }
 
 @media (prefers-color-scheme: dark) {
   .marqueeContainer {
-    background-color: rgb(193, 189, 189);
-    color: black;
+    background: transparent;
   }
 
   .marqueeContainer::before,
@@ -34,20 +34,19 @@
 
 .logo {
   flex: 0 0 auto;
-  margin: 0 15px;
+  margin: 0 20px;
 }
 
 .logoImage {
   width: 50px;
   height: auto;
-  filter: grayscale(100%);
-  opacity: 0.7;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  filter: grayscale(100%) opacity(0.6);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .logoImage:hover {
-  opacity: 1;
-  filter: grayscale(0%);
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.05);
 }
 
 @keyframes marquee {
@@ -61,35 +60,37 @@
 
 @media (max-width: 768px) {
   .marquee {
-    animation-duration: 20s;
+    animation-duration: 25s;
+    width: 150%;
   }
 
   .logoImage {
     width: 40px;
   }
 
-  .marquee {
-    width: 150%;
+  .logo {
+    margin: 0 15px;
   }
 }
 
 @media (max-width: 480px) {
   .marquee {
-    animation-duration: 25s;
+    animation-duration: 30s;
+    width: 120%;
   }
 
   .logoImage {
-    width: 30px;
+    width: 35px;
   }
 
-  .marquee {
-    width: 120%;
+  .logo {
+    margin: 0 12px;
   }
 }
 
 @media (orientation: landscape) {
   .marquee {
-    animation-duration: 20s;
+    animation-duration: 22s;
   }
 }
 
@@ -99,24 +100,44 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 150px;
+  width: 40px;
   background: linear-gradient(
     to right,
-    rgba(245, 245, 245, 1) 0%,
-    rgba(245, 245, 245, 0) 40%
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0) 100%
   );
   z-index: 2;
+  pointer-events: none;
 }
 
 .marqueeContainer::after {
   right: 0;
   background: linear-gradient(
     to left,
-    rgba(245, 245, 245, 1) 0%,
-    rgba(245, 245, 245, 0) 40%
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0) 100%
   );
 }
 
 .marqueeContainer::before {
   left: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .marqueeContainer::before,
+  .marqueeContainer::after {
+    background: linear-gradient(
+      to right,
+      rgba(28, 28, 30, 0.95) 0%,
+      rgba(28, 28, 30, 0) 100%
+    );
+  }
+
+  .marqueeContainer::after {
+    background: linear-gradient(
+      to left,
+      rgba(28, 28, 30, 0.95) 0%,
+      rgba(28, 28, 30, 0) 100%
+    );
+  }
 }

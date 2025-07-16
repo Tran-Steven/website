@@ -1,13 +1,22 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 800px;
-  margin: auto;
-  background-color: rgb(245, 245, 247);
-  border-radius: 15px;
+  max-width: 1400px;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 2.5rem;
   margin-bottom: 3rem;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  animation: slideInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top center;
 }
 
 .blurb {
@@ -21,26 +30,51 @@
   margin: 1rem 0;
   text-align: left;
   word-wrap: break-word;
-  letter-spacing: 0.4px;
-  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+  font-size: 1.125rem;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
 }
 
 .abouttext a {
-  color: rgb(67, 67, 202);
+  color: #007aff;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.abouttext a:hover {
+  color: #0051d5;
+  border-bottom-color: #0051d5;
+  background-color: rgba(0, 122, 255, 0.1);
+  padding: 2px 4px;
+  margin: -2px -4px;
+  border-radius: 4px;
 }
 .aboutheading {
-  margin: 1rem 0;
+  margin: 0 0 1.5rem 0;
   justify-content: left;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.022em;
+  line-height: 1.2;
 }
 
 .techheading {
-  margin: 1.5rem 0;
+  margin: 2rem 0 1rem 0;
   text-align: center;
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 600;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.019em;
+  line-height: 1.3;
 }
 
 @media (max-width: 768px) {
@@ -50,16 +84,19 @@
   }
 
   .aboutheading {
-    font-size: 1.6rem;
+    font-size: 1.75rem;
   }
 
   .techheading {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
   }
 
   .container {
-    max-width: 100%;
-    padding: 1rem;
+    max-width: calc(100% - 2rem);
+    padding: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: 16px;
   }
 }
 
@@ -70,21 +107,61 @@
   }
 
   .aboutheading {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
   .techheading {
-    font-size: 1.2rem;
+    font-size: 1.125rem;
   }
 
   .container {
-    padding: 0.8rem;
+    padding: 1.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 12px;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   .container {
-    background-color: rgb(193, 189, 189);
-    color: black;
+    background: rgba(28, 28, 30, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .aboutheading,
+  .techheading {
+    color: #f2f2f7;
+  }
+
+  .abouttext {
+    color: #f2f2f7;
+  }
+
+  .abouttext a {
+    color: #0a84ff;
+  }
+
+  .abouttext a:hover {
+    color: #409cff;
+    border-bottom-color: #409cff;
+    background-color: rgba(10, 132, 255, 0.15);
+  }
+}
+
+/* Apple-style dropdown animation */
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
