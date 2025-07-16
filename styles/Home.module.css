@@ -46,8 +46,15 @@
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+  font-family:
+    Menlo,
+    Monaco,
+    Lucida Console,
+    Liberation Mono,
+    DejaVu Sans Mono,
+    Bitstream Vera Sans Mono,
+    Courier New,
+    monospace;
 }
 
 .grid {
@@ -68,7 +75,9 @@
   text-decoration: none;
   border: 2px solid #a7a7a7;
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
   max-width: 300px;
 }
 
@@ -135,14 +144,23 @@
 .contact {
   display: flex;
   flex-wrap: wrap;
-  max-width: 800px;
-
-  font-family: Open Sans;
-  font-weight: 500;
+  max-width: 520px;
+  font-family:
+    "Helvetica Neue",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  font-weight: 400;
   justify-content: center;
   margin: auto;
-  background-color: rgb(245, 245, 247);
-  border-radius: 15px;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  padding: 0;
+  overflow: hidden;
 }
 .contactcontainer {
   display: flex;
@@ -150,16 +168,34 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 13px;
+  padding: 40px 32px;
+  border-radius: 12px;
 }
 .contactbutton {
-  min-height: 3em;
-  font-size: 0.5rem;
-  width: 20%;
-  border-radius: 10px;
-  box-shadow: 1px 2px rgb(197, 197, 197);
-  background-color: #d3d1d1;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  background: #000000;
+  color: #ffffff;
   cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  margin-top: 16px;
+  letter-spacing: -0.01em;
+}
+
+.contactbutton:hover {
+  background: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contactbutton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(29, 29, 31, 0.2);
 }
 
 .projectstext {
@@ -174,13 +210,18 @@
 }
 
 .contactdescription {
-  margin-right: 1rem;
-  margin-left: 1rem;
-  font-family: Open Sans;
-  font-weight: 600;
-  margin-bottom: 1rem 0;
-  line-height: 1.5;
-  font-size: 1.8rem;
+  margin: 0 0 24px 0;
+  font-family:
+    "Helvetica Neue",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  font-size: 2.25rem;
+  color: #000000;
+  text-align: center;
+  letter-spacing: -0.02em;
 }
 
 .aboutmetitle {
@@ -190,18 +231,50 @@
 }
 
 .formstyle {
-  font-family: Open Sans;
+  font-family:
+    "Helvetica Neue",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-weight: 400;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  width: 100%;
+  max-width: 380px;
 }
+
 .formstyle input,
 .formstyle textarea {
   width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  background: #ffffff;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+  color: #000000;
+}
+
+.formstyle input:focus,
+.formstyle textarea:focus {
+  outline: none;
+  border-color: #000000;
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.formstyle input::placeholder,
+.formstyle textarea::placeholder {
+  color: #999999;
+  font-weight: 400;
 }
 
 .formstyle textarea {
-  margin-top: 1rem;
+  margin-top: 0;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -215,14 +288,39 @@
   .contactdescription {
     color: #000000;
   }
-  .contact,
+  .contact {
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
   .contactcontainer,
   .resume,
   .resumecontainer {
-    background-color: rgb(193, 189, 189);
+    background: transparent;
+  }
+  .formstyle input,
+  .formstyle textarea {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    color: #000000;
+  }
+  .formstyle input:focus,
+  .formstyle textarea:focus {
+    background: #ffffff;
+    border-color: #000000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+  }
+  .formstyle input::placeholder,
+  .formstyle textarea::placeholder {
+    color: #999999;
   }
   .contactbutton {
-    background-color: rgb(147, 146, 146);
+    background: #000000;
+    color: #ffffff;
+  }
+  .contactbutton:hover {
+    background: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 }
 .hidden {
@@ -399,5 +497,76 @@
   0%,
   100% {
     transform: translateY(9px) scale(1.2);
+  }
+}
+
+/* Contact section responsive design */
+@media (max-width: 768px) {
+  .contact {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .contactcontainer {
+    padding: 32px 24px;
+  }
+
+  .contactdescription {
+    font-size: 2rem;
+    margin-bottom: 24px;
+  }
+
+  .formstyle input,
+  .formstyle textarea {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactcontainer {
+    padding: 24px 20px;
+  }
+
+  .contactdescription {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .formstyle input,
+  .formstyle textarea {
+    padding: 12px 14px;
+  }
+}
+
+/* Subtle fade-in animation for contact section */
+.contact {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Contact section holder */
+.holder {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .holder {
+    background: #ffffff;
   }
 }
