@@ -46,15 +46,8 @@
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
-  font-family:
-    Menlo,
-    Monaco,
-    Lucida Console,
-    Liberation Mono,
-    DejaVu Sans Mono,
-    Bitstream Vera Sans Mono,
-    Courier New,
-    monospace;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
 .grid {
@@ -65,9 +58,7 @@
   padding: 32px;
   background: linear-gradient(145deg, #f8f9fa 0%, #ffffff 100%);
   border-radius: 24px;
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.08),
-    0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
@@ -80,22 +71,20 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 16px;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.04),
-    0 1px 3px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
 }
 
 .card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #007AFF, #5856D6, #FF2D92);
+  background: linear-gradient(90deg, #007aff, #5856d6, #ff2d92);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -108,9 +97,7 @@
 .card:focus,
 .card:active {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.12),
-    0 8px 16px rgba(0, 0, 0, 0.08),
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08),
     0 2px 4px rgba(0, 0, 0, 0.04);
   border-color: rgba(0, 122, 255, 0.2);
 }
@@ -122,7 +109,7 @@
   color: #1d1d1f;
   letter-spacing: -0.02em;
   line-height: 1.3;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .card p {
@@ -131,7 +118,7 @@
   line-height: 1.6;
   color: #515154;
   font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .logo {
@@ -180,13 +167,8 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 520px;
-  font-family:
-    "Helvetica Neue",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
   font-weight: 400;
   justify-content: center;
   margin: auto;
@@ -239,7 +221,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
   font-size: 3rem;
   color: #1d1d1f;
@@ -264,11 +246,7 @@
 
 .contactdescription {
   margin: 0 0 24px 0;
-  font-family:
-    "Helvetica Neue",
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   font-size: 2.25rem;
@@ -278,7 +256,7 @@
 }
 
 .aboutmetitle {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
   font-size: 3rem;
   color: #1d1d1f;
@@ -289,11 +267,7 @@
 }
 
 .formstyle {
-  font-family:
-    "Helvetica Neue",
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
   width: 100%;
   max-width: 380px;
@@ -390,7 +364,7 @@
     padding: 24px 20px;
     border-radius: 20px;
   }
-  
+
   .projects {
     padding: 60px 16px;
     margin-top: 40px;
@@ -445,33 +419,33 @@
   .projects {
     background: linear-gradient(180deg, #1c1c1e 0%, #2c2c2e 100%);
   }
-  
+
   .grid {
     background: linear-gradient(145deg, #1c1c1e 0%, #2c2c2e 100%);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   .card {
     background: #2c2c2e;
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #f2f2f7;
   }
-  
+
   .card h2 {
     color: #f2f2f7;
   }
-  
+
   .card p {
     color: #8e8e93;
   }
-  
+
   .card:hover,
   .card:focus,
   .card:active {
     background: #3a3a3c;
     border-color: rgba(0, 122, 255, 0.3);
   }
-  
+
   .projectstext {
     color: #f2f2f7;
   }
@@ -760,7 +734,7 @@
   top: 50%;
   left: 5%;
   transform: translate(0, -50%);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
   font-size: 4rem;
   color: #ffffff;
@@ -783,13 +757,13 @@
     height: 120vh;
     padding-top: 1rem;
   }
-  
+
   .expandingImageContainer {
     width: 90vw;
     height: 300px;
     margin-top: 1rem;
   }
-  
+
   .overlayText {
     font-size: 3rem;
   }
@@ -799,12 +773,12 @@
   .scrollSection {
     height: 100vh;
   }
-  
+
   .expandingImageContainer {
     width: 95vw;
     height: 250px;
   }
-  
+
   .overlayText {
     font-size: 2.5rem;
     white-space: normal;
@@ -857,7 +831,7 @@
     height: 120vh;
     padding-top: 1rem;
   }
-  
+
   .expandingContainer {
     max-width: 90vw;
     height: 300px;
@@ -869,7 +843,7 @@
   .appleScrollSection {
     height: 100vh;
   }
-  
+
   .expandingContainer {
     max-width: 95vw;
     height: 250px;

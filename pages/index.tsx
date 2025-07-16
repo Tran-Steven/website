@@ -13,22 +13,34 @@ import DraggableVideo from "@components/DraggableVideo";
 export default function Home() {
   const [show, setShow] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
-  
+
   // Ref for the scroll animation section
   const scrollSectionRef = useRef(null);
-  
+
   // Scroll progress for the expanding image section
   const { scrollYProgress } = useScroll({
     target: scrollSectionRef,
-    offset: ["start 80%", "end 20%"]
+    offset: ["start 80%", "end 20%"],
   });
-  
+
   // Transform values for Apple-style container expansion - adjusted for header
   const textOpacity = useTransform(scrollYProgress, [0.1, 0.25], [1, 0]);
-  const containerWidth = useTransform(scrollYProgress, [0, 0.6], ["100%", "100vw"]);
-  const containerHeight = useTransform(scrollYProgress, [0, 0.6], ["auto", "100vh"]);
+  const containerWidth = useTransform(
+    scrollYProgress,
+    [0, 0.6],
+    ["100%", "100vw"]
+  );
+  const containerHeight = useTransform(
+    scrollYProgress,
+    [0, 0.6],
+    ["auto", "100vh"]
+  );
   const borderRadius = useTransform(scrollYProgress, [0, 0.6], ["20px", "0px"]);
-  const overlayTextOpacity = useTransform(scrollYProgress, [0.25, 0.45], [0, 1]);
+  const overlayTextOpacity = useTransform(
+    scrollYProgress,
+    [0.25, 0.45],
+    [0, 1]
+  );
   const overlayTextY = useTransform(scrollYProgress, [0.25, 0.45], [30, 0]);
   return (
     <>
@@ -82,18 +94,16 @@ export default function Home() {
             </motion.div>
             <br />
             <div className={styles.appleScrollSection} ref={scrollSectionRef}>
-              {/* Original text that fades out as you scroll */}
-              <motion.h2 
+              <motion.h2
                 className={styles.aboutmetitle}
-                style={{ 
+                style={{
                   opacity: textOpacity,
                 }}
               >
                 Based in Los Angeles.
               </motion.h2>
-              
-              {/* Expanding image container - Apple style */}
-              <motion.div 
+
+              <motion.div
                 className={styles.expandingContainer}
                 style={{
                   width: containerWidth,
@@ -106,8 +116,7 @@ export default function Home() {
                   alt="Image of DTLA Cityscape"
                   className={styles.expandingImage}
                 />
-                
-                {/* Overlay text that appears when container is full size */}
+
                 <motion.h2
                   className={styles.overlayText}
                   style={{
