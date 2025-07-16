@@ -133,7 +133,34 @@ export default function Home() {
                   websites and have them all within one accessible playlist.
                 </p>
               </a>
+              <a
+                href="https://github.com/lenhatdangkhoa/ugahacks9"
+                className={styles.card}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <h2>Watermarker &rarr;</h2>
+                <p>
+                  <strong>🏆 Winners of Adobe Express for Hackathons!</strong>
+                  <br />
+                  Adobe Express add-on that generates and applies a watermark
+                  using your name and logo directly onto your current Adobe
+                  Express page.
+                </p>
+              </a>
 
+              <a
+                href="https://github.com/Tran-Steven/neovim-config"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.card}
+              >
+                <h2>Neovim Config &rarr;</h2>
+                <p>
+                  My personal Neovim configuration that I use, which includes
+                  plugins and settings.
+                </p>
+              </a>
               <a
                 href="https://github.com/Tran-Steven?tab=repositories"
                 target="_blank"
