@@ -758,20 +758,23 @@
 .overlayText {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 5%;
+  transform: translate(0, -50%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 700;
   font-size: 4rem;
   color: #ffffff;
-  text-align: center;
+  text-align: left;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
   letter-spacing: -0.02em;
   line-height: 1.1;
   z-index: 10;
   margin: 0;
   white-space: nowrap;
-  pointer-events: none; /* Prevent text from interfering with scroll */
+  pointer-events: none;
+  width: auto;
+  max-width: 85vw;
+  overflow: visible;
 }
 
 /* Responsive adjustments for scroll effect */
@@ -820,5 +823,63 @@
 @media (max-width: 480px) {
   .aboutmetitle {
     font-size: 2rem;
+  }
+}
+
+/* Apple-style scroll animation section */
+.appleScrollSection {
+  position: relative;
+  height: 150vh; /* Extra height for scroll effect */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2rem;
+  overflow-x: hidden; /* Prevent horizontal scrollbars during expansion */
+  width: 100%;
+}
+
+.expandingContainer {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-top: 2rem;
+  transform-origin: center center;
+}
+
+/* Responsive design for Apple scroll effect */
+@media (max-width: 768px) {
+  .appleScrollSection {
+    height: 120vh;
+    padding-top: 1rem;
+  }
+  
+  .expandingContainer {
+    max-width: 90vw;
+    height: 300px;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .appleScrollSection {
+    height: 100vh;
+  }
+  
+  .expandingContainer {
+    max-width: 95vw;
+    height: 250px;
+  }
+}
+
+/* Dark mode support for overlay text */
+@media (prefers-color-scheme: dark) {
+  .overlayText {
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
   }
 }
