@@ -751,7 +751,6 @@
   overflow: visible;
 }
 
-/* Responsive adjustments for scroll effect */
 @media (max-width: 768px) {
   .scrollSection {
     height: 120vh;
@@ -800,16 +799,15 @@
   }
 }
 
-/* Apple-style scroll animation section */
 .appleScrollSection {
   position: relative;
-  height: 150vh; /* Extra height for scroll effect */
+  height: 150vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding-top: 2rem;
-  overflow-x: hidden; /* Prevent horizontal scrollbars during expansion */
+  overflow-x: hidden;
   width: 100%;
 }
 
@@ -825,7 +823,6 @@
   transform-origin: center center;
 }
 
-/* Responsive design for Apple scroll effect */
 @media (max-width: 768px) {
   .appleScrollSection {
     height: 120vh;
@@ -850,10 +847,15 @@
   }
 }
 
-/* Dark mode support for overlay text */
 @media (prefers-color-scheme: dark) {
   .overlayText {
     color: #ffffff;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  }
+}
+
+@media (max-width: 768px) {
+  .mobileHidden {
+    display: none;
   }
 }

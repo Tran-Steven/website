@@ -166,7 +166,7 @@ export default function Home() {
               </a>
               <a
                 href="https://github.com/Tran-Steven/leaguewordle"
-                className={styles.card}
+                className={`${styles.card} ${styles.mobileHidden}`}
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -177,7 +177,7 @@ export default function Home() {
               </a>
               <a
                 href="https://github.com/Tran-Steven/MultiPlaylist"
-                className={styles.card}
+                className={`${styles.card} ${styles.mobileHidden}`}
                 rel="noopener noreferrer"
                 target="_blank"
               >

@@ -7,7 +7,7 @@ const Blurb = () => {
       <div className={styles.blurb}>
         <h2 className={styles.aboutheading}>A little about myself</h2>
         <p className={styles.abouttext}>
-          ATL-based Software Engineer and Computer Science graduate from the
+          I&apos;m a Los Angeles based Software Engineer and Computer Science graduate from the
           University of Georgia focusing in full-stack development. Previously
           doing undergraduate research at the Neuro-Symbolic Computing Lab.
           <br />
