@@ -70,7 +70,7 @@ export default function Home() {
               </h2>
               <Image
                 src={atlnight}
-                alt="Image of Atlanta Cityscape Night-time"
+                alt="Image of DTLA Cityscape"
                 className={styles.atl}
               />
             </div>
