@@ -136,16 +136,19 @@
 @media (prefers-color-scheme: dark) {
   .card,
   .footer {
-    border-color: #222;
+    border-color: rgba(255, 255, 255, 0.25);
   }
   .code {
-    background: #111;
+    background: rgba(68, 68, 72, 0.9);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
   .logo img {
-    filter: invert(1);
+    filter: invert(1) brightness(1.2);
   }
   .drop {
-    filter: invert(1);
+    filter: invert(1) brightness(1.1) drop-shadow(0 1px 4px rgba(255, 255, 255, 0.2));
   }
 }
 
@@ -325,18 +328,22 @@
 @media (prefers-color-scheme: dark) {
   .grid h2,
   .grid p {
-    color: #000000;
+    color: #f2f2f7;
   }
   .grid {
-    background-color: rgb(193, 189, 189);
+    background: linear-gradient(145deg, rgba(48, 48, 52, 0.8) 0%, rgba(58, 58, 62, 0.8) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   .contactdescription {
-    color: #000000;
+    color: #f2f2f7;
   }
   .contact {
-    background: #ffffff;
-    border: 1px solid #f0f0f0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    background: linear-gradient(145deg, rgba(48, 48, 52, 0.8) 0%, rgba(58, 58, 62, 0.75) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 3px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
   .contactcontainer,
   .resume,
@@ -345,31 +352,23 @@
   }
   .formstyle input,
   .formstyle textarea {
-    background: #ffffff;
-    border: 1px solid #e5e5e5;
-    color: #000000;
+    background: rgba(58, 58, 62, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #f2f2f7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
   .formstyle input:focus,
   .formstyle textarea:focus {
-    background: #ffffff;
-    border-color: #000000;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+    background: rgba(68, 68, 72, 0.8);
+    border-color: #007aff;
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3);
   }
   .formstyle input::placeholder,
   .formstyle textarea::placeholder {
-    color: #999999;
-  }
-  .contactbutton {
-    background: #000000;
-    color: #ffffff;
-  }
-  .contactbutton:hover {
-    background: #1a1a1a;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: #a1a1a6;
   }
 }
 
-/* Projects section responsive design */
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
@@ -430,18 +429,33 @@
 
 @media (prefers-color-scheme: dark) {
   .projects {
-    background: linear-gradient(180deg, #1c1c1e 0%, #2c2c2e 100%);
+    background: linear-gradient(180deg, rgba(48, 48, 52, 0.8) 0%, rgba(58, 58, 62, 0.75) 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 3px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .grid {
-    background: linear-gradient(145deg, #1c1c1e 0%, #2c2c2e 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(145deg, rgba(58, 58, 62, 0.7) 0%, rgba(68, 68, 72, 0.7) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .card {
-    background: #2c2c2e;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(145deg, rgba(68, 68, 72, 0.7) 0%, rgba(78, 78, 82, 0.65) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: #f2f2f7;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2), 0 1px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .card::before {
+    background: linear-gradient(90deg, #007aff, #5856d6, #ff2d92, #32d74b);
+    opacity: 0.6;
   }
 
   .card h2 {
@@ -449,18 +463,21 @@
   }
 
   .card p {
-    color: #8e8e93;
+    color: #c7c7cc;
   }
 
   .card:hover,
   .card:focus,
   .card:active {
-    background: #3a3a3c;
+    background: linear-gradient(145deg, rgba(78, 78, 82, 0.8) 0%, rgba(88, 88, 92, 0.75) 100%);
     border-color: rgba(0, 122, 255, 0.3);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 6px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px) scale(1.02);
   }
 
   .projectstext {
     color: #f2f2f7;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   }
 }
 .hidden {
@@ -639,7 +656,7 @@
   }
 }
 
-/* Contact section responsive design */
+
 @media (max-width: 768px) {
   .contact {
     max-width: 1400px;
@@ -678,7 +695,6 @@
   }
 }
 
-/* Contact section holder */
 .holder {
   min-height: auto;
   display: flex;
@@ -690,7 +706,7 @@
 
 @media (prefers-color-scheme: dark) {
   .holder {
-    background: #ffffff;
+    background: linear-gradient(180deg, rgba(32, 32, 35, 1) 0%, rgba(42, 42, 45, 0.9) 100%);
   }
 }
 
@@ -794,7 +810,7 @@
 
 .appleScrollSection {
   position: relative;
-  height: 150vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -818,7 +834,7 @@
 
 @media (max-width: 768px) {
   .appleScrollSection {
-    height: 120vh;
+    height: 70vh;
     padding-top: 1rem;
   }
 
@@ -831,7 +847,7 @@
 
 @media (max-width: 480px) {
   .appleScrollSection {
-    height: 100vh;
+    height: 60vh;
   }
 
   .expandingContainer {
@@ -843,7 +859,75 @@
 @media (prefers-color-scheme: dark) {
   .overlayText {
     color: #ffffff;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .contact {
+    background: linear-gradient(145deg, rgba(48, 48, 52, 0.8) 0%, rgba(58, 58, 62, 0.75) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 3px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .contactdescription {
+    color: #f2f2f7;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .contactbutton {
+    background: linear-gradient(145deg, #007aff 0%, #0066cc 100%);
+    color: #ffffff;
+    box-shadow: 0 3px 12px rgba(0, 122, 255, 0.3), 0 1px 6px rgba(0, 122, 255, 0.2);
+  }
+  
+  .contactbutton:hover {
+    background: linear-gradient(145deg, #0066cc 0%, #004499 100%);
+    box-shadow: 0 4px 16px rgba(0, 122, 255, 0.4), 0 2px 8px rgba(0, 122, 255, 0.3);
+    transform: translateY(-1px);
+  }
+  
+  .contactbutton:active {
+    background: linear-gradient(145deg, #004499 0%, #003366 100%);
+    transform: translateY(0);
+  }
+  
+  .projects {
+    background: linear-gradient(180deg, rgba(48, 48, 52, 0.8) 0%, rgba(58, 58, 62, 0.75) 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 3px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .projectstext {
+    color: #f2f2f7;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .title a {
+    color: #f2f2f7;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .title {
+    color: #f2f2f7;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .titlep {
+    color: #f2f2f7;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .aboutmetitle {
+    color: #f2f2f7;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .description {
+    color: #f2f2f7;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   }
 }
 

@@ -10,26 +10,15 @@
 
 .marquee {
   display: flex;
-  animation: marquee 20s linear infinite;
+  animation: marquee 25s linear infinite;
   width: 200%;
-  justify-content: space-between;
-}
-
-@media (prefers-color-scheme: dark) {
-  .marqueeContainer {
-    background: transparent;
-  }
-
-  .marqueeContainer::before,
-  .marqueeContainer::after {
-    display: none;
-  }
 }
 
 .marqueeContent {
   display: flex;
   flex-wrap: nowrap;
   white-space: nowrap;
+  width: 100%;
 }
 
 .logo {
@@ -54,14 +43,13 @@
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
 @media (max-width: 768px) {
   .marquee {
-    animation-duration: 25s;
-    width: 150%;
+    animation-duration: 30s;
   }
 
   .logoImage {
@@ -75,8 +63,7 @@
 
 @media (max-width: 480px) {
   .marquee {
-    animation-duration: 30s;
-    width: 120%;
+    animation-duration: 35s;
   }
 
   .logoImage {
@@ -85,12 +72,6 @@
 
   .logo {
     margin: 0 12px;
-  }
-}
-
-@media (orientation: landscape) {
-  .marquee {
-    animation-duration: 22s;
   }
 }
 
@@ -124,20 +105,31 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .marqueeContainer::before,
-  .marqueeContainer::after {
+  .logoImage {
+    filter: grayscale(0%) opacity(0.8) brightness(1.1) contrast(1.1) saturate(1.1);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .logoImage:hover {
+    filter: grayscale(0%) opacity(1) brightness(1.3) contrast(1.2) saturate(1.3);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1), 0 0 12px rgba(255, 255, 255, 0.05);
+    transform: scale(1.05);
+  }
+
+  .marqueeContainer::before {
     background: linear-gradient(
       to right,
-      rgba(28, 28, 30, 0.95) 0%,
-      rgba(28, 28, 30, 0) 100%
+      rgba(32, 32, 35, 0.95) 0%,
+      rgba(32, 32, 35, 0) 100%
     );
   }
 
   .marqueeContainer::after {
     background: linear-gradient(
       to left,
-      rgba(28, 28, 30, 0.95) 0%,
-      rgba(28, 28, 30, 0) 100%
+      rgba(32, 32, 35, 0.95) 0%,
+      rgba(32, 32, 35, 0) 100%
     );
   }
 }

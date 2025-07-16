@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import Image from "next/image";
@@ -81,7 +81,7 @@ export default function Home() {
               />
             </button>
           </div>
-          {show ? <Blurb /> : null}
+          <Blurb isVisible={show} />
           <div className={styles.aboutme}>
             <motion.div style={{}}>
               <div className={styles.hide}>
