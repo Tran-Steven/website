@@ -14,16 +14,13 @@ export default function Home() {
   const [show, setShow] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
 
-  // Ref for the scroll animation section
   const scrollSectionRef = useRef(null);
 
-  // Scroll progress for the expanding image section
   const { scrollYProgress } = useScroll({
     target: scrollSectionRef,
     offset: ["start 80%", "end 20%"],
   });
 
-  // Transform values for Apple-style container expansion - adjusted for header
   const textOpacity = useTransform(scrollYProgress, [0.1, 0.25], [1, 0]);
   const containerWidth = useTransform(
     scrollYProgress,
