@@ -1033,7 +1033,7 @@
 
 .titlep {
   color: #515154;
-  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
   font-weight: 500;
   letter-spacing: 0.08em;
 }
@@ -1561,11 +1561,17 @@
   }
 }
 
+@media (max-width: 768px) {
+  .atlScrollFrame {
+    height: 110vh;
+  }
+}
+
 .atlScrollFrame {
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 150vh;
+  height: 125vh;
 }
 
 .atlScrollStage {
@@ -1596,5 +1602,5 @@
 }
 
 .drop {
-  animation: none;
+  animation: MoveUpDown 1s linear infinite;
 }
