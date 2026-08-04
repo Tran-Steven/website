@@ -1244,3 +1244,175 @@
     color: #a1a1a6;
   }
 }
+
+.heroLab {
+  position: relative;
+  width: min(100%, 1180px);
+  margin: 5rem 2rem 0;
+  overflow: hidden;
+  color: #f4f4f5;
+  background: #0d1117;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 2px;
+  box-shadow: 0 30px 90px rgba(13, 17, 23, 0.28);
+}
+
+.heroLab::before {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  content: "";
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+  pointer-events: none;
+}
+
+.heroLabTopline,
+.heroLabFooter {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.1rem 1.5rem;
+  color: #8b949e;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.heroLabTopline {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.heroLabFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.liveStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #75e6a4;
+}
+
+.liveStatus i {
+  width: 0.4rem;
+  height: 0.4rem;
+  background: #75e6a4;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #75e6a4;
+}
+
+.heroLabContent {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  min-height: 470px;
+}
+
+.heroLabCopy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.labKicker {
+  margin: 0 0 1.5rem;
+  color: #ff8a3d;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.heroLabCopy h2 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 650;
+  letter-spacing: -0.07em;
+  line-height: 0.94;
+}
+
+.heroLabCopy h2 em {
+  color: #8b949e;
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.labDescription {
+  max-width: 18rem;
+  margin: 2rem 0 0;
+  color: #8b949e;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.labStats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  color: #8b949e;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.63rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.labStats span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.labStats strong {
+  color: #f4f4f5;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.orbitalViewport {
+  position: relative;
+  min-height: 470px;
+  background: radial-gradient(circle at center, rgba(20, 124, 255, 0.13), transparent 58%);
+}
+
+.sceneCoordinate {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  color: #8b949e;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .heroLab {
+    margin: 3.5rem 1rem 0;
+  }
+
+  .heroLabContent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heroLabCopy {
+    padding: 2.5rem 1.5rem 0;
+    border-right: 0;
+  }
+
+  .orbitalViewport {
+    min-height: 330px;
+  }
+
+  .heroLabFooter {
+    gap: 1rem;
+    flex-direction: column;
+  }
+}
