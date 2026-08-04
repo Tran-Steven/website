@@ -28,9 +28,9 @@ export default function Home() {
   });
 
   const textOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
-  const atlWidth = useTransform(atlScrollProgress, [0, 0.28], ["52vw", "100vw"]);
-  const atlHeight = useTransform(atlScrollProgress, [0, 0.28], ["42vh", "75vh"]);
-  const atlRadius = useTransform(atlScrollProgress, [0, 0.28], ["20px", "0px"]);
+  const atlWidth = useTransform(atlScrollProgress, [0, 0.55], ["40vw", "100vw"]);
+  const atlHeight = useTransform(atlScrollProgress, [0, 0.55], ["38vh", "75vh"]);
+  const atlRadius = useTransform(atlScrollProgress, [0, 0.55], ["20px", "0px"]);
   const containerWidth = useTransform(scrollYProgress, [0.08, 0.24], ["52vw", "100vw"]);
   const containerHeight = useTransform(scrollYProgress, [0.08, 0.24], ["min(44vh, 30rem)", "100vh"]);
   const borderRadius = useTransform(scrollYProgress, [0.08, 0.24], ["24px", "0px"]);
@@ -99,23 +99,24 @@ export default function Home() {
             </motion.div>
           ) : null}
           <div className={styles.aboutme}>
-            <motion.div
-              className={styles.atlScrollStage}
-              ref={atlScrollRef}
-              style={{
-                width: atlWidth,
-                height: atlHeight,
-                borderRadius: atlRadius,
-              }}
-            >
-              <div className={styles.hide}>
+            <div className={styles.atlScrollFrame} ref={atlScrollRef}>
+              <motion.div
+                className={styles.atlScrollStage}
+                style={{
+                  width: atlWidth,
+                  height: atlHeight,
+                  borderRadius: atlRadius,
+                }}
+              >
+                <div className={styles.hide}>
                 <Image
                   src={atlmorning}
                   alt="Atlanta Cityscape Morning with text on the image saying From Georgia."
                   className={styles.atl}
                 />
-              </div>
-            </motion.div>
+                </div>
+              </motion.div>
+            </div>
             <br />
             <div className={styles.appleScrollSection} ref={scrollSectionRef}>
               <motion.h2
