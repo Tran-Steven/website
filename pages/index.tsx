@@ -23,8 +23,8 @@ export default function Home() {
   });
 
   const textOpacity = useTransform(scrollYProgress, [0.1, 0.25], [1, 0]);
-  const containerWidth = useTransform(scrollYProgress, [0.05, 0.55], ["clamp(18rem, 52vw, 52rem)", "100vw"]);
-  const containerHeight = useTransform(scrollYProgress, [0.05, 0.55], ["min(42vh, 30rem)", "100vh"]);
+  const containerWidth = useTransform(scrollYProgress, [0.05, 0.55], ["min(700px, 72vw)", "100vw"]);
+  const containerHeight = useTransform(scrollYProgress, [0.05, 0.55], ["min(52vh, 38rem)", "100vh"]);
   const borderRadius = useTransform(scrollYProgress, [0.05, 0.55], ["24px", "0px"]);
   const overlayTextOpacity = useTransform(
     scrollYProgress,
