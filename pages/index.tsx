@@ -32,15 +32,15 @@ export default function Home() {
   const atlWidth = useTransform(atlScrollProgress, [0, 0.7], ["72vw", "100vw"]);
   const atlHeight = useTransform(atlScrollProgress, [0, 0.7], ["42vh", "75vh"]);
   const atlRadius = useTransform(atlScrollProgress, [0, 0.7], ["20px", "0px"]);
-  const containerWidth = useTransform(scrollYProgress, [0.05, 0.55], ["72vw", "100vw"]);
-  const containerHeight = useTransform(scrollYProgress, [0.05, 0.55], ["min(52vh, 38rem)", "100vh"]);
-  const borderRadius = useTransform(scrollYProgress, [0.05, 0.55], ["24px", "0px"]);
+  const containerWidth = useTransform(scrollYProgress, [0, 0.35], ["72vw", "100vw"]);
+  const containerHeight = useTransform(scrollYProgress, [0, 0.35], ["min(52vh, 38rem)", "100vh"]);
+  const borderRadius = useTransform(scrollYProgress, [0, 0.35], ["24px", "0px"]);
   const overlayTextOpacity = useTransform(
     scrollYProgress,
-    [0.25, 0.5],
+    [0.12, 0.3],
     [0, 1]
   );
-  const overlayTextY = useTransform(scrollYProgress, [0.25, 0.5], [30, 0]);
+  const overlayTextY = useTransform(scrollYProgress, [0.12, 0.3], [30, 0]);
   return (
     <>
       <div className={styles.scrolltracker}></div>
