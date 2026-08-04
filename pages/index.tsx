@@ -26,7 +26,7 @@ export default function Home() {
   const containerWidth = useTransform(
     scrollYProgress,
     [0, 0.6],
-    ["100%", "100vw"]
+    ["calc(100% - 8rem)", "100vw"]
   );
   const containerHeight = useTransform(
     scrollYProgress,
@@ -84,12 +84,11 @@ export default function Home() {
               />
             </button>
           </div>
+          <Blurb isVisible={show} />
           <div className={styles.heroScene}>
             <OrbitalScene />
             <span className={styles.sceneLabel}>Los Angeles / 34.0522° N</span>
-            <span className={styles.sceneHint}>move through the scene</span>
           </div>
-          <Blurb isVisible={show} />
           <div className={styles.aboutme}>
             <motion.div>
               <div className={styles.hide}>

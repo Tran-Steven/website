@@ -1496,6 +1496,33 @@
   margin: 0;
 }
 
+.appleScrollSection {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: visible;
+}
+
+.appleScrollSection .aboutmetitle {
+  padding: 0 2rem;
+}
+
+.expandingContainer {
+  width: calc(100% - 8rem);
+  max-width: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .appleScrollSection .aboutmetitle {
+    padding: 0 1rem;
+  }
+
+  .expandingContainer {
+    width: calc(100% - 2rem);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .dropdownholder {
     border-color: rgba(255, 255, 255, 0.25);

@@ -32,21 +32,6 @@ const OrbitalScene = () => {
     const group = new THREE.Group();
     scene.add(group);
 
-    const orbitMaterial = new THREE.LineBasicMaterial({
-      color: 0x147cff,
-      transparent: true,
-      opacity: 0.45,
-    });
-    [1.7, 2.05, 2.4].forEach((radius, index) => {
-      const orbit = new THREE.Mesh(
-        new THREE.TorusGeometry(radius, 0.006, 8, 100),
-        orbitMaterial
-      );
-      orbit.rotation.x = Math.PI / 2 + index * 0.22;
-      orbit.rotation.z = index * 0.5;
-      group.add(orbit);
-    });
-
     const loader = new GLTFLoader();
     loader.load("/orangecat.glb", (gltf) => {
       const model = gltf.scene;
@@ -64,6 +49,27 @@ const OrbitalScene = () => {
           });
         }
       });
+
+      const bounds = new THREE.Box3().setFromObject(model);
+      const size = bounds.getSize(new THREE.Vector3());
+      const center = bounds.getCenter(new THREE.Vector3());
+      const eyeMaterial = new THREE.MeshStandardMaterial({ color: 0xf4f4f5, roughness: 0.3 });
+      const pupilMaterial = new THREE.MeshStandardMaterial({ color: 0x0d1117, roughness: 0.25 });
+
+      [-1, 1].forEach((side) => {
+        const eye = new THREE.Mesh(
+          new THREE.SphereGeometry(size.y * 0.075, 20, 20),
+          eyeMaterial
+        );
+        eye.position.set(center.x + side * size.x * 0.17, center.y + size.y * 0.16, bounds.max.z + size.z * 0.02);
+        const pupil = new THREE.Mesh(
+          new THREE.SphereGeometry(size.y * 0.032, 16, 16),
+          pupilMaterial
+        );
+        pupil.position.set(eye.position.x, eye.position.y, eye.position.z + size.z * 0.07);
+        model.add(eye, pupil);
+      });
+
       group.add(model);
     });
 
