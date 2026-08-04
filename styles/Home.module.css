@@ -1525,6 +1525,8 @@
   width: calc(100% - 8rem);
   max-width: none;
   margin: 0 auto;
+  transform-origin: center top;
+  will-change: transform, width;
 }
 
 @media (max-width: 768px) {

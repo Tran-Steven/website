@@ -23,16 +23,7 @@ export default function Home() {
   });
 
   const textOpacity = useTransform(scrollYProgress, [0.1, 0.25], [1, 0]);
-  const containerWidth = useTransform(
-    scrollYProgress,
-    [0.05, 0.55],
-    ["calc(100% - 8rem)", "100vw"]
-  );
-  const containerHeight = useTransform(
-    scrollYProgress,
-    [0.05, 0.55],
-    ["auto", "100vh"]
-  );
+  const containerScale = useTransform(scrollYProgress, [0.05, 0.55], [0.88, 1]);
   const borderRadius = useTransform(scrollYProgress, [0.05, 0.55], ["20px", "0px"]);
   const overlayTextOpacity = useTransform(
     scrollYProgress,
@@ -113,8 +104,7 @@ export default function Home() {
               <motion.div
                 className={styles.expandingContainer}
                 style={{
-                  width: containerWidth,
-                  height: containerHeight,
+                  scale: containerScale,
                   borderRadius: borderRadius,
                 }}
               >
