@@ -12,7 +12,7 @@ const OrbitalScene = () => {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-    camera.position.set(0, 0.2, 6);
+    camera.position.set(0, 0.2, 7.5);
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -50,7 +50,7 @@ const OrbitalScene = () => {
     const loader = new GLTFLoader();
     loader.load("/orangecat.glb", (gltf) => {
       const model = gltf.scene;
-      model.scale.setScalar(1.5);
+      model.scale.setScalar(0.95);
       model.position.y = -0.6;
       model.rotation.y = -0.45;
       model.traverse((child) => {

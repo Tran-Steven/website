@@ -1447,6 +1447,50 @@
   transform: rotate(180deg) translateY(2px);
 }
 
+.heroScene {
+  position: relative;
+  width: min(100%, 1080px);
+  height: clamp(300px, 46vw, 540px);
+  margin: 1rem 2rem 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 122, 255, 0.08), transparent 54%);
+}
+
+.heroScene::after {
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid rgba(29, 29, 31, 0.1);
+  content: "";
+  pointer-events: none;
+}
+
+.heroScene .canvas {
+  position: relative;
+  z-index: 1;
+  min-height: 0;
+}
+
+.sceneLabel,
+.sceneHint {
+  position: absolute;
+  z-index: 2;
+  color: #8e8e93;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sceneLabel {
+  top: 2rem;
+  left: 2rem;
+}
+
+.sceneHint {
+  right: 2rem;
+  bottom: 2rem;
+}
+
 .drop {
   width: 1.15rem;
   margin: 0;

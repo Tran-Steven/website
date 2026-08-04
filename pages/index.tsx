@@ -84,26 +84,10 @@ export default function Home() {
               />
             </button>
           </div>
-          <div className={styles.heroLab}>
-            <div className={styles.heroLabTopline}>
-              <span>ST / 001</span>
-              <span className={styles.liveStatus}><i /> live system</span>
-            </div>
-            <div className={styles.heroLabContent}>
-              <div className={styles.heroLabCopy}>
-                <p className={styles.labKicker}>Currently building</p>
-                <h2>Interfaces for<br /><em>curious minds.</em></h2>
-                <p className={styles.labDescription}>Full-stack engineer turning complex ideas into fast, tactile digital products.</p>
-              </div>
-              <div className={styles.orbitalViewport}>
-                <OrbitalScene />
-                <span className={styles.sceneCoordinate}>34.0522° N<br />118.2437° W</span>
-              </div>
-            </div>
-            <div className={styles.heroLabFooter}>
-              <span>three.js / next.js / typescript</span>
-              <span>move your cursor</span>
-            </div>
+          <div className={styles.heroScene}>
+            <OrbitalScene />
+            <span className={styles.sceneLabel}>Los Angeles / 34.0522° N</span>
+            <span className={styles.sceneHint}>move through the scene</span>
           </div>
           <Blurb isVisible={show} />
           <div className={styles.aboutme}>
