@@ -1416,3 +1416,44 @@
     flex-direction: column;
   }
 }
+
+.dropdownholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 0.5rem;
+  border: 1px solid rgba(29, 29, 31, 0.18);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.dropdownholder:hover,
+.dropdownholder:focus-visible {
+  background: rgba(0, 122, 255, 0.08);
+  border-color: #007aff;
+  outline: none;
+  transform: translateY(2px);
+}
+
+.dropdownholder[aria-expanded="true"] {
+  transform: rotate(180deg);
+}
+
+.dropdownholder[aria-expanded="true"]:hover,
+.dropdownholder[aria-expanded="true"]:focus-visible {
+  transform: rotate(180deg) translateY(2px);
+}
+
+.drop {
+  width: 1.15rem;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dropdownholder {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+}

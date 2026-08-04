@@ -10,7 +10,6 @@ import Repos from "../public/repos.png";
 import triangle from "../public/dropdown-icon.svg";
 import Blurb from "../components/Blurb";
 import DraggableVideo from "@components/DraggableVideo";
-import TechMarquee from "@components/TechMarquee";
 import OrbitalScene from "@components/OrbitalScene";
 export default function Home() {
   const [show, setShow] = useState(false);
@@ -59,7 +58,6 @@ export default function Home() {
         <main className={styles.main} id="aboutme">
           {showVideo ? <DraggableVideo /> : null}
           <div className={styles.heroContent}>
-            <p className={styles.heroLabel}>Software engineer · Los Angeles</p>
             <button
               className={styles.secretbutton}
               onClick={() => {
@@ -74,6 +72,9 @@ export default function Home() {
             <p className={styles.titlep}>LA based Software Engineer</p>
             <button
               className={styles.dropdownholder}
+              type="button"
+              aria-label={show ? "Hide about Steven" : "Read more about Steven"}
+              aria-expanded={show}
               onClick={() => setShow(!show)}
             >
               <Image
@@ -93,10 +94,6 @@ export default function Home() {
                 <p className={styles.labKicker}>Currently building</p>
                 <h2>Interfaces for<br /><em>curious minds.</em></h2>
                 <p className={styles.labDescription}>Full-stack engineer turning complex ideas into fast, tactile digital products.</p>
-                <div className={styles.labStats}>
-                  <span><strong>04</strong> years shipping</span>
-                  <span><strong>∞</strong> things learning</span>
-                </div>
               </div>
               <div className={styles.orbitalViewport}>
                 <OrbitalScene />
@@ -108,7 +105,6 @@ export default function Home() {
               <span>move your cursor</span>
             </div>
           </div>
-          <TechMarquee />
           <Blurb isVisible={show} />
           <div className={styles.aboutme}>
             <motion.div>
