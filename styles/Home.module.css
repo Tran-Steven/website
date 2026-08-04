@@ -1522,11 +1522,12 @@
   position: sticky;
   top: 20vh;
   z-index: 1;
-  width: calc(100% - 8rem);
+  width: 52vw;
+  height: 42vh;
   max-width: none;
   margin: 0 auto;
   transform-origin: center top;
-  will-change: transform, width;
+  will-change: width, height;
 }
 
 @media (max-width: 768px) {
