@@ -50,24 +50,30 @@ const OrbitalScene = () => {
         }
       });
 
+      const savedPosition = model.position.clone();
+      const savedRotation = model.rotation.clone();
+      model.position.set(0, 0, 0);
+      model.rotation.set(0, 0, 0);
+      model.updateMatrixWorld(true);
       const bounds = new THREE.Box3().setFromObject(model);
       const size = bounds.getSize(new THREE.Vector3());
       const center = bounds.getCenter(new THREE.Vector3());
-      const eyeMaterial = new THREE.MeshStandardMaterial({ color: 0xf4f4f5, roughness: 0.3 });
-      const pupilMaterial = new THREE.MeshStandardMaterial({ color: 0x0d1117, roughness: 0.25 });
+      model.position.copy(savedPosition);
+      model.rotation.copy(savedRotation);
+      model.updateMatrixWorld(true);
 
+      const eyeMaterial = new THREE.MeshStandardMaterial({ color: 0x090909, roughness: 0.35 });
       [-1, 1].forEach((side) => {
         const eye = new THREE.Mesh(
-          new THREE.SphereGeometry(size.y * 0.075, 20, 20),
+          new THREE.BoxGeometry(size.x * 0.11, size.y * 0.11, size.z * 0.045),
           eyeMaterial
         );
-        eye.position.set(center.x + side * size.x * 0.17, center.y + size.y * 0.16, bounds.max.z + size.z * 0.02);
-        const pupil = new THREE.Mesh(
-          new THREE.SphereGeometry(size.y * 0.032, 16, 16),
-          pupilMaterial
+        eye.position.set(
+          center.x + side * size.x * 0.18,
+          center.y + size.y * 0.17,
+          bounds.max.z + size.z * 0.025
         );
-        pupil.position.set(eye.position.x, eye.position.y, eye.position.z + size.z * 0.07);
-        model.add(eye, pupil);
+        model.add(eye);
       });
 
       group.add(model);

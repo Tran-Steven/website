@@ -19,27 +19,27 @@ export default function Home() {
 
   const { scrollYProgress } = useScroll({
     target: scrollSectionRef,
-    offset: ["start 80%", "end 20%"],
+    offset: ["start start", "end end"],
   });
 
   const textOpacity = useTransform(scrollYProgress, [0.1, 0.25], [1, 0]);
   const containerWidth = useTransform(
     scrollYProgress,
-    [0, 0.6],
+    [0.05, 0.55],
     ["calc(100% - 8rem)", "100vw"]
   );
   const containerHeight = useTransform(
     scrollYProgress,
-    [0, 0.6],
+    [0.05, 0.55],
     ["auto", "100vh"]
   );
-  const borderRadius = useTransform(scrollYProgress, [0, 0.6], ["20px", "0px"]);
+  const borderRadius = useTransform(scrollYProgress, [0.05, 0.55], ["20px", "0px"]);
   const overlayTextOpacity = useTransform(
     scrollYProgress,
-    [0.25, 0.45],
+    [0.25, 0.5],
     [0, 1]
   );
-  const overlayTextY = useTransform(scrollYProgress, [0.25, 0.45], [30, 0]);
+  const overlayTextY = useTransform(scrollYProgress, [0.25, 0.5], [30, 0]);
   return (
     <>
       <div className={styles.scrolltracker}></div>
@@ -87,7 +87,7 @@ export default function Home() {
           <Blurb isVisible={show} />
           <div className={styles.heroScene}>
             <OrbitalScene />
-            <span className={styles.sceneLabel}>Los Angeles / 34.0522° N</span>
+            <span className={styles.sceneLabel}>Yoona</span>
           </div>
           <div className={styles.aboutme}>
             <motion.div>
