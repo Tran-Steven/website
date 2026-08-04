@@ -9,11 +9,10 @@ import styles from "../styles/Home.module.css";
 import Repos from "../public/repos.png";
 import triangle from "../public/dropdown-icon.svg";
 import Blurb from "../components/Blurb";
-import DraggableVideo from "@components/DraggableVideo";
 import OrbitalScene from "@components/OrbitalScene";
 export default function Home() {
   const [show, setShow] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
+  const [showScene, setShowScene] = useState(false);
 
   const scrollSectionRef = useRef(null);
   const atlScrollRef = useRef(null);
@@ -57,12 +56,14 @@ export default function Home() {
 
         <header></header>
         <main className={styles.main} id="aboutme">
-          {showVideo ? <DraggableVideo /> : null}
           <div className={styles.heroContent}>
             <button
               className={styles.secretbutton}
+              type="button"
+              aria-label={showScene ? "Hide Yoona's scene" : "Show Yoona's scene"}
+              aria-expanded={showScene}
               onClick={() => {
-                setShowVideo(!showVideo);
+                setShowScene(!showScene);
               }}
             >
               <h1 className={styles.title}>Hi, I&apos;m Steven.</h1>
@@ -86,10 +87,17 @@ export default function Home() {
             </button>
           </div>
           <Blurb isVisible={show} />
-          <div className={styles.heroScene}>
-            <OrbitalScene />
-            <span className={styles.sceneLabel}>Yoona</span>
-          </div>
+          {showScene ? (
+            <motion.div
+              className={styles.heroScene}
+              initial={{ opacity: 0, height: 0, y: -24 }}
+              animate={{ opacity: 1, height: "clamp(300px, 46vw, 540px)", y: 0 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <OrbitalScene />
+              <span className={styles.sceneLabel}>Yoona (My cat!)</span>
+            </motion.div>
+          ) : null}
           <div className={styles.aboutme}>
             <motion.div
               className={styles.atlScrollStage}

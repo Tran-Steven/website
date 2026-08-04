@@ -1488,25 +1488,15 @@
   min-height: 0;
 }
 
-.sceneLabel,
-.sceneHint {
-  position: absolute;
-  z-index: 2;
-  color: #8e8e93;
-  font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
 .sceneLabel {
+  position: absolute;
   top: 2rem;
   left: 2rem;
-}
-
-.sceneHint {
-  right: 2rem;
-  bottom: 2rem;
+  z-index: 2;
+  color: #1d1d1f;
+  font-size: clamp(1.1rem, 2.3vw, 2rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
 }
 
 .drop {
