@@ -1563,7 +1563,15 @@
 
 @media (max-width: 768px) {
   .atlScrollFrame {
-    height: 110vh;
+    height: 80vh;
+  }
+
+  .atlScrollFrame + br {
+    display: none;
+  }
+
+  .appleScrollSection {
+    margin-top: 0;
   }
 }
 
