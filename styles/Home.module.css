@@ -1539,13 +1539,12 @@
 .expandingContainer {
   position: sticky;
   top: 20vh;
-  left: 50%;
   z-index: 1;
   width: min(700px, 72vw);
   height: min(52vh, 38rem);
   max-width: none;
-  margin: 0;
-  transform: translateX(-50%);
+  margin-right: auto;
+  margin-left: auto;
   transform-origin: center top;
   will-change: width, height;
 }
