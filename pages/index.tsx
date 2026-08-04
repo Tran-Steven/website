@@ -117,7 +117,6 @@ export default function Home() {
                 </div>
               </motion.div>
             </div>
-            <br />
             <div className={styles.appleScrollSection} ref={scrollSectionRef}>
               <motion.h2
                 className={styles.aboutmetitle}
