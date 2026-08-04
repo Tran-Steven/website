@@ -1058,6 +1058,7 @@
   margin: 0;
   overflow: hidden;
   border-radius: 20px;
+  background: #f4f4f5;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
 }
 
@@ -1065,13 +1066,13 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hide:hover .atl {
-  transform: scale(1.025);
+  transform: none;
 }
 
 .appleScrollSection {
