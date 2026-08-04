@@ -16,6 +16,12 @@ export default function Home() {
   const [showVideo, setShowVideo] = useState(false);
 
   const scrollSectionRef = useRef(null);
+  const atlScrollRef = useRef(null);
+
+  const { scrollYProgress: atlScrollProgress } = useScroll({
+    target: atlScrollRef,
+    offset: ["start 80%", "end 20%"],
+  });
 
   const { scrollYProgress } = useScroll({
     target: scrollSectionRef,
@@ -23,7 +29,10 @@ export default function Home() {
   });
 
   const textOpacity = useTransform(scrollYProgress, [0.1, 0.25], [1, 0]);
-  const containerWidth = useTransform(scrollYProgress, [0.05, 0.55], ["min(700px, 72vw)", "100vw"]);
+  const atlWidth = useTransform(atlScrollProgress, [0, 0.7], ["72vw", "100vw"]);
+  const atlHeight = useTransform(atlScrollProgress, [0, 0.7], ["42vh", "75vh"]);
+  const atlRadius = useTransform(atlScrollProgress, [0, 0.7], ["20px", "0px"]);
+  const containerWidth = useTransform(scrollYProgress, [0.05, 0.55], ["72vw", "100vw"]);
   const containerHeight = useTransform(scrollYProgress, [0.05, 0.55], ["min(52vh, 38rem)", "100vh"]);
   const borderRadius = useTransform(scrollYProgress, [0.05, 0.55], ["24px", "0px"]);
   const overlayTextOpacity = useTransform(
@@ -82,7 +91,15 @@ export default function Home() {
             <span className={styles.sceneLabel}>Yoona</span>
           </div>
           <div className={styles.aboutme}>
-            <motion.div>
+            <motion.div
+              className={styles.atlScrollStage}
+              ref={atlScrollRef}
+              style={{
+                width: atlWidth,
+                height: atlHeight,
+                borderRadius: atlRadius,
+              }}
+            >
               <div className={styles.hide}>
                 <Image
                   src={atlmorning}

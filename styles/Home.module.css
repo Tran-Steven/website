@@ -1043,10 +1043,19 @@
   padding: 0 2rem;
 }
 
-.hide {
-  width: min(100%, 780px);
-  max-width: 100%;
+.atlScrollStage {
+  position: relative;
+  overflow: hidden;
   margin: 0 auto;
+  transform-origin: center top;
+  will-change: width, height;
+}
+
+.hide {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
