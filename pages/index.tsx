@@ -56,14 +56,17 @@ export default function Home() {
         <header></header>
         <main className={styles.main} id="aboutme">
           {showVideo ? <DraggableVideo /> : null}
-          <button
-            className={styles.secretbutton}
-            onClick={() => {
-              setShowVideo(!showVideo);
-            }}
-          >
-            <h1 className={styles.title}>Hi, I&apos;m Steven.</h1>
-          </button>
+          <div className={styles.heroContent}>
+            <p className={styles.heroLabel}>Software engineer · Los Angeles</p>
+            <button
+              className={styles.secretbutton}
+              onClick={() => {
+                setShowVideo(!showVideo);
+              }}
+            >
+              <h1 className={styles.title}>Hi, I&apos;m Steven.</h1>
+            </button>
+          </div>
 
           <div className={styles.nameblurb}>
             <p className={styles.titlep}>LA based Software Engineer</p>
@@ -80,7 +83,7 @@ export default function Home() {
           </div>
           <Blurb isVisible={show} />
           <div className={styles.aboutme}>
-            <motion.div style={{}}>
+            <motion.div>
               <div className={styles.hide}>
                 <Image
                   src={atlmorning}
@@ -148,9 +151,15 @@ export default function Home() {
             </h2>
           </div>
           <div className={styles.projects}>
-            <h2 className={styles.projectstext} id="projects">
-              Check out some of my projects.
-            </h2>
+            <div className={styles.sectionHeading}>
+              <p className={styles.sectionLabel}>Selected work</p>
+              <h2 className={styles.projectstext} id="projects">
+                Check out some of my projects.
+              </h2>
+              <p className={styles.sectionDescription}>
+                A few experiments, tools, and products I&apos;ve built along the way.
+              </p>
+            </div>
             <div className={styles.grid}>
               <a
                 href="https://github.com/Tran-Steven/website"
@@ -158,7 +167,8 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <h2>This Website &rarr;</h2>
+                <span className={styles.cardNumber}>01</span>
+                <h2>This Website <span aria-hidden="true">↗</span></h2>
                 <p> The source code I wrote for this website.</p>
               </a>
               <a
@@ -167,7 +177,8 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <h2>League of Wordle &rarr;</h2>
+                <span className={styles.cardNumber}>02</span>
+                <h2>League of Wordle <span aria-hidden="true">↗</span></h2>
                 <p>
                   A League of Legends Wordle-like built with React and Node.
                 </p>
@@ -178,7 +189,8 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <h2>MultiPlaylist &rarr;</h2>
+                <span className={styles.cardNumber}>03</span>
+                <h2>MultiPlaylist <span aria-hidden="true">↗</span></h2>
                 <p>
                   Website that combine videos and playlists from different
                   websites and have them all within one accessible playlist.
@@ -190,7 +202,8 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <h2>Watermarker &rarr;</h2>
+                <span className={styles.cardNumber}>04</span>
+                <h2>Watermarker <span aria-hidden="true">↗</span></h2>
                 <p>
                   <strong>🏆 Winners of Adobe Express for Hackathons!</strong>
                   <br />
@@ -206,7 +219,8 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className={styles.card}
               >
-                <h2>Neovim Config &rarr;</h2>
+                <span className={styles.cardNumber}>05</span>
+                <h2>Neovim Config <span aria-hidden="true">↗</span></h2>
                 <p>
                   My personal Neovim configuration that I use, which includes
                   plugins and settings.
@@ -218,7 +232,8 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className={styles.card}
               >
-                <h2>Other GitHub Repositories &rarr;</h2>
+                <span className={styles.cardNumber}>06</span>
+                <h2>Other GitHub Repositories <span aria-hidden="true">↗</span></h2>
                 <p>
                   List of all of my GitHub repositories that include other code
                   not highlighted here.
@@ -232,8 +247,12 @@ export default function Home() {
           <div className={styles.holder} id="contact">
             <div className={styles.contact}>
               <div className={styles.contactcontainer}>
+                <p className={styles.sectionLabel}>Let&apos;s connect</p>
                 <p className={styles.contactdescription}>
                   Want To Get In Touch?
+                </p>
+                <p className={styles.contactSubtext}>
+                  Have a project, idea, or opportunity in mind? I&apos;d love to hear about it.
                 </p>
                 <form
                   autoComplete="off"

@@ -974,3 +974,273 @@
     display: none;
   }
 }
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: 3rem;
+}
+
+.heroLabel,
+.sectionLabel {
+  margin: 0;
+  color: #515154;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.heroLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.heroLabel::before {
+  width: 0.45rem;
+  height: 0.45rem;
+  background: #007aff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.25rem rgba(0, 122, 255, 0.12);
+  content: "";
+}
+
+.secretbutton {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.secretbutton:hover {
+  transform: translateY(-3px);
+}
+
+.title {
+  font-size: clamp(4rem, 9vw, 8.5rem);
+  font-weight: 750;
+  letter-spacing: -0.075em;
+  line-height: 0.92;
+}
+
+.nameblurb {
+  align-items: center;
+  margin-top: 1.1rem;
+}
+
+.titlep {
+  color: #515154;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.aboutme {
+  width: min(100%, 1200px);
+  padding: 0 2rem;
+}
+
+.hide {
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
+}
+
+.atl {
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hide:hover .atl {
+  transform: scale(1.025);
+}
+
+.appleScrollSection {
+  margin-top: 2.5rem;
+}
+
+.expandingContainer {
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.25);
+}
+
+.repos {
+  width: min(90%, 1050px);
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 28px 60px rgba(13, 17, 23, 0.25);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.repos:hover {
+  box-shadow: 0 36px 74px rgba(13, 17, 23, 0.35);
+  transform: translateY(-5px);
+}
+
+.projects {
+  width: min(calc(100% - 2rem), 1320px);
+  padding: 5.5rem 2rem 2rem;
+  background: #f7f8fa;
+  border: 1px solid rgba(29, 29, 31, 0.06);
+  box-shadow: 0 24px 70px rgba(29, 29, 31, 0.08);
+}
+
+.sectionHeading {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 3rem;
+}
+
+.sectionHeading .sectionLabel {
+  margin-bottom: 1rem;
+}
+
+.projectstext {
+  margin: 0;
+  font-size: clamp(2.7rem, 5vw, 4.5rem);
+}
+
+.sectionDescription {
+  max-width: 36rem;
+  margin: 1.25rem auto 0;
+  color: #515154;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.grid {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.card {
+  min-height: 225px;
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.cardNumber {
+  display: block;
+  margin-bottom: 3.5rem;
+  color: #8e8e93;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.card h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.card h2 span {
+  color: #007aff;
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover h2 span {
+  transform: translate(3px, -3px);
+}
+
+.holder {
+  padding: 2rem 20px 5rem;
+  background: #ffffff;
+}
+
+.contact {
+  max-width: 780px;
+  border-radius: 24px;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.09);
+}
+
+.contactcontainer {
+  padding: 4.5rem 2rem;
+}
+
+.contactcontainer .sectionLabel {
+  margin-bottom: 1rem;
+}
+
+.contactdescription {
+  margin-bottom: 0;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+}
+
+.contactSubtext {
+  max-width: 28rem;
+  margin: 1.1rem 0 2rem;
+  color: #515154;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.contactbutton {
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    margin-top: 1rem;
+  }
+
+  .aboutme {
+    padding: 0 1rem;
+  }
+
+  .projects {
+    width: calc(100% - 1rem);
+    padding: 4rem 1rem 1rem;
+  }
+
+  .sectionHeading {
+    margin-bottom: 2.25rem;
+  }
+
+  .card {
+    min-height: 0;
+  }
+
+  .cardNumber {
+    margin-bottom: 2rem;
+  }
+
+  .contactcontainer {
+    padding: 3.5rem 1.5rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .heroLabel,
+  .sectionLabel,
+  .sectionDescription,
+  .contactSubtext,
+  .titlep {
+    color: #c7c7cc;
+  }
+
+  .projects {
+    background: linear-gradient(180deg, rgba(48, 48, 52, 0.8) 0%, rgba(58, 58, 62, 0.75) 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .cardNumber {
+    color: #a1a1a6;
+  }
+}
