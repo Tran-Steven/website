@@ -28,11 +28,11 @@ export default function Home() {
   });
 
   const textOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
-  const atlWidth = useTransform(atlScrollProgress, [0, 0.28], ["72vw", "100vw"]);
+  const atlWidth = useTransform(atlScrollProgress, [0, 0.28], ["52vw", "100vw"]);
   const atlHeight = useTransform(atlScrollProgress, [0, 0.28], ["42vh", "75vh"]);
   const atlRadius = useTransform(atlScrollProgress, [0, 0.28], ["20px", "0px"]);
-  const containerWidth = useTransform(scrollYProgress, [0.08, 0.24], ["72vw", "100vw"]);
-  const containerHeight = useTransform(scrollYProgress, [0.08, 0.24], ["min(52vh, 38rem)", "100vh"]);
+  const containerWidth = useTransform(scrollYProgress, [0.08, 0.24], ["52vw", "100vw"]);
+  const containerHeight = useTransform(scrollYProgress, [0.08, 0.24], ["min(44vh, 30rem)", "100vh"]);
   const borderRadius = useTransform(scrollYProgress, [0.08, 0.24], ["24px", "0px"]);
   const overlayTextOpacity = useTransform(
     scrollYProgress,
