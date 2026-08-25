@@ -1028,14 +1028,16 @@
 
 .nameblurb {
   align-items: center;
+  justify-content: center;
+  width: 100%;
   margin-top: 1.1rem;
 }
 
 .titlep {
   color: #515154;
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: clamp(1.2rem, 3.5vw, 2rem);
+  font-weight: 300;
+  letter-spacing: 0.18em;
 }
 
 .aboutme {
@@ -1621,6 +1623,7 @@
 .dropdownholder {
   width: 2rem;
   height: 2rem;
+  margin-left: 1rem;
   border: 0;
   border-radius: 0;
   background: transparent;
