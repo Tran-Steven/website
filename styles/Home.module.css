@@ -1642,3 +1642,17 @@
 .drop {
   animation: MoveUpDown 1s linear infinite;
 }
+
+@media (max-width: 768px) {
+  .appleScrollSection {
+    height: 112vh;
+  }
+
+  .atlScrollFrame {
+    height: 75vh;
+  }
+
+  .repos {
+    margin-top: 1rem;
+  }
+}

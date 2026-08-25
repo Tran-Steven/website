@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import Image from "next/image";
@@ -13,6 +13,15 @@ import OrbitalScene from "@components/OrbitalScene";
 export default function Home() {
   const [show, setShow] = useState(false);
   const [showScene, setShowScene] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    const updateMobile = () => setIsMobile(mediaQuery.matches);
+    updateMobile();
+    mediaQuery.addEventListener("change", updateMobile);
+    return () => mediaQuery.removeEventListener("change", updateMobile);
+  }, []);
 
   const scrollSectionRef = useRef(null);
   const atlScrollRef = useRef(null);
@@ -28,11 +37,11 @@ export default function Home() {
   });
 
   const textOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
-  const atlWidth = useTransform(atlScrollProgress, [0, 0.28], ["68vw", "100vw"]);
-  const atlHeight = useTransform(atlScrollProgress, [0, 0.28], ["44vh", "75vh"]);
+  const atlWidth = useTransform(atlScrollProgress, [0, 0.28], [isMobile ? "84vw" : "68vw", "100vw"]);
+  const atlHeight = useTransform(atlScrollProgress, [0, 0.28], [isMobile ? "48vh" : "44vh", "75vh"]);
   const atlRadius = useTransform(atlScrollProgress, [0, 0.28], ["20px", "0px"]);
-  const containerWidth = useTransform(scrollYProgress, [0.08, 0.24], ["52vw", "100vw"]);
-  const containerHeight = useTransform(scrollYProgress, [0.08, 0.24], ["min(44vh, 30rem)", "100vh"]);
+  const containerWidth = useTransform(scrollYProgress, [0.08, 0.24], [isMobile ? "84vw" : "52vw", "100vw"]);
+  const containerHeight = useTransform(scrollYProgress, [0.08, 0.24], [isMobile ? "50vh" : "min(44vh, 30rem)", "100vh"]);
   const borderRadius = useTransform(scrollYProgress, [0.08, 0.24], ["24px", "0px"]);
   const overlayTextOpacity = useTransform(
     scrollYProgress,
