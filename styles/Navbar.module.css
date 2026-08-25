@@ -56,6 +56,22 @@
   padding: 15px 0;
 }
 
+.menucontent a,
+.menucontentOpen a {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.menucontent a:hover,
+.menucontent a:focus-visible,
+.menucontentOpen a:hover,
+.menucontentOpen a:focus-visible {
+  color: #007aff;
+  outline: none;
+  transform: scale(1.08);
+}
+
 .burger {
   position: absolute;
   left: 10px;
