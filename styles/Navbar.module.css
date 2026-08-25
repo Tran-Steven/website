@@ -67,9 +67,9 @@
 .menucontent a:focus-visible,
 .menucontentOpen a:hover,
 .menucontentOpen a:focus-visible {
-  color: #007aff;
+  color: inherit;
   outline: none;
-  transform: scale(1.08);
+  transform: scale(1.14);
 }
 
 .burger {

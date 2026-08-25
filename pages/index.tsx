@@ -217,7 +217,7 @@ export default function Home() {
           <div className={styles.projects}>
             <div className={styles.sectionHeading}>
               <h2 className={styles.projectstext} id="projects">
-                Work that ships.
+                Things I&apos;ve Built.
               </h2>
             </div>
             <div className={styles.grid}>
