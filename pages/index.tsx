@@ -69,35 +69,62 @@ export default function Home() {
 
         <header></header>
         <main className={styles.main} id="aboutme">
-          <div className={styles.heroContent}>
-            <button
-              className={styles.secretbutton}
-              type="button"
-              aria-label={showScene ? "Hide Yoona's scene" : "Show Yoona's scene"}
-              aria-expanded={showScene}
-              onClick={() => {
-                setShowScene(!showScene);
-              }}
+          <div className={styles.heroCopyStage}>
+            <svg
+              aria-hidden="true"
+              className={styles.heroGrid}
+              viewBox="0 0 700 700"
+              preserveAspectRatio="none"
             >
-              <h1 className={styles.title}>Hi, I&apos;m Steven.</h1>
-            </button>
-          </div>
+              <defs>
+                <pattern
+                  id="hero-grid-pattern"
+                  width="70"
+                  height="70"
+                  patternUnits="userSpaceOnUse"
+                  x="-1"
+                  y="-1"
+                >
+                  <path
+                    d="M.5 70V.5H70"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeDasharray="4 2"
+                  />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#hero-grid-pattern)" />
+            </svg>
+            <div className={styles.heroContent}>
+              <button
+                className={styles.secretbutton}
+                type="button"
+                aria-label={showScene ? "Hide Yoona's scene" : "Show Yoona's scene"}
+                aria-expanded={showScene}
+                onClick={() => {
+                  setShowScene(!showScene);
+                }}
+              >
+                <h1 className={styles.title}>Hi, I&apos;m Steven.</h1>
+              </button>
+            </div>
 
-          <div className={styles.nameblurb}>
-            <p className={styles.titlep}>LA based Software Engineer</p>
-            <button
-              className={styles.dropdownholder}
-              type="button"
-              aria-label={show ? "Hide about Steven" : "Read more about Steven"}
-              aria-expanded={show}
-              onClick={() => setShow(!show)}
-            >
-              <Image
-                src={triangle}
-                alt="drop down menu"
-                className={styles.drop}
-              />
-            </button>
+            <div className={styles.nameblurb}>
+              <p className={styles.titlep}>LA based Software Engineer</p>
+              <button
+                className={styles.dropdownholder}
+                type="button"
+                aria-label={show ? "Hide about Steven" : "Read more about Steven"}
+                aria-expanded={show}
+                onClick={() => setShow(!show)}
+              >
+                <Image
+                  src={triangle}
+                  alt="drop down menu"
+                  className={styles.drop}
+                />
+              </button>
+            </div>
           </div>
           <Blurb isVisible={show} />
           {showScene ? (
