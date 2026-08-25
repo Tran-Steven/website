@@ -2006,6 +2006,93 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .titlep,
+  .aboutmetitle,
+  .projectstext,
+  .contactdescription {
+    color: #f5f5f7;
+  }
+
+  .heroGrid {
+    color: rgba(199, 199, 204, 0.38);
+  }
+
+  .heroScene {
+    background: radial-gradient(circle at 50% 50%, rgba(20, 124, 255, 0.14), transparent 54%);
+  }
+
+  .sceneLabel {
+    color: #f5f5f7;
+  }
+
+  .appleScrollSection,
+  .appleScrollSection .aboutmetitle,
+  .holder {
+    background: #202023;
+  }
+
+  .sectionHeading .sectionLabel {
+    color: #a1a1a6;
+  }
+
+  .sectionDescription,
+  .contactSubtext {
+    color: #c7c7cc;
+  }
+
+  .projects {
+    color: #f5f5f7;
+    background: #303035;
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .card,
+  .card:hover,
+  .card:focus,
+  .card:active {
+    color: #f5f5f7;
+    background: transparent;
+    border-top-color: rgba(255, 255, 255, 0.24);
+  }
+
+  .card p {
+    color: #c7c7cc;
+  }
+
+  .card:hover,
+  .card:focus-visible {
+    background: #3a3a40;
+  }
+
+  .card h2 span {
+    color: #a1a1a6;
+  }
+
+  .contact {
+    color: #f5f5f7;
+    background: #303035;
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+  }
+
+  .formstyle input,
+  .formstyle textarea {
+    color: #f5f5f7;
+    background: #202023;
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .formstyle input::placeholder,
+  .formstyle textarea::placeholder {
+    color: #a1a1a6;
+  }
+
+  .reposmobile {
+    color: #f5f5f7;
+  }
+}
+
 .sectionHeading {
   display: block;
 }
