@@ -216,12 +216,12 @@ export default function Home() {
           </div>
           <div className={styles.projects}>
             <div className={styles.sectionHeading}>
-              <p className={styles.sectionLabel}>02 / Projects</p>
+              <p className={styles.sectionLabel}>Selected work</p>
               <h2 className={styles.projectstext} id="projects">
-                Things I&apos;ve built.
+                A few things I&apos;ve made.
               </h2>
               <p className={styles.sectionDescription}>
-                Selected work, side quests, and useful things from the lab.
+                Experiments, tools, and side projects.
               </p>
             </div>
             <div className={styles.grid}>
