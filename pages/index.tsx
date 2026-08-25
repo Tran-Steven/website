@@ -36,19 +36,19 @@ export default function Home() {
     offset: ["start 75%", "end 15%"],
   });
 
-  const textOpacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
+  const textOpacity = useTransform(scrollYProgress, [0.08, 0.2], [1, 0]);
   const atlWidth = useTransform(atlScrollProgress, [0, 0.28], ["92vw", "100vw"]);
   const atlHeight = useTransform(atlScrollProgress, [0, 0.28], [isMobile ? "44vw" : "44vh", isMobile ? "53vw" : "75vh"]);
   const atlRadius = useTransform(atlScrollProgress, [0, 0.28], ["20px", "0px"]);
-  const containerWidth = useTransform(scrollYProgress, [0.08, 0.24], [isMobile ? "84vw" : "52vw", "100vw"]);
-  const containerHeight = useTransform(scrollYProgress, [0.08, 0.24], [isMobile ? "50vh" : "min(44vh, 30rem)", "100vh"]);
-  const borderRadius = useTransform(scrollYProgress, [0.08, 0.24], ["24px", "0px"]);
+  const containerWidth = useTransform(scrollYProgress, [0.2, 0.42], [isMobile ? "84vw" : "52vw", "100vw"]);
+  const containerHeight = useTransform(scrollYProgress, [0.2, 0.42], [isMobile ? "50vh" : "min(44vh, 30rem)", "100vh"]);
+  const borderRadius = useTransform(scrollYProgress, [0.2, 0.42], ["24px", "0px"]);
   const overlayTextOpacity = useTransform(
     scrollYProgress,
-    [0.08, 0.18],
+    [0.3, 0.48],
     [0, 1]
   );
-  const overlayTextY = useTransform(scrollYProgress, [0.08, 0.18], [30, 0]);
+  const overlayTextY = useTransform(scrollYProgress, [0.3, 0.48], [30, 0]);
   return (
     <>
       <div className={styles.scrolltracker}></div>
