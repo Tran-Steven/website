@@ -38,7 +38,7 @@ export default function Home() {
 
   const textOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
   const atlWidth = useTransform(atlScrollProgress, [0, 0.28], [isMobile ? "84vw" : "68vw", "100vw"]);
-  const atlHeight = useTransform(atlScrollProgress, [0, 0.28], [isMobile ? "48vh" : "44vh", "75vh"]);
+  const atlHeight = useTransform(atlScrollProgress, [0, 0.28], [isMobile ? "44vw" : "44vh", isMobile ? "53vw" : "75vh"]);
   const atlRadius = useTransform(atlScrollProgress, [0, 0.28], ["20px", "0px"]);
   const containerWidth = useTransform(scrollYProgress, [0.08, 0.24], [isMobile ? "84vw" : "52vw", "100vw"]);
   const containerHeight = useTransform(scrollYProgress, [0.08, 0.24], [isMobile ? "50vh" : "min(44vh, 30rem)", "100vh"]);
