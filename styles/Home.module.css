@@ -1598,7 +1598,7 @@
 
 @media (max-width: 768px) {
   .appleScrollSection {
-    height: 125vh;
+    height: 116vh;
   }
 
   .appleScrollSection .aboutmetitle {
@@ -1608,6 +1608,14 @@
   .appleScrollSection .expandingContainer {
     top: 12vh;
   }
+}
+
+.appleScrollSection {
+  height: 116vh;
+}
+
+.repos {
+  margin-top: 1.5rem;
 }
 
 .dropdownholder {
