@@ -1711,7 +1711,26 @@
   }
 
   .aboutme {
+    position: relative;
     padding-top: 1.5rem;
+  }
+
+  .aboutme::before {
+    position: absolute;
+    top: -8rem;
+    right: -2rem;
+    left: -2rem;
+    z-index: 0;
+    height: 420px;
+    background-image: repeating-linear-gradient(90deg, rgba(142, 142, 147, 0.2) 0 1px, transparent 1px 70px), repeating-linear-gradient(0deg, rgba(142, 142, 147, 0.2) 0 1px, transparent 1px 70px);
+    content: "";
+    mask-image: radial-gradient(620px circle at center top, #fff, transparent 92%);
+    pointer-events: none;
+  }
+
+  .aboutme > * {
+    position: relative;
+    z-index: 1;
   }
 }
 
