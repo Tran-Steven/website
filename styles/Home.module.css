@@ -2051,8 +2051,8 @@
   }
 
   .projects .sectionHeading {
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.24);
+    padding-top: 0;
+    border-top: 0;
   }
 
   .projectstext {
@@ -2092,6 +2092,19 @@
     background: #303035;
     border-color: rgba(255, 255, 255, 0.14);
     box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+  }
+
+  .contactbutton {
+    color: #202023;
+    background: #f5f5f7;
+    box-shadow: none;
+  }
+
+  .contactbutton:hover,
+  .contactbutton:active {
+    color: #202023;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   }
 
   .formstyle input,
