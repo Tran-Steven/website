@@ -41,7 +41,7 @@ export default function Home() {
     [isMobile ? 0.25 : 0, isMobile ? 0.4 : 0.1],
     [1, 0]
   );
-  const atlWidth = useTransform(atlScrollProgress, [0, 0.28], ["84vw", "100vw"]);
+  const atlWidth = useTransform(atlScrollProgress, [0, 0.28], ["92vw", "100vw"]);
   const atlHeight = useTransform(atlScrollProgress, [0, 0.28], [isMobile ? "44vw" : "44vh", isMobile ? "53vw" : "75vh"]);
   const atlRadius = useTransform(atlScrollProgress, [0, 0.28], ["20px", "0px"]);
   const containerWidth = useTransform(scrollYProgress, [0.08, 0.24], [isMobile ? "84vw" : "52vw", "100vw"]);
