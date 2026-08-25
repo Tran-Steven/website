@@ -2005,3 +2005,12 @@
     grid-template-columns: 1fr;
   }
 }
+
+.sectionHeading {
+  display: block;
+}
+
+.projectstext {
+  grid-column: auto;
+  grid-row: auto;
+}

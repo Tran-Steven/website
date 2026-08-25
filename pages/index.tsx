@@ -216,13 +216,9 @@ export default function Home() {
           </div>
           <div className={styles.projects}>
             <div className={styles.sectionHeading}>
-              <p className={styles.sectionLabel}>Selected work</p>
               <h2 className={styles.projectstext} id="projects">
                 A few things I&apos;ve made.
               </h2>
-              <p className={styles.sectionDescription}>
-                Experiments, tools, and side projects.
-              </p>
             </div>
             <div className={styles.grid}>
               <a
