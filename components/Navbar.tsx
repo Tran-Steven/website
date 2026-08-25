@@ -42,7 +42,9 @@ const Navbar = () => {
           </svg>
         </button>
         <div className={styles.navname}>
-          <a href="#">st</a>
+          <a href="#">
+            <span className={styles.logoMark}>st</span>
+          </a>
         </div>
         <div className={styles.menu}>
           <ul className={isOpen ? styles.menucontentOpen : styles.menucontent}>

@@ -9,7 +9,7 @@ const Footer = () => {
         <div className={styles.container}>
           <div className={styles.logoContainer}>
             <a className={styles.logo} href="https://transteven.com/">
-              st
+              <span className={styles.logoMark}>st</span>
               <span className={styles.siteName}>transteven.com</span>
             </a>
           </div>
