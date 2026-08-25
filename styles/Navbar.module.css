@@ -69,7 +69,7 @@
 .menucontentOpen a:focus-visible {
   color: inherit;
   outline: none;
-  transform: scale(1.14);
+  transform: scale(1.3);
 }
 
 .burger {
