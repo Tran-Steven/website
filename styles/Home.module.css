@@ -2042,6 +2042,8 @@
   }
 
   .projects {
+    padding-right: 3.5rem;
+    padding-left: 3.5rem;
     color: #f5f5f7;
     background: #303035;
     border-color: rgba(255, 255, 255, 0.12);
@@ -2115,4 +2117,11 @@
 .projectstext {
   grid-column: auto;
   grid-row: auto;
+}
+
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+  .projects {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
 }
