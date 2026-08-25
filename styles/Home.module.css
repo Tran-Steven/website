@@ -1659,3 +1659,14 @@
     margin-top: 1rem;
   }
 }
+
+@media (min-width: 769px) {
+  .nameblurb {
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .aboutme {
+    padding-top: 1.5rem;
+  }
+}
