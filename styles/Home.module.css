@@ -1034,8 +1034,8 @@
 }
 
 .titlep {
-  color: #515154;
-  font-size: clamp(1.2rem, 3.5vw, 2rem);
+  color: #000000;
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
   font-weight: 300;
   letter-spacing: 0.18em;
 }
