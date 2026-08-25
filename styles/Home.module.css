@@ -1670,3 +1670,148 @@
     padding-top: 1.5rem;
   }
 }
+
+.projects {
+  width: min(calc(100% - 2rem), 1320px);
+  padding: 6rem 3.5rem 3.5rem;
+  color: #f4f4f5;
+  background: #0d1117;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.sectionHeading {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 2rem;
+  align-items: end;
+  max-width: none;
+  margin: 0 0 4rem;
+}
+
+.sectionHeading .sectionLabel {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0 0 0.75rem;
+  color: #8b949e;
+  text-align: left;
+}
+
+.projectstext {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+  color: #f4f4f5;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 0.92;
+  text-align: left;
+}
+
+.sectionDescription {
+  grid-column: 2;
+  grid-row: 2;
+  max-width: 25rem;
+  margin: 0;
+  color: #8b949e;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 3rem;
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.card,
+.card:hover,
+.card:focus,
+.card:active {
+  min-height: 0;
+  padding: 1.75rem 0;
+  color: #f4f4f5;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(244, 244, 245, 0.28);
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+}
+
+.card::before {
+  display: none;
+}
+
+.card h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 0 0.8rem;
+  color: inherit;
+  font-size: 1.35rem;
+  font-weight: 550;
+  letter-spacing: -0.03em;
+}
+
+.card h2 span {
+  color: #8b949e;
+  font-size: 1.25rem;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.card p {
+  max-width: 24rem;
+  margin: 0;
+  color: #8b949e;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.card:hover h2 span,
+.card:focus-visible h2 span {
+  color: #f4f4f5;
+  transform: translate(3px, -3px);
+}
+
+@media (max-width: 768px) {
+  .projects {
+    width: calc(100% - 1rem);
+    padding: 4rem 1.25rem 2rem;
+  }
+
+  .sectionHeading {
+    display: block;
+    margin-bottom: 2.25rem;
+  }
+
+  .sectionHeading .sectionLabel {
+    margin-bottom: 1rem;
+  }
+
+  .projectstext {
+    font-size: clamp(2.5rem, 11vw, 4rem);
+  }
+
+  .sectionDescription {
+    margin-top: 1.25rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card,
+  .card:hover,
+  .card:focus,
+  .card:active {
+    padding: 1.5rem 0;
+  }
+}

@@ -189,12 +189,12 @@ export default function Home() {
           </div>
           <div className={styles.projects}>
             <div className={styles.sectionHeading}>
-              <p className={styles.sectionLabel}>Selected work</p>
+              <p className={styles.sectionLabel}>02 / Projects</p>
               <h2 className={styles.projectstext} id="projects">
-                Check out some of my projects.
+                Things I&apos;ve built.
               </h2>
               <p className={styles.sectionDescription}>
-                A few experiments, tools, and products I&apos;ve built along the way.
+                Selected work, side quests, and useful things from the lab.
               </p>
             </div>
             <div className={styles.grid}>
@@ -204,17 +204,15 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <span className={styles.cardNumber}>01</span>
                 <h2>This Website <span aria-hidden="true">↗</span></h2>
                 <p> The source code I wrote for this website.</p>
               </a>
               <a
                 href="https://github.com/Tran-Steven/leaguewordle"
-                className={`${styles.card} ${styles.mobileHidden}`}
+                className={styles.card}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <span className={styles.cardNumber}>02</span>
                 <h2>League of Wordle <span aria-hidden="true">↗</span></h2>
                 <p>
                   A League of Legends Wordle-like built with React and Node.
@@ -222,11 +220,10 @@ export default function Home() {
               </a>
               <a
                 href="https://github.com/Tran-Steven/MultiPlaylist"
-                className={`${styles.card} ${styles.mobileHidden}`}
+                className={styles.card}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <span className={styles.cardNumber}>03</span>
                 <h2>MultiPlaylist <span aria-hidden="true">↗</span></h2>
                 <p>
                   Website that combine videos and playlists from different
@@ -239,7 +236,6 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <span className={styles.cardNumber}>04</span>
                 <h2>Watermarker <span aria-hidden="true">↗</span></h2>
                 <p>
                   <strong>🏆 Winners of Adobe Express for Hackathons!</strong>
@@ -256,7 +252,6 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className={styles.card}
               >
-                <span className={styles.cardNumber}>05</span>
                 <h2>Neovim Config <span aria-hidden="true">↗</span></h2>
                 <p>
                   My personal Neovim configuration that I use, which includes
@@ -269,7 +264,6 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className={styles.card}
               >
-                <span className={styles.cardNumber}>06</span>
                 <h2>Other GitHub Repositories <span aria-hidden="true">↗</span></h2>
                 <p>
                   List of all of my GitHub repositories that include other code
