@@ -8,6 +8,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif,
     Open Sans, Pacifico;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 a {
