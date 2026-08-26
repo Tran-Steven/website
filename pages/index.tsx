@@ -83,6 +83,11 @@ export default function Home() {
     [0.16, 0.48],
     shouldReduceMotion ? [1, 1] : [0, 1]
   );
+  const reposMobileY = useTransform(
+    reposScrollProgress,
+    [0.18, 0.5],
+    shouldReduceMotion ? [0, 0] : [24, 0]
+  );
   const textOpacity = useTransform(
     scrollYProgress,
     [isMobile ? 0.3 : 0.08, isMobile ? 0.5 : 0.2],
@@ -242,12 +247,6 @@ export default function Home() {
           </div>
           <div className={styles.reposSection} ref={reposScrollRef}>
             <motion.div
-              className={styles.reposmobile}
-              style={{ opacity: reposOpacity, y: reposY }}
-            >
-              <h2>Always working on projects and learning new things.</h2>
-            </motion.div>
-            <motion.div
               className={styles.repos}
               style={{
                 opacity: reposOpacity,
@@ -268,6 +267,13 @@ export default function Home() {
                   className={styles.reposimg}
                 />
               </motion.a>
+
+              <motion.h2
+                className={styles.reposmobile}
+                style={{ opacity: reposTextOpacity, y: reposMobileY }}
+              >
+                Always working on projects and learning new things.
+              </motion.h2>
 
               <motion.h2
                 className={styles.reposdesktop}

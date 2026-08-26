@@ -569,7 +569,8 @@
   cursor: pointer;
 }
 .reposmobile {
-  font-size: 0rem;
+  display: none;
+  color: rgb(206, 206, 206);
   will-change: transform, opacity;
 }
 
@@ -641,28 +642,42 @@
   }
 
   .reposdesktop {
-    font-size: 0rem;
+    display: none;
   }
+
   .repos {
     margin-top: 0px;
     width: 70%;
     border-radius: 15px;
   }
+
   .reposmobile {
-    position: sticky;
-    top: 7vh;
-    z-index: 2;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
     display: flex;
-    width: calc(100% - 2rem);
-    max-width: 800px;
-    margin-bottom: 9vh;
-    padding: 0 1rem;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 4.5rem 1.25rem 1.25rem;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(13, 17, 23, 0.78) 40%,
+      rgb(13, 17, 23) 100%
+    );
+    border-radius: 0 0 15px 15px;
     font-size: 2rem;
-    text-align: center;
+    text-align: left;
   }
 
   .reposmobile h2 {
     margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
   }
 
   .repos {
@@ -689,6 +704,8 @@
     width: 100%;
   }
   .reposmobile {
+    padding-right: 1rem;
+    padding-left: 1rem;
     font-size: 1.5rem;
   }
 }
