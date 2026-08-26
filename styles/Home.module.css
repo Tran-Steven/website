@@ -637,7 +637,7 @@
 
 @media (max-width: 981px) {
   .reposSection {
-    min-height: 86vh;
+    min-height: 0;
     padding: 4vh 0 2vh;
   }
 
@@ -646,6 +646,8 @@
   }
 
   .repos {
+    position: relative;
+    top: auto;
     margin-top: 0px;
     width: 70%;
     border-radius: 15px;
@@ -680,14 +682,11 @@
     line-height: 1;
   }
 
-  .repos {
-    top: 24vh;
-  }
 }
 
 @media (max-width: 550px) {
   .reposSection {
-    min-height: 76vh;
+    min-height: 0;
     padding: 3vh 0 1vh;
   }
 
