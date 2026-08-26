@@ -540,11 +540,18 @@
   color: rgb(10, 10, 10);
   font-size: 10em;
 }
+.reposSection {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
 .repos {
   display: flex;
   margin: 5rem;
   background-color: rgb(13, 17, 23);
   border-radius: 50px;
+  will-change: transform, opacity;
 }
 .secretbutton {
   all: unset;
@@ -552,18 +559,21 @@
 }
 .reposmobile {
   font-size: 0rem;
+  will-change: transform, opacity;
 }
 .reposimg {
   width: 100%;
   height: auto;
   padding-right: 1rem;
   border-radius: 50px;
+  will-change: transform;
 }
 
 .reposdesktop {
   font-weight: 700;
   color: rgb(206, 206, 206);
   font-size: 5rem;
+  will-change: transform;
 }
 
 @media (min-width: 1400px) {
@@ -595,6 +605,15 @@
 @media (max-width: 982px) {
   .reposdesktop {
     font-size: 2.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .repos,
+  .reposmobile,
+  .reposimg,
+  .reposdesktop {
+    will-change: auto;
   }
 }
 

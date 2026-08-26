@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 import Image from "next/image";
 import atlmorning from "../public/atlantamorning.jpg";
@@ -24,7 +29,9 @@ export default function Home() {
   }, []);
 
   const scrollSectionRef = useRef(null);
+  const reposScrollRef = useRef(null);
   const atlScrollRef = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const { scrollYProgress: atlScrollProgress } = useScroll({
     target: atlScrollRef,
@@ -35,6 +42,37 @@ export default function Home() {
     target: scrollSectionRef,
     offset: ["start 75%", "end 15%"],
   });
+
+  const { scrollYProgress: reposScrollProgress } = useScroll({
+    target: reposScrollRef,
+    offset: ["start 90%", "end 20%"],
+  });
+
+  const reposOpacity = useTransform(
+    reposScrollProgress,
+    [0, 0.22, 0.8],
+    shouldReduceMotion ? [1, 1, 1] : [0.35, 1, 1]
+  );
+  const reposY = useTransform(
+    reposScrollProgress,
+    [0, 0.35],
+    shouldReduceMotion ? [0, 0] : [48, 0]
+  );
+  const reposScale = useTransform(
+    reposScrollProgress,
+    [0, 0.35],
+    shouldReduceMotion ? [1, 1] : [0.96, 1]
+  );
+  const reposImageX = useTransform(
+    reposScrollProgress,
+    [0.08, 0.42],
+    shouldReduceMotion ? [0, 0] : [-48, 0]
+  );
+  const reposTextX = useTransform(
+    reposScrollProgress,
+    [0.16, 0.5],
+    shouldReduceMotion ? [0, 0] : [56, 0]
+  );
 
   const textOpacity = useTransform(
     scrollYProgress,
@@ -193,26 +231,42 @@ export default function Home() {
               </motion.div>
             </div>
           </div>
-          <div className={styles.reposmobile}>
-            <h2>Always working on projects and learning new things.</h2>
-          </div>
-          <div className={styles.repos}>
-            <a
-              href="https://github.com/Tran-Steven?tab=repositories/"
-              rel="noopener noreferrer"
-              target="_blank"
-              className={styles.reposimg}
+          <div className={styles.reposSection} ref={reposScrollRef}>
+            <motion.div
+              className={styles.reposmobile}
+              style={{ opacity: reposOpacity, y: reposY }}
             >
-              <Image
-                src={Repos}
-                alt="List of my repos"
+              <h2>Always working on projects and learning new things.</h2>
+            </motion.div>
+            <motion.div
+              className={styles.repos}
+              style={{
+                opacity: reposOpacity,
+                scale: reposScale,
+                y: reposY,
+              }}
+            >
+              <motion.a
+                href="https://github.com/Tran-Steven?tab=repositories/"
+                rel="noopener noreferrer"
+                target="_blank"
                 className={styles.reposimg}
-              />
-            </a>
+                style={{ x: reposImageX }}
+              >
+                <Image
+                  src={Repos}
+                  alt="List of my repos"
+                  className={styles.reposimg}
+                />
+              </motion.a>
 
-            <h2 className={styles.reposdesktop}>
-              Always working on projects and learning new things.
-            </h2>
+              <motion.h2
+                className={styles.reposdesktop}
+                style={{ x: reposTextX }}
+              >
+                Always working on projects and learning new things.
+              </motion.h2>
+            </motion.div>
           </div>
           <div className={styles.projects}>
             <div className={styles.sectionHeading}>
