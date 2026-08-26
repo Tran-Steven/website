@@ -2247,9 +2247,9 @@
 
 .projectGrid .card {
   display: flex;
-  min-height: 230px;
+  min-height: 250px;
   flex-direction: column;
-  padding: 2.5rem;
+  padding: 3rem;
   overflow: hidden;
   border: 0;
   border-radius: 28px;
@@ -2279,11 +2279,11 @@
   z-index: 1;
   display: block;
   margin: 0 0 1rem;
-  padding-right: 2.75rem;
+  padding-right: 3.25rem;
   color: inherit;
-  font-size: clamp(1.35rem, 2.2vw, 2rem);
-  letter-spacing: -0.04em;
-  line-height: 1.05;
+  font-size: clamp(1.8rem, 2.8vw, 3rem);
+  letter-spacing: -0.05em;
+  line-height: 1;
 }
 
 .projectGrid .card h2 > span {
@@ -2293,13 +2293,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 0;
   border: 1px solid rgba(29, 29, 31, 0.18);
   border-radius: 50%;
   color: #6e6e73;
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   font-weight: 400;
   line-height: 1;
   transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
@@ -2308,22 +2308,22 @@
 .projectGrid .card p {
   position: relative;
   z-index: 1;
-  max-width: 80%;
+  max-width: 85%;
   margin: 0;
   color: #515154;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.projectGrid .cardFeatured .cardMark {
-  color: rgba(255, 255, 255, 0.08);
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  line-height: 1.35;
 }
 
 .projectGrid .cardFeatured {
   grid-area: featured;
-  min-height: 500px;
-  color: #f5f5f7;
-  background: #1d1d1f;
+  min-height: 560px;
+  color: #1d1d1f;
+  background: #f0e8f2;
+}
+
+.projectGrid .cardFeatured .cardMark {
+  color: rgba(29, 29, 31, 0.08);
 }
 
 .projectGrid .cardWordle {
@@ -2338,7 +2338,7 @@
 
 .projectGrid .cardWatermarker {
   grid-area: watermarker;
-  min-height: 500px;
+  min-height: 560px;
   background: #dfe8f0;
 }
 
@@ -2392,8 +2392,8 @@
   .projectGrid .card,
   .projectGrid .cardFeatured,
   .projectGrid .cardWatermarker {
-    min-height: 260px;
-    padding: 1.5rem;
+    min-height: 300px;
+    padding: 1.75rem;
     border-radius: 22px;
   }
 
@@ -2403,13 +2403,17 @@
     font-size: 7rem;
   }
 
+  .projectGrid .card h2 {
+    padding-right: 2.75rem;
+  }
+
   .projectGrid .card h2 > span {
-    width: 1.85rem;
-    height: 1.85rem;
+    width: 2.2rem;
+    height: 2.2rem;
   }
 
   .projectGrid .card p {
-    max-width: 85%;
+    max-width: 92%;
   }
 }
 
@@ -2432,20 +2436,20 @@
   }
 
   .projectGrid .cardFeatured {
-    color: #1d1d1f;
-    background: #f5f5f7;
+    color: #f5f5f7;
+    background: #494052;
   }
 
   .projectGrid .cardFeatured p {
-    color: #515154;
+    color: #d6d0db;
   }
 
   .projectGrid .cardFeatured h2 span {
-    color: #6e6e73;
+    color: #c0b7c8;
   }
 
   .projectGrid .cardFeatured .cardMark {
-    color: rgba(29, 29, 31, 0.08);
+    color: rgba(255, 255, 255, 0.08);
   }
 
   .projectGrid .cardWordle {
