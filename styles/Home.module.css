@@ -2279,47 +2279,27 @@
   z-index: 1;
   display: block;
   margin: 0 0 1rem;
-  padding-right: 3.25rem;
   color: inherit;
-  font-size: clamp(1.8rem, 2.8vw, 3rem);
-  letter-spacing: -0.05em;
-  line-height: 1;
-}
-
-.projectGrid .card h2 > span {
-  position: absolute;
-  top: -0.35rem;
-  right: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0;
-  border: 1px solid rgba(29, 29, 31, 0.18);
-  border-radius: 50%;
-  color: #6e6e73;
-  font-size: 1.35rem;
-  font-weight: 400;
-  line-height: 1;
-  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  letter-spacing: -0.06em;
+  line-height: 0.95;
 }
 
 .projectGrid .card p {
   position: relative;
   z-index: 1;
-  max-width: 85%;
+  max-width: 88%;
   margin: 0;
   color: #515154;
-  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
-  line-height: 1.35;
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  line-height: 1.25;
 }
 
 .projectGrid .cardFeatured {
   grid-area: featured;
   min-height: 560px;
   color: #1d1d1f;
-  background: #f0e8f2;
+  background: #dfe5eb;
 }
 
 .projectGrid .cardFeatured .cardMark {
@@ -2356,12 +2336,6 @@
 .projectGrid .card:focus-visible {
   transform: translateY(-4px);
   box-shadow: 0 18px 40px rgba(29, 29, 31, 0.1);
-}
-
-.projectGrid .card:hover h2 span,
-.projectGrid .card:focus-visible h2 span {
-  color: #007aff;
-  transform: translate(3px, -3px);
 }
 
 @media (max-width: 768px) {
@@ -2404,16 +2378,12 @@
   }
 
   .projectGrid .card h2 {
-    padding-right: 2.75rem;
-  }
-
-  .projectGrid .card h2 > span {
-    width: 2.2rem;
-    height: 2.2rem;
+    font-size: clamp(2.2rem, 9vw, 3.5rem);
   }
 
   .projectGrid .card p {
-    max-width: 92%;
+    max-width: 94%;
+    font-size: clamp(1.15rem, 4.8vw, 1.4rem);
   }
 }
 
@@ -2431,21 +2401,13 @@
     color: rgba(255, 255, 255, 0.08);
   }
 
-  .projectGrid .card h2 span {
-    color: #a1a1a6;
-  }
-
   .projectGrid .cardFeatured {
     color: #f5f5f7;
-    background: #494052;
+    background: #46515c;
   }
 
   .projectGrid .cardFeatured p {
     color: #d6d0db;
-  }
-
-  .projectGrid .cardFeatured h2 span {
-    color: #c0b7c8;
   }
 
   .projectGrid .cardFeatured .cardMark {

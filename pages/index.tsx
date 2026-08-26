@@ -297,7 +297,7 @@ export default function Home() {
                 target="_blank"
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
-                <h2>COVID19-KG-Integration <span aria-hidden="true">↗</span></h2>
+                <h2>COVID19-KG-Integration</h2>
                 <p>Verifies factual claims in ChatGPT COVID-19 responses using source-backed knowledge-graph evidence.</p>
               </a>
               <a
@@ -307,7 +307,7 @@ export default function Home() {
                 target="_blank"
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
-                <h2>League of Wordle <span aria-hidden="true">↗</span></h2>
+                <h2>League of Wordle</h2>
                 <p>
                   A League of Legends Wordle-like built with React and Node.
                 </p>
@@ -319,7 +319,7 @@ export default function Home() {
                 target="_blank"
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
-                <h2>This Website <span aria-hidden="true">↗</span></h2>
+                <h2>This Website</h2>
                 <p>The source code I wrote for this website.</p>
               </a>
               <a
@@ -329,7 +329,7 @@ export default function Home() {
                 target="_blank"
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
-                <h2>Watermarker <span aria-hidden="true">↗</span></h2>
+                <h2>Watermarker</h2>
                 <p>
                   <strong>🏆 Winners of Adobe Express for Hackathons!</strong>
                   <br />
@@ -346,7 +346,7 @@ export default function Home() {
                 className={`${styles.card} ${styles.cardNeovim}`}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
-                <h2>Neovim Config <span aria-hidden="true">↗</span></h2>
+                <h2>Neovim Config</h2>
                 <p>
                   My personal Neovim configuration that I use, which includes
                   plugins and settings.
@@ -359,7 +359,7 @@ export default function Home() {
                 className={`${styles.card} ${styles.cardArchive}`}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
-                <h2>Other GitHub Repositories <span aria-hidden="true">↗</span></h2>
+                <h2>Other GitHub Repositories</h2>
                 <p>
                   List of all of my GitHub repositories that include other code
                   not highlighted here.
