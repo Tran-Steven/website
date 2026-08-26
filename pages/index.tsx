@@ -291,14 +291,14 @@ export default function Home() {
             </div>
             <div className={styles.projectGrid}>
               <a
-                href="https://github.com/Tran-Steven/website"
+                href="https://github.com/Tran-Steven/COVID19-KG-Integration"
                 className={`${styles.card} ${styles.cardFeatured}`}
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
-                <h2>This Website <span aria-hidden="true">↗</span></h2>
-                <p> The source code I wrote for this website.</p>
+                <h2>COVID19-KG-Integration <span aria-hidden="true">↗</span></h2>
+                <p>Verifies factual claims in ChatGPT COVID-19 responses using source-backed knowledge-graph evidence.</p>
               </a>
               <a
                 href="https://github.com/Tran-Steven/leaguewordle"
@@ -313,17 +313,14 @@ export default function Home() {
                 </p>
               </a>
               <a
-                href="https://github.com/Tran-Steven/MultiPlaylist"
+                href="https://github.com/Tran-Steven/website"
                 className={`${styles.card} ${styles.cardPlaylist}`}
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
-                <h2>MultiPlaylist <span aria-hidden="true">↗</span></h2>
-                <p>
-                  Website that combine videos and playlists from different
-                  websites and have them all within one accessible playlist.
-                </p>
+                <h2>This Website <span aria-hidden="true">↗</span></h2>
+                <p>The source code I wrote for this website.</p>
               </a>
               <a
                 href="https://github.com/lenhatdangkhoa/ugahacks9"
