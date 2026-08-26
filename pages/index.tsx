@@ -296,6 +296,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
+                <span className={styles.cardMark} aria-hidden="true">st</span>
                 <h2>This Website <span aria-hidden="true">↗</span></h2>
                 <p> The source code I wrote for this website.</p>
               </a>
@@ -305,6 +306,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
+                <span className={styles.cardMark} aria-hidden="true">st</span>
                 <h2>League of Wordle <span aria-hidden="true">↗</span></h2>
                 <p>
                   A League of Legends Wordle-like built with React and Node.
@@ -316,6 +318,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
+                <span className={styles.cardMark} aria-hidden="true">st</span>
                 <h2>MultiPlaylist <span aria-hidden="true">↗</span></h2>
                 <p>
                   Website that combine videos and playlists from different
@@ -328,6 +331,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
+                <span className={styles.cardMark} aria-hidden="true">st</span>
                 <h2>Watermarker <span aria-hidden="true">↗</span></h2>
                 <p>
                   <strong>🏆 Winners of Adobe Express for Hackathons!</strong>
@@ -344,6 +348,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className={`${styles.card} ${styles.cardNeovim}`}
               >
+                <span className={styles.cardMark} aria-hidden="true">st</span>
                 <h2>Neovim Config <span aria-hidden="true">↗</span></h2>
                 <p>
                   My personal Neovim configuration that I use, which includes
@@ -356,6 +361,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className={`${styles.card} ${styles.cardArchive}`}
               >
+                <span className={styles.cardMark} aria-hidden="true">st</span>
                 <h2>Other GitHub Repositories <span aria-hidden="true">↗</span></h2>
                 <p>
                   List of all of my GitHub repositories that include other code

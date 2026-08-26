@@ -2260,25 +2260,63 @@
     box-shadow 0.35s ease;
 }
 
+.projectGrid .cardMark {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 0.75rem;
+  z-index: 0;
+  color: rgba(29, 29, 31, 0.08);
+  font-family: "Pacifico", cursive;
+  font-size: clamp(7rem, 14vw, 13rem);
+  line-height: 0.7;
+  pointer-events: none;
+  transform: rotate(-10deg);
+  user-select: none;
+}
+
 .projectGrid .card h2 {
+  position: relative;
+  z-index: 1;
+  display: block;
   margin: 0 0 1rem;
+  padding-right: 2.75rem;
   color: inherit;
   font-size: clamp(1.35rem, 2.2vw, 2rem);
   letter-spacing: -0.04em;
   line-height: 1.05;
 }
 
-.projectGrid .card h2 span {
+.projectGrid .card h2 > span {
+  position: absolute;
+  top: -0.35rem;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid rgba(29, 29, 31, 0.18);
+  border-radius: 50%;
   color: #6e6e73;
-  transition: color 0.25s ease, transform 0.25s ease;
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1;
+  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
 }
 
 .projectGrid .card p {
-  max-width: 28rem;
-  margin: auto 0 0;
+  position: relative;
+  z-index: 1;
+  max-width: 80%;
+  margin: 0;
   color: #515154;
   font-size: 1rem;
   line-height: 1.5;
+}
+
+.projectGrid .cardFeatured .cardMark {
+  color: rgba(255, 255, 255, 0.08);
 }
 
 .projectGrid .cardFeatured {
@@ -2358,6 +2396,21 @@
     padding: 1.5rem;
     border-radius: 22px;
   }
+
+  .projectGrid .cardMark {
+    right: 1rem;
+    bottom: 0.75rem;
+    font-size: 7rem;
+  }
+
+  .projectGrid .card h2 > span {
+    width: 1.85rem;
+    height: 1.85rem;
+  }
+
+  .projectGrid .card p {
+    max-width: 85%;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -2368,6 +2421,10 @@
 
   .projectGrid .card p {
     color: #c7c7cc;
+  }
+
+  .projectGrid .cardMark {
+    color: rgba(255, 255, 255, 0.08);
   }
 
   .projectGrid .card h2 span {
@@ -2385,6 +2442,10 @@
 
   .projectGrid .cardFeatured h2 span {
     color: #6e6e73;
+  }
+
+  .projectGrid .cardFeatured .cardMark {
+    color: rgba(29, 29, 31, 0.08);
   }
 
   .projectGrid .cardWordle {
