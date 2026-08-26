@@ -83,17 +83,6 @@ export default function Home() {
     [0.16, 0.48],
     shouldReduceMotion ? [1, 1] : [0, 1]
   );
-  const reposAccentScale = useTransform(
-    reposScrollProgress,
-    [0.04, 0.5],
-    shouldReduceMotion ? [1, 1] : [0, 1]
-  );
-  const reposGlowOpacity = useTransform(
-    reposScrollProgress,
-    [0.08, 0.42],
-    shouldReduceMotion ? [0.18, 0.18] : [0, 0.18]
-  );
-
   const textOpacity = useTransform(
     scrollYProgress,
     [isMobile ? 0.3 : 0.08, isMobile ? 0.5 : 0.2],
@@ -266,16 +255,6 @@ export default function Home() {
                 y: reposY,
               }}
             >
-              <motion.span
-                className={styles.reposGlow}
-                aria-hidden="true"
-                style={{ opacity: reposGlowOpacity }}
-              />
-              <motion.span
-                className={styles.reposAccent}
-                aria-hidden="true"
-                style={{ scaleX: reposAccentScale }}
-              />
               <motion.a
                 href="https://github.com/Tran-Steven?tab=repositories/"
                 rel="noopener noreferrer"
