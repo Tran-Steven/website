@@ -61,7 +61,12 @@ export default function Home() {
   const reposScale = useTransform(
     reposScrollProgress,
     [0, 0.35],
-    shouldReduceMotion ? [1, 1] : [0.96, 1]
+    shouldReduceMotion ? [1, 1] : [0.88, 1]
+  );
+  const reposImageScale = useTransform(
+    reposScrollProgress,
+    [0.08, 0.42],
+    shouldReduceMotion ? [1, 1] : [1.12, 1]
   );
   const reposImageX = useTransform(
     reposScrollProgress,
@@ -71,7 +76,22 @@ export default function Home() {
   const reposTextX = useTransform(
     reposScrollProgress,
     [0.16, 0.5],
-    shouldReduceMotion ? [0, 0] : [56, 0]
+    shouldReduceMotion ? [0, 0] : [120, 0]
+  );
+  const reposTextOpacity = useTransform(
+    reposScrollProgress,
+    [0.16, 0.48],
+    shouldReduceMotion ? [1, 1] : [0, 1]
+  );
+  const reposAccentScale = useTransform(
+    reposScrollProgress,
+    [0.04, 0.5],
+    shouldReduceMotion ? [1, 1] : [0, 1]
+  );
+  const reposGlowOpacity = useTransform(
+    reposScrollProgress,
+    [0.08, 0.42],
+    shouldReduceMotion ? [0.18, 0.18] : [0, 0.18]
   );
 
   const textOpacity = useTransform(
@@ -246,12 +266,22 @@ export default function Home() {
                 y: reposY,
               }}
             >
+              <motion.span
+                className={styles.reposGlow}
+                aria-hidden="true"
+                style={{ opacity: reposGlowOpacity }}
+              />
+              <motion.span
+                className={styles.reposAccent}
+                aria-hidden="true"
+                style={{ scaleX: reposAccentScale }}
+              />
               <motion.a
                 href="https://github.com/Tran-Steven?tab=repositories/"
                 rel="noopener noreferrer"
                 target="_blank"
                 className={styles.reposimg}
-                style={{ x: reposImageX }}
+                style={{ scale: reposImageScale, x: reposImageX }}
               >
                 <Image
                   src={Repos}
@@ -262,7 +292,7 @@ export default function Home() {
 
               <motion.h2
                 className={styles.reposdesktop}
-                style={{ x: reposTextX }}
+                style={{ opacity: reposTextOpacity, x: reposTextX }}
               >
                 Always working on projects and learning new things.
               </motion.h2>

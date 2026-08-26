@@ -541,16 +541,58 @@
   font-size: 10em;
 }
 .reposSection {
+  position: relative;
   display: flex;
   width: 100%;
+  min-height: 132vh;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  padding: 9vh 0 18vh;
+  isolation: isolate;
 }
+
+.reposSection::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(20, 124, 255, 0.28) 24%,
+    rgba(20, 124, 255, 0.08) 78%,
+    transparent
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.reposSection::after {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  width: min(72vw, 52rem);
+  height: min(72vw, 52rem);
+  background: radial-gradient(circle, rgba(20, 124, 255, 0.12), transparent 68%);
+  content: "";
+  filter: blur(18px);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
 .repos {
+  position: sticky;
+  top: 14vh;
+  z-index: 2;
   display: flex;
-  margin: 5rem;
+  margin: 0 auto;
   background-color: rgb(13, 17, 23);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 50px;
+  isolation: isolate;
   will-change: transform, opacity;
 }
 .secretbutton {
@@ -561,7 +603,39 @@
   font-size: 0rem;
   will-change: transform, opacity;
 }
+
+.reposGlow {
+  position: absolute;
+  inset: -25%;
+  z-index: -1;
+  background: radial-gradient(circle at 35% 50%, rgba(20, 124, 255, 0.22), transparent 58%);
+  filter: blur(26px);
+  pointer-events: none;
+}
+
+.reposAccent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(20, 124, 255, 0.2) 12%,
+    #147cff 42%,
+    #ffffff 50%,
+    #147cff 58%,
+    rgba(20, 124, 255, 0.2) 88%,
+    transparent
+  );
+  transform-origin: left center;
+}
+
 .reposimg {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: auto;
   padding-right: 1rem;
@@ -570,10 +644,12 @@
 }
 
 .reposdesktop {
+  position: relative;
+  z-index: 1;
   font-weight: 700;
   color: rgb(206, 206, 206);
   font-size: 5rem;
-  will-change: transform;
+  will-change: transform, opacity;
 }
 
 @media (min-width: 1400px) {
@@ -615,9 +691,18 @@
   .reposdesktop {
     will-change: auto;
   }
+
+  .reposSection::after {
+    filter: none;
+  }
 }
 
 @media (max-width: 981px) {
+  .reposSection {
+    min-height: 120vh;
+    padding: 7vh 0 14vh;
+  }
+
   .reposdesktop {
     font-size: 0rem;
   }
@@ -627,14 +712,32 @@
     border-radius: 15px;
   }
   .reposmobile {
-    font-size: 2rem;
+    position: sticky;
+    top: 7vh;
+    z-index: 2;
     display: flex;
-    text-align: center;
+    width: calc(100% - 2rem);
     max-width: 800px;
+    margin-bottom: 9vh;
+    padding: 0 1rem;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .reposmobile h2 {
+    margin: 0;
+  }
+
+  .repos {
+    top: 24vh;
   }
 }
 
 @media (max-width: 550px) {
+  .reposSection {
+    min-height: 112vh;
+  }
+
   .repos {
     width: 100%;
   }
