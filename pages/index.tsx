@@ -289,10 +289,10 @@ export default function Home() {
                 Things I&apos;ve Built.
               </h2>
             </div>
-            <div className={styles.grid}>
+            <div className={styles.projectGrid}>
               <a
                 href="https://github.com/Tran-Steven/website"
-                className={styles.card}
+                className={`${styles.card} ${styles.cardFeatured}`}
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -301,7 +301,7 @@ export default function Home() {
               </a>
               <a
                 href="https://github.com/Tran-Steven/leaguewordle"
-                className={styles.card}
+                className={`${styles.card} ${styles.cardWordle}`}
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -312,7 +312,7 @@ export default function Home() {
               </a>
               <a
                 href="https://github.com/Tran-Steven/MultiPlaylist"
-                className={styles.card}
+                className={`${styles.card} ${styles.cardPlaylist}`}
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -324,7 +324,7 @@ export default function Home() {
               </a>
               <a
                 href="https://github.com/lenhatdangkhoa/ugahacks9"
-                className={styles.card}
+                className={`${styles.card} ${styles.cardWatermarker}`}
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -342,7 +342,7 @@ export default function Home() {
                 href="https://github.com/Tran-Steven/neovim-config"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.card}
+                className={`${styles.card} ${styles.cardNeovim}`}
               >
                 <h2>Neovim Config <span aria-hidden="true">↗</span></h2>
                 <p>
@@ -354,7 +354,7 @@ export default function Home() {
                 href="https://github.com/Tran-Steven?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.card}
+                className={`${styles.card} ${styles.cardArchive}`}
               >
                 <h2>Other GitHub Repositories <span aria-hidden="true">↗</span></h2>
                 <p>

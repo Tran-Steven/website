@@ -2217,3 +2217,198 @@
     padding-left: 1.25rem;
   }
 }
+
+.projects {
+  padding-top: 5rem;
+}
+
+.projects .sectionHeading {
+  display: block;
+  max-width: 44rem;
+  margin: 0 auto 3.5rem;
+}
+
+.projects .projectstext {
+  margin: 0;
+  text-align: center;
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-areas:
+    "featured wordle"
+    "featured playlist"
+    "watermarker neovim"
+    "watermarker archive";
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.projectGrid .card {
+  display: flex;
+  min-height: 230px;
+  flex-direction: column;
+  padding: 2.5rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: 28px;
+  color: #1d1d1f;
+  background: #e9e9ed;
+  box-shadow: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease;
+}
+
+.projectGrid .card h2 {
+  margin: 0 0 1rem;
+  color: inherit;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.projectGrid .card h2 span {
+  color: #6e6e73;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.projectGrid .card p {
+  max-width: 28rem;
+  margin: auto 0 0;
+  color: #515154;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.projectGrid .cardFeatured {
+  grid-area: featured;
+  min-height: 500px;
+  color: #f5f5f7;
+  background: #1d1d1f;
+}
+
+.projectGrid .cardWordle {
+  grid-area: wordle;
+  background: #e4edf7;
+}
+
+.projectGrid .cardPlaylist {
+  grid-area: playlist;
+  background: #f1ede7;
+}
+
+.projectGrid .cardWatermarker {
+  grid-area: watermarker;
+  min-height: 500px;
+  background: #dfe8f0;
+}
+
+.projectGrid .cardNeovim {
+  grid-area: neovim;
+  background: #e5e5e7;
+}
+
+.projectGrid .cardArchive {
+  grid-area: archive;
+  background: #e7eee8;
+}
+
+.projectGrid .card:hover,
+.projectGrid .card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(29, 29, 31, 0.1);
+}
+
+.projectGrid .card:hover h2 span,
+.projectGrid .card:focus-visible h2 span {
+  color: #007aff;
+  transform: translate(3px, -3px);
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding-top: 3.5rem;
+  }
+
+  .projects .sectionHeading {
+    margin-bottom: 2rem;
+  }
+
+  .projects .projectstext {
+    text-align: left;
+  }
+
+  .projectGrid {
+    grid-template-areas:
+      "featured"
+      "wordle"
+      "playlist"
+      "watermarker"
+      "neovim"
+      "archive";
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .projectGrid .card,
+  .projectGrid .cardFeatured,
+  .projectGrid .cardWatermarker {
+    min-height: 260px;
+    padding: 1.5rem;
+    border-radius: 22px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .projectGrid .card {
+    color: #f5f5f7;
+    background: #303035;
+  }
+
+  .projectGrid .card p {
+    color: #c7c7cc;
+  }
+
+  .projectGrid .card h2 span {
+    color: #a1a1a6;
+  }
+
+  .projectGrid .cardFeatured {
+    color: #1d1d1f;
+    background: #f5f5f7;
+  }
+
+  .projectGrid .cardFeatured p {
+    color: #515154;
+  }
+
+  .projectGrid .cardFeatured h2 span {
+    color: #6e6e73;
+  }
+
+  .projectGrid .cardWordle {
+    background: #34404d;
+  }
+
+  .projectGrid .cardPlaylist {
+    background: #4a433b;
+  }
+
+  .projectGrid .cardWatermarker {
+    background: #35414a;
+  }
+
+  .projectGrid .cardNeovim {
+    background: #3b3b40;
+  }
+
+  .projectGrid .cardArchive {
+    background: #354238;
+  }
+
+  .projectGrid .card:hover,
+  .projectGrid .card:focus-visible {
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+  }
+}
