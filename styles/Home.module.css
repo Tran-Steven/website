@@ -2247,9 +2247,9 @@
 
 .projectGrid .card {
   display: flex;
-  min-height: 250px;
+  min-height: clamp(12rem, 18vw, 16rem);
   flex-direction: column;
-  padding: 3rem;
+  padding: clamp(1.75rem, 3vw, 3rem);
   overflow: hidden;
   border: 0;
   border-radius: 28px;
@@ -2280,30 +2280,76 @@
   display: block;
   margin: 0 0 1rem;
   color: inherit;
-  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-size: clamp(2.6rem, 4.8vw, 4.5rem);
   letter-spacing: -0.06em;
-  line-height: 0.95;
+  line-height: 0.92;
 }
 
 .projectGrid .card p {
   position: relative;
   z-index: 1;
-  max-width: 88%;
+  max-width: 100%;
   margin: 0;
   color: #515154;
-  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
-  line-height: 1.25;
+  font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+  line-height: 1.3;
 }
 
 .projectGrid .cardFeatured {
   grid-area: featured;
-  min-height: 560px;
+  min-height: clamp(26rem, 36vw, 33rem);
   color: #1d1d1f;
   background: #dfe5eb;
 }
 
 .projectGrid .cardFeatured .cardMark {
   color: rgba(29, 29, 31, 0.08);
+}
+
+.projectGrid .cardFeatured {
+  padding: clamp(2.25rem, 3.5vw, 3.5rem);
+}
+
+.projectGrid .cardFeatured .sectionLabel {
+  margin-bottom: 1.25rem;
+  color: #637487;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-align: left;
+}
+
+.projectGrid .cardFeatured h2 {
+  max-width: 25rem;
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.35rem, 4.1vw, 3.8rem);
+  letter-spacing: -0.055em;
+  line-height: 0.94;
+}
+
+.projectGrid .cardFeatured .cardTitleLine {
+  display: block;
+}
+
+.projectGrid .cardFeatured .researchMeta {
+  max-width: 32rem;
+  margin: 0 0 1.75rem;
+  color: #515154;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.projectGrid .cardFeatured .metaLabel {
+  font-weight: 600;
+}
+
+.projectGrid .cardFeatured > p:last-child {
+  max-width: 31rem;
+  color: #5b6470;
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.48;
 }
 
 .projectGrid .cardWordle {
@@ -2318,7 +2364,7 @@
 
 .projectGrid .cardWatermarker {
   grid-area: watermarker;
-  min-height: 560px;
+  min-height: clamp(26rem, 36vw, 33rem);
   background: #dfe8f0;
 }
 
@@ -2334,8 +2380,19 @@
 
 .projectGrid .card:hover,
 .projectGrid .card:focus-visible {
-  transform: translateY(-4px);
+  transform: translateY(-8px) scale(1.01);
   box-shadow: 0 18px 40px rgba(29, 29, 31, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projectGrid .card {
+    transition: none;
+  }
+
+  .projectGrid .card:hover,
+  .projectGrid .card:focus-visible {
+    transform: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2366,9 +2423,22 @@
   .projectGrid .card,
   .projectGrid .cardFeatured,
   .projectGrid .cardWatermarker {
-    min-height: 300px;
+    min-height: 15rem;
     padding: 1.75rem;
     border-radius: 22px;
+  }
+
+  .projectGrid .cardFeatured {
+    padding: 2rem;
+  }
+
+  .projectGrid .cardFeatured h2 {
+    font-size: clamp(2.1rem, 8vw, 3.25rem);
+  }
+
+  .projectGrid .cardFeatured > p:last-child {
+    max-width: 100%;
+    font-size: 1.05rem;
   }
 
   .projectGrid .cardMark {
@@ -2382,8 +2452,8 @@
   }
 
   .projectGrid .card p {
-    max-width: 94%;
-    font-size: clamp(1.15rem, 4.8vw, 1.4rem);
+    max-width: 100%;
+    font-size: clamp(1.2rem, 4.8vw, 1.45rem);
   }
 }
 
@@ -2408,6 +2478,14 @@
 
   .projectGrid .cardFeatured p {
     color: #d6d0db;
+  }
+
+  .projectGrid .cardFeatured .sectionLabel {
+    color: #a9b9c9;
+  }
+
+  .projectGrid .cardFeatured .researchMeta {
+    color: #c7c7cc;
   }
 
   .projectGrid .cardFeatured .cardMark {

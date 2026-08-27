@@ -32,6 +32,41 @@ export default function Home() {
   const reposScrollRef = useRef(null);
   const atlScrollRef = useRef(null);
   const shouldReduceMotion = useReducedMotion();
+  const projectHeadingVariants = {
+    hidden: {
+      opacity: shouldReduceMotion ? 1 : 0,
+      y: shouldReduceMotion ? 0 : 36,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.8,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
+  const projectGridVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        delayChildren: shouldReduceMotion ? 0 : 0.12,
+        staggerChildren: shouldReduceMotion ? 0 : 0.1,
+      },
+    },
+  };
+  const projectCardVariants = {
+    hidden: {
+      opacity: shouldReduceMotion ? 1 : 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.7,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
 
   const { scrollYProgress: atlScrollProgress } = useScroll({
     target: atlScrollRef,
@@ -283,50 +318,70 @@ export default function Home() {
               </motion.h2>
             </motion.div>
           </div>
-          <div className={styles.projects}>
-            <div className={styles.sectionHeading}>
+          <motion.div
+            className={styles.projects}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.16 }}
+          >
+            <motion.div className={styles.sectionHeading} variants={projectHeadingVariants}>
               <h2 className={styles.projectstext} id="projects">
                 Things I&apos;ve Built.
               </h2>
-            </div>
-            <div className={styles.projectGrid}>
-              <a
+            </motion.div>
+            <motion.div className={styles.projectGrid} variants={projectGridVariants}>
+              <motion.a
                 href="https://github.com/Tran-Steven/COVID19-KG-Integration"
                 className={`${styles.card} ${styles.cardFeatured}`}
                 rel="noopener noreferrer"
                 target="_blank"
+                variants={projectCardVariants}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
-                <h2>COVID19-KG-Integration</h2>
-                <p>Verifies factual claims in ChatGPT COVID-19 responses using source-backed knowledge-graph evidence.</p>
-              </a>
-              <a
+                <span className={styles.sectionLabel}>Neuro-symbolic Computing Research</span>
+                <h2 aria-label="COVID-19-KG-Integration">
+                  <span className={styles.cardTitleLine}>COVID-19-KG</span>
+                  <span className={styles.cardTitleLine}>Integration</span>
+                </h2>
+                <p className={styles.researchMeta}>
+                  <span className={styles.metaLabel}>Advisor:</span>{" "}
+                  <span>Ismailcem Budak Arpinar</span>
+                  <br />
+                  <span className={styles.metaLabel}>Research Area:</span>{" "}
+                  <span>LLM Information Verification via Knowledge Graphs</span>
+                </p>
+                <p>Knowledge-graph–grounded verification system for evaluating factual claims in LLM-generated COVID-19 responses using NLP, graph retrieval, and source-backed evidence.</p>
+              </motion.a>
+              <motion.a
                 href="https://github.com/Tran-Steven/leaguewordle"
                 className={`${styles.card} ${styles.cardWordle}`}
                 rel="noopener noreferrer"
                 target="_blank"
+                variants={projectCardVariants}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
                 <h2>League of Wordle</h2>
                 <p>
                   A League of Legends Wordle-like built with React and Node.
                 </p>
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="https://github.com/Tran-Steven/website"
                 className={`${styles.card} ${styles.cardPlaylist}`}
                 rel="noopener noreferrer"
                 target="_blank"
+                variants={projectCardVariants}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
                 <h2>This Website</h2>
                 <p>The source code I wrote for this website.</p>
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="https://github.com/lenhatdangkhoa/ugahacks9"
                 className={`${styles.card} ${styles.cardWatermarker}`}
                 rel="noopener noreferrer"
                 target="_blank"
+                variants={projectCardVariants}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
                 <h2>Watermarker</h2>
@@ -337,13 +392,14 @@ export default function Home() {
                   using your name and logo directly onto your current Adobe
                   Express page.
                 </p>
-              </a>
+              </motion.a>
 
-              <a
+              <motion.a
                 href="https://github.com/Tran-Steven/neovim-config"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${styles.card} ${styles.cardNeovim}`}
+                variants={projectCardVariants}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
                 <h2>Neovim Config</h2>
@@ -351,12 +407,13 @@ export default function Home() {
                   My personal Neovim configuration that I use, which includes
                   plugins and settings.
                 </p>
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="https://github.com/Tran-Steven?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${styles.card} ${styles.cardArchive}`}
+                variants={projectCardVariants}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
                 <h2>Other GitHub Repositories</h2>
@@ -364,9 +421,9 @@ export default function Home() {
                   List of all of my GitHub repositories that include other code
                   not highlighted here.
                 </p>
-              </a>
-            </div>
-          </div>
+              </motion.a>
+            </motion.div>
+          </motion.div>
         </main>
 
         <section>
