@@ -19,6 +19,7 @@ export default function Home() {
   const [show, setShow] = useState(false);
   const [showScene, setShowScene] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
@@ -340,8 +341,9 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
                 variants={projectCardVariants}
-                whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-
+                animate={shouldReduceMotion ? undefined : hoveredProject === "featured" ? { y: -8, scale: 1.01 } : undefined}
+                onHoverStart={() => setHoveredProject("featured")}
+                onHoverEnd={() => setHoveredProject(null)}
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
@@ -354,8 +356,9 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
                 variants={projectCardVariants}
-                whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-
+                animate={shouldReduceMotion ? undefined : hoveredProject === "wordle" ? { y: -8, scale: 1.01 } : undefined}
+                onHoverStart={() => setHoveredProject("wordle")}
+                onHoverEnd={() => setHoveredProject(null)}
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
@@ -370,8 +373,9 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
                 variants={projectCardVariants}
-                whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-
+                animate={shouldReduceMotion ? undefined : hoveredProject === "playlist" ? { y: -8, scale: 1.01 } : undefined}
+                onHoverStart={() => setHoveredProject("playlist")}
+                onHoverEnd={() => setHoveredProject(null)}
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
@@ -384,8 +388,9 @@ export default function Home() {
                 rel="noopener noreferrer"
                 target="_blank"
                 variants={projectCardVariants}
-                whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-
+                animate={shouldReduceMotion ? undefined : hoveredProject === "watermarker" ? { y: -8, scale: 1.01 } : undefined}
+                onHoverStart={() => setHoveredProject("watermarker")}
+                onHoverEnd={() => setHoveredProject(null)}
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
@@ -405,8 +410,9 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className={`${styles.card} ${styles.cardNeovim}`}
                 variants={projectCardVariants}
-                whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-
+                animate={shouldReduceMotion ? undefined : hoveredProject === "neovim" ? { y: -8, scale: 1.01 } : undefined}
+                onHoverStart={() => setHoveredProject("neovim")}
+                onHoverEnd={() => setHoveredProject(null)}
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
@@ -422,8 +428,9 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className={`${styles.card} ${styles.cardArchive}`}
                 variants={projectCardVariants}
-                whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-
+                animate={shouldReduceMotion ? undefined : hoveredProject === "archive" ? { y: -8, scale: 1.01 } : undefined}
+                onHoverStart={() => setHoveredProject("archive")}
+                onHoverEnd={() => setHoveredProject(null)}
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
