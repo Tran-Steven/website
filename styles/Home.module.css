@@ -2334,7 +2334,19 @@
 
 .projectGrid .card:hover,
 .projectGrid .card:focus-visible {
+  transform: translateY(-8px) scale(1.01);
   box-shadow: 0 18px 40px rgba(29, 29, 31, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projectGrid .card {
+    transition: none;
+  }
+
+  .projectGrid .card:hover,
+  .projectGrid .card:focus-visible {
+    transform: none;
+  }
 }
 
 @media (max-width: 768px) {
