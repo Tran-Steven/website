@@ -2306,17 +2306,50 @@
   color: rgba(29, 29, 31, 0.08);
 }
 
+.projectGrid .cardFeatured {
+  padding: clamp(2.25rem, 3.5vw, 3.5rem);
+}
+
+.projectGrid .cardFeatured .sectionLabel {
+  margin-bottom: 1.25rem;
+  color: #637487;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-align: left;
+}
+
+.projectGrid .cardFeatured h2 {
+  max-width: 25rem;
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.35rem, 4.1vw, 3.8rem);
+  letter-spacing: -0.055em;
+  line-height: 0.94;
+}
+
+.projectGrid .cardFeatured .cardTitleLine {
+  display: block;
+}
+
 .projectGrid .cardFeatured .researchMeta {
-  max-width: 100%;
-  margin: 0 0 1rem;
+  max-width: 32rem;
+  margin: 0 0 1.75rem;
   color: #515154;
   font-size: 0.9375rem;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .projectGrid .cardFeatured .metaLabel {
   font-weight: 600;
+}
+
+.projectGrid .cardFeatured > p:last-child {
+  max-width: 31rem;
+  color: #5b6470;
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.48;
 }
 
 .projectGrid .cardWordle {
@@ -2395,6 +2428,19 @@
     border-radius: 22px;
   }
 
+  .projectGrid .cardFeatured {
+    padding: 2rem;
+  }
+
+  .projectGrid .cardFeatured h2 {
+    font-size: clamp(2.1rem, 8vw, 3.25rem);
+  }
+
+  .projectGrid .cardFeatured > p:last-child {
+    max-width: 100%;
+    font-size: 1.05rem;
+  }
+
   .projectGrid .cardMark {
     right: 1rem;
     bottom: 0.75rem;
@@ -2432,6 +2478,10 @@
 
   .projectGrid .cardFeatured p {
     color: #d6d0db;
+  }
+
+  .projectGrid .cardFeatured .sectionLabel {
+    color: #a9b9c9;
   }
 
   .projectGrid .cardFeatured .researchMeta {

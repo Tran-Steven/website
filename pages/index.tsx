@@ -339,7 +339,10 @@ export default function Home() {
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
                 <span className={styles.sectionLabel}>Neuro-symbolic Computing Research</span>
-                <h2>COVID-19-KG-Integration</h2>
+                <h2 aria-label="COVID-19-KG-Integration">
+                  <span className={styles.cardTitleLine}>COVID-19-KG</span>
+                  <span className={styles.cardTitleLine}>Integration</span>
+                </h2>
                 <p className={styles.researchMeta}>
                   <span className={styles.metaLabel}>Advisor:</span>{" "}
                   <span>Ismailcem Budak Arpinar</span>
