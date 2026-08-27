@@ -326,7 +326,7 @@ export default function Home() {
             className={styles.projects}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.16 }}
+            viewport={{ once: false, amount: 0.16 }}
           >
             <motion.div className={styles.sectionHeading} variants={projectHeadingVariants}>
               <h2 className={styles.projectstext} id="projects">
