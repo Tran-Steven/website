@@ -2334,7 +2334,6 @@
 
 .projectGrid .card:hover,
 .projectGrid .card:focus-visible {
-  transform: translateY(-4px);
   box-shadow: 0 18px 40px rgba(29, 29, 31, 0.1);
 }
 

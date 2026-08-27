@@ -341,7 +341,7 @@ export default function Home() {
                 target="_blank"
                 variants={projectCardVariants}
                 whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-                whileFocus={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
+
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
@@ -355,7 +355,7 @@ export default function Home() {
                 target="_blank"
                 variants={projectCardVariants}
                 whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-                whileFocus={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
+
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
@@ -371,7 +371,7 @@ export default function Home() {
                 target="_blank"
                 variants={projectCardVariants}
                 whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-                whileFocus={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
+
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
@@ -385,7 +385,7 @@ export default function Home() {
                 target="_blank"
                 variants={projectCardVariants}
                 whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-                whileFocus={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
+
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
@@ -406,7 +406,7 @@ export default function Home() {
                 className={`${styles.card} ${styles.cardNeovim}`}
                 variants={projectCardVariants}
                 whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-                whileFocus={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
+
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
@@ -423,7 +423,7 @@ export default function Home() {
                 className={`${styles.card} ${styles.cardArchive}`}
                 variants={projectCardVariants}
                 whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-                whileFocus={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
+
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
