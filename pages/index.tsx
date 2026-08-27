@@ -338,8 +338,9 @@ export default function Home() {
                 variants={projectCardVariants}
               >
                 <span className={styles.cardMark} aria-hidden="true">st</span>
-                <h2>COVID19-KG-Integration</h2>
-                <p>Verifies factual claims in ChatGPT COVID-19 responses using source-backed knowledge-graph evidence.</p>
+                <span className={styles.sectionLabel}>Neuro-symbolic Computing Research</span>
+                <h2>COVID-19-KG-Integration</h2>
+                <p>Knowledge-graph–grounded verification system for evaluating factual claims in LLM-generated COVID-19 responses using NLP, graph retrieval, and source-backed evidence.</p>
               </motion.a>
               <motion.a
                 href="https://github.com/Tran-Steven/leaguewordle"
