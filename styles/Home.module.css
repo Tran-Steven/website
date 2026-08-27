@@ -2306,6 +2306,19 @@
   color: rgba(29, 29, 31, 0.08);
 }
 
+.projectGrid .cardFeatured .researchMeta {
+  max-width: 100%;
+  margin: 0 0 1rem;
+  color: #515154;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.projectGrid .cardFeatured .metaLabel {
+  font-weight: 600;
+}
+
 .projectGrid .cardWordle {
   grid-area: wordle;
   background: #e4edf7;
@@ -2419,6 +2432,10 @@
 
   .projectGrid .cardFeatured p {
     color: #d6d0db;
+  }
+
+  .projectGrid .cardFeatured .researchMeta {
+    color: #c7c7cc;
   }
 
   .projectGrid .cardFeatured .cardMark {
