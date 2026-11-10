@@ -177,10 +177,7 @@
   font-weight: 400;
   justify-content: center;
   margin: auto;
-  background: #ffffff;
-  border: 1px solid #f0f0f0;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   padding: 0;
   overflow: hidden;
   animation: fadeInUp 0.6s ease-out;
@@ -342,17 +339,6 @@
   }
   .contactdescription {
     color: #f2f2f7;
-  }
-  .contact {
-    background: linear-gradient(
-      145deg,
-      rgba(48, 48, 52, 0.8) 0%,
-      rgba(58, 58, 62, 0.75) 100%
-    );
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 3px 10px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
   }
   .contactcontainer,
   .resume,
@@ -801,17 +787,6 @@
   align-items: center;
   justify-content: center;
   padding: 5px 20px 40px 20px;
-  background: #ffffff;
-}
-
-@media (prefers-color-scheme: dark) {
-  .holder {
-    background: linear-gradient(
-      180deg,
-      rgba(32, 32, 35, 1) 0%,
-      rgba(42, 42, 45, 0.9) 100%
-    );
-  }
 }
 
 .scrollSection {
@@ -964,18 +939,6 @@
   .overlayText {
     color: #ffffff;
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5);
-  }
-
-  .contact {
-    background: linear-gradient(
-      145deg,
-      rgba(48, 48, 52, 0.8) 0%,
-      rgba(58, 58, 62, 0.75) 100%
-    );
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 3px 10px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
   }
 
   .contactdescription {
@@ -1252,21 +1215,15 @@
 
 .holder {
   padding: 2rem 20px 5rem;
-  background: #ffffff;
 }
 
 .contact {
   max-width: 780px;
   border-radius: 24px;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.09);
 }
 
 .contactcontainer {
   padding: 4.5rem 2rem;
-}
-
-.contactcontainer .sectionLabel {
-  margin-bottom: 1rem;
 }
 
 .contactdescription {
@@ -2105,8 +2062,7 @@
   }
 
   .appleScrollSection,
-  .appleScrollSection .aboutmetitle,
-  .holder {
+  .appleScrollSection .aboutmetitle {
     background: #202023;
   }
 
@@ -2167,9 +2123,6 @@
 
   .contact {
     color: #f5f5f7;
-    background: #303035;
-    border-color: rgba(255, 255, 255, 0.14);
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
   }
 
   .contactbutton {

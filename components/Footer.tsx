@@ -73,7 +73,7 @@ const Footer = () => {
             </a>
           </div>
           <span className={styles.copyright}>
-            © 2024 Steven Tran. All Rights Reserved.
+            © 2026 Steven Tran. All Rights Reserved.
           </span>
         </div>
       </footer>
