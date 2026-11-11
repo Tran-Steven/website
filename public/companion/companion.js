@@ -3,14 +3,31 @@
   const baseWidth = 76;
   const baseHeight = 104;
   const defaultScale = 1.3;
+  const coarsePointer = matchMedia('(pointer: coarse)');
+  const documentAnchored = coarsePointer.matches;
   let actorWidth = baseWidth * defaultScale;
   let actorHeight = baseHeight * defaultScale;
   const button = document.createElement('button');
   button.type = 'button';
   button.setAttribute('aria-label', 'Pop and dismiss companion');
-  button.style.cssText = 'position:fixed;inset:0 auto auto 0;width:' + actorWidth + 'px;height:' + actorHeight + 'px;padding:0;border:0;border-radius:35%;background:none;cursor:grab;z-index:90;touch-action:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;';
+  button.style.cssText = 'position:' + (documentAnchored ? 'absolute' : 'fixed') + ';inset:0 auto auto 0;width:' + actorWidth + 'px;height:' + actorHeight + 'px;padding:0;border:0;border-radius:35%;background:none;cursor:grab;z-index:90;pointer-events:auto;touch-action:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;';
   button.innerHTML = artwork;
-  document.body.append(button);
+  if (documentAnchored) {
+    // Let the browser scroll the companion with the page during a touch fling.
+    // Clip offscreen travel so the companion cannot extend the page's scroll range.
+    const layer = document.createElement('div');
+    layer.style.cssText = 'position:absolute;inset:0 0 auto;overflow:hidden;overflow:clip;pointer-events:none;z-index:90;';
+    const fitLayer = () => {
+      layer.style.height = Math.max(innerHeight, document.body.getBoundingClientRect().bottom + window.scrollY) + 'px';
+    };
+    fitLayer();
+    layer.append(button);
+    document.body.append(layer);
+    new ResizeObserver(fitLayer).observe(document.body);
+    window.addEventListener('resize', fitLayer, { passive: true });
+  } else {
+    document.body.append(button);
+  }
   const svg = button.querySelector('svg');
   svg.setAttribute('aria-hidden', 'true');
   svg.style.cssText = 'display:block;width:100%;height:100%;overflow:visible;pointer-events:none;';
@@ -136,12 +153,16 @@
     .finally(() => { modelLoading = false; });
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const coarsePointer = matchMedia('(pointer: coarse)');
   const interactiveTarget = 'button, a, input, textarea, select, label, [contenteditable], [role="button"], [role="link"]';
   const clamp = (value, max) => Math.max(0, Math.min(value, max));
   const limitOffscreenTrip = (pageY, scrollY) =>
     Math.max(scrollY - 300, Math.min(scrollY + innerHeight + 185, pageY));
   let x, y, targetX, targetY, cursorX, frame, previous, phase, stride, direction, popped;
+
+  function placeCompanion(scrollY) {
+    const top = documentAnchored ? y : y - scrollY;
+    button.style.transform = 'translate(' + x + 'px,' + top + 'px)';
+  }
 
   function pose(time, state) {
     const moving = state !== 'idle';
@@ -218,7 +239,7 @@
     x = targetX = done ? landX : takeoffX + (landX - stepWidth - takeoffX) * flight
       + stepWidth * ease(1360, 1650);
     y = targetY = scrollY + (done ? landY : takeoffY + airY);
-    button.style.transform = 'translate(' + x + 'px,' + (y - scrollY) + 'px)';
+    placeCompanion(scrollY);
     button.dataset.state = done ? 'idle' : elapsed < 850 ? 'perch'
       : flight < 1 ? 'hop' : elapsed < 1910 ? 'land' : 'hello';
     const clearance = Math.max(0, landY - (y - scrollY));
@@ -244,7 +265,7 @@
     if (done) {
       introStarted = undefined;
       liftShadow.style.transform = liftShadow.style.opacity = '';
-      button.style.pointerEvents = '';
+      button.style.pointerEvents = 'auto';
       button.tabIndex = 0;
       lastActivity = time;
     }
@@ -432,7 +453,7 @@
     x = clamp(x, innerWidth - actorWidth);
     const screenY = y - scrollY;
     button.tabIndex = screenY + actorHeight <= 0 || screenY >= innerHeight ? -1 : 0;
-    button.style.transform = 'translate(' + x + 'px,' + screenY + 'px)';
+    placeCompanion(scrollY);
     if (view3d) {
       idleLook(time, !reduced.matches && mood === 'idle', dt);
       let goal = hovered || grabbed || drop || dizzy || resting || waking || sleepTime > 0 ? 0
@@ -632,7 +653,7 @@
     puff?.remove();
     button.hidden = false;
     button.style.visibility = '';
-    button.style.pointerEvents = '';
+    button.style.pointerEvents = 'auto';
     introStarted = playIntro && perchMarker ? performance.now() : undefined;
     if (introStarted !== undefined) {
       button.style.pointerEvents = 'none';
