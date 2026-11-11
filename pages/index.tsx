@@ -8,6 +8,7 @@ import {
 
 import Image from "next/image";
 import atlmorning from "../public/atlantamorning.jpg";
+import dtla from "../public/dtla.jpg";
 import Head from "next/head";
 import Script from "next/script";
 import styles from "../styles/Home.module.css";
@@ -28,6 +29,7 @@ export default function Home() {
     return () => mediaQuery.removeEventListener("change", updateMobile);
   }, []);
 
+  const scrollSectionRef = useRef(null);
   const reposScrollRef = useRef(null);
   const atlScrollRef = useRef(null);
   const shouldReduceMotion = useReducedMotion();
@@ -35,6 +37,11 @@ export default function Home() {
   const { scrollYProgress: atlScrollProgress } = useScroll({
     target: atlScrollRef,
     offset: ["start 80%", "end 20%"],
+  });
+
+  const { scrollYProgress } = useScroll({
+    target: scrollSectionRef,
+    offset: ["start 75%", "end 15%"],
   });
 
   const { scrollYProgress: reposScrollProgress } = useScroll({
@@ -82,9 +89,23 @@ export default function Home() {
     [0.18, 0.5],
     shouldReduceMotion ? [0, 0] : [24, 0]
   );
+  const textOpacity = useTransform(
+    scrollYProgress,
+    [isMobile ? 0.3 : 0.08, isMobile ? 0.5 : 0.2],
+    [1, 0]
+  );
   const atlWidth = useTransform(atlScrollProgress, [0, 0.28], ["92vw", "100vw"]);
   const atlHeight = useTransform(atlScrollProgress, [0, 0.28], [isMobile ? "44vw" : "44vh", isMobile ? "53vw" : "75vh"]);
   const atlRadius = useTransform(atlScrollProgress, [0, 0.28], ["20px", "0px"]);
+  const containerWidth = useTransform(scrollYProgress, [0.2, 0.42], [isMobile ? "84vw" : "52vw", "100vw"]);
+  const containerHeight = useTransform(scrollYProgress, [0.2, 0.42], [isMobile ? "50vh" : "min(44vh, 30rem)", "100vh"]);
+  const borderRadius = useTransform(scrollYProgress, [0.2, 0.42], ["24px", "0px"]);
+  const overlayTextOpacity = useTransform(
+    scrollYProgress,
+    [0.3, 0.48],
+    [0, 1]
+  );
+  const overlayTextY = useTransform(scrollYProgress, [0.3, 0.48], [30, 0]);
   return (
     <>
       <Script src="/companion/companion.js" strategy="afterInteractive" />
@@ -190,6 +211,41 @@ export default function Home() {
                   className={styles.atl}
                 />
                 </div>
+              </motion.div>
+            </div>
+            <div className={styles.appleScrollSection} ref={scrollSectionRef}>
+              <motion.h2
+                className={styles.aboutmetitle}
+                style={{
+                  opacity: textOpacity,
+                }}
+              >
+                Based in Los Angeles.
+              </motion.h2>
+
+              <motion.div
+                className={styles.expandingContainer}
+                style={{
+                  width: containerWidth,
+                  height: containerHeight,
+                  borderRadius: borderRadius,
+                }}
+              >
+                <Image
+                  src={dtla}
+                  alt="Image of DTLA Cityscape"
+                  className={styles.expandingImage}
+                />
+
+                <motion.h2
+                  className={styles.overlayText}
+                  style={{
+                    opacity: overlayTextOpacity,
+                    y: overlayTextY,
+                  }}
+                >
+                  Based in Los Angeles.
+                </motion.h2>
               </motion.div>
             </div>
           </div>
