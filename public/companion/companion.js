@@ -92,6 +92,7 @@
   let scrollingUntil = 0;
   let reentryPending = false;
   let returning = false;
+  let mousePosition;
   let touchInput;
   let touchTap;
   let running = false;
@@ -332,7 +333,11 @@
       const screenY = y - scrollY;
       const offscreen = screenY + actorHeight <= 0 || screenY >= innerHeight;
       const onTouch = touchInput ?? coarsePointer.matches;
-      if (onTouch || offscreen) {
+      if (!onTouch && mousePosition && !reduced.matches) {
+        aimAtPointer(mousePosition.x, mousePosition.y, scrollY);
+        returning = offscreen;
+        if (offscreen) y = limitOffscreenTrip(y, scrollY);
+      } else if (onTouch || offscreen) {
         const room = Math.max(0, innerHeight - actorHeight);
         const inset = Math.min(210, room * (onTouch ? .30 : .50));
         targetY = scrollY + Math.max(inset, Math.min(room - inset, screenY));
@@ -566,14 +571,18 @@
     registerActivity();
     if (popped || introStarted !== undefined || hold || drop || performance.now() < scrollingUntil || event.target.closest?.(interactiveTarget)) return;
     returning = false;
-    cursorX = event.clientX;
     if (event.pointerType === 'mouse') trackCircles(event.clientX, event.clientY, performance.now());
+    aimAtPointer(event.clientX, event.clientY, window.scrollY || 0);
+  }
+
+  function aimAtPointer(clientX, clientY, scrollY) {
+    cursorX = clientX;
     // Leave space around the pointer so the companion can be approached and clicked.
     const onRight = cursorX >= x + actorWidth / 2;
     const offset = onRight ? -actorWidth - 25 : 25;
     const followX = cursorX + offset;
     targetX = onRight ? Math.max(x, followX) : Math.min(x, followX);
-    targetY = (window.scrollY || 0) + event.clientY + (event.clientY < innerHeight * .66 ? 16 : -actorHeight - 16);
+    targetY = scrollY + clientY + (clientY < innerHeight * .66 ? 16 : -actorHeight - 16);
   }
 
   function followTap(event) {
@@ -798,11 +807,16 @@
   window.addEventListener('pointermove', event => {
     if (event.pointerType !== 'touch') {
       touchInput = false;
+      if (event.pointerType === 'mouse') mousePosition = { x: event.clientX, y: event.clientY };
       follow(event);
     } else if (touchTap?.id === event.pointerId &&
         Math.hypot(event.clientX - touchTap.x, event.clientY - touchTap.y) > 10) {
       touchTap = undefined;
     }
+  }, { passive: true });
+  window.addEventListener('wheel', event => {
+    if (event.ctrlKey || (touchInput ?? coarsePointer.matches)) return;
+    mousePosition = { x: event.clientX, y: event.clientY };
   }, { passive: true });
   window.addEventListener('pointerdown', event => {
     if (event.pointerType !== 'touch') return;
