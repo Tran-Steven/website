@@ -703,7 +703,6 @@
   }
 }
 .drop {
-  animation: MoveUpDown 1s linear infinite;
   width: 2rem;
   height: auto;
   margin-left: 1rem;
@@ -733,15 +732,6 @@
   }
 }
 
-.drop:hover {
-  animation: enlarge 5s linear 1;
-}
-@keyframes enlarge {
-  0%,
-  100% {
-    transform: translateY(9px) scale(1.2);
-  }
-}
 
 @media (max-width: 768px) {
   .contact {
@@ -1507,15 +1497,6 @@
   transform: translateY(2px);
 }
 
-.dropdownholder[aria-expanded="true"] {
-  transform: rotate(180deg);
-}
-
-.dropdownholder[aria-expanded="true"]:hover,
-.dropdownholder[aria-expanded="true"]:focus-visible {
-  transform: rotate(180deg) translateY(2px);
-}
-
 .heroScene {
   position: relative;
   width: min(100%, 1080px);
@@ -1685,14 +1666,28 @@
   transform: none;
 }
 
-.dropdownholder[aria-expanded="true"],
-.dropdownholder[aria-expanded="true"]:hover,
-.dropdownholder[aria-expanded="true"]:focus-visible {
-  transform: rotate(180deg);
+.dropdownFloat {
+  display: inline-flex;
+  animation: MoveUpDown 1s linear infinite;
 }
 
 .drop {
-  animation: MoveUpDown 1s linear infinite;
+  transform: rotate(0deg);
+  transition: transform 0.25s ease;
+}
+
+.dropdownholder[aria-expanded="true"] .drop {
+  transform: rotate(-90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdownFloat {
+    animation: none;
+  }
+
+  .drop {
+    transition: none;
+  }
 }
 
 .heroCopyStage {

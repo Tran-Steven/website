@@ -174,11 +174,9 @@ export default function Home() {
                 aria-expanded={show}
                 onClick={() => setShow(!show)}
               >
-                <Image
-                  src={triangle}
-                  alt="drop down menu"
-                  className={styles.drop}
-                />
+                <span className={styles.dropdownFloat}>
+                  <Image src={triangle} alt="" className={styles.drop} />
+                </span>
               </button>
             </div>
           </div>
