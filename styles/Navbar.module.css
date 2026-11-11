@@ -130,7 +130,8 @@
   .burger {
     fill: white;
   }
-  .wrapper a {
+  .navbar,
+  .navname {
     color: white;
   }
   .menucontentOpen {
