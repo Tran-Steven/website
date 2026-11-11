@@ -14,10 +14,10 @@ import styles from "../styles/Home.module.css";
 import Repos from "../public/repos.png";
 import triangle from "../public/dropdown-icon.svg";
 import Blurb from "../components/Blurb";
-import OrbitalScene from "@components/OrbitalScene";
+// import OrbitalScene from "@components/OrbitalScene";
 export default function Home() {
   const [show, setShow] = useState(false);
-  const [showScene, setShowScene] = useState(false);
+  // const [showScene, setShowScene] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -129,21 +129,23 @@ export default function Home() {
               <rect width="100%" height="100%" fill="url(#hero-grid-pattern)" />
             </svg>
             <div className={styles.heroContent}>
-              <button
-                className={styles.secretbutton}
-                type="button"
-                aria-label={showScene ? "Hide Yoona's scene" : "Show Yoona's scene"}
-                aria-expanded={showScene}
-                onClick={() => {
-                  setShowScene(!showScene);
-                }}
-              >
-                <h1 className={styles.title}>Hi, I&apos;m Steven.</h1>
-              </button>
+              <h1 className={styles.title}>
+                <button
+                  className={styles.secretbutton}
+                  type="button"
+                  title="Bring back the companion"
+                  onClick={() => document.dispatchEvent(new Event("companion:respawn"))}
+                >
+                  Hi, I&apos;m{" "}
+                  <span className={styles.companionName}>
+                    Steven<span className={styles.companionPerch} data-companion-perch aria-hidden="true" />.
+                  </span>
+                </button>
+              </h1>
             </div>
 
             <div className={styles.nameblurb}>
-              <p className={styles.titlep}>LA based Software Engineer</p>
+              <p className={styles.titlep} data-companion-landing>LA based Software Engineer</p>
               <button
                 className={styles.dropdownholder}
                 type="button"
@@ -160,7 +162,7 @@ export default function Home() {
             </div>
           </div>
           <Blurb isVisible={show} />
-          {showScene ? (
+          {/* {showScene ? (
             <motion.div
               className={styles.heroScene}
               initial={{ opacity: 0, height: 0, y: -24 }}
@@ -170,7 +172,7 @@ export default function Home() {
               <OrbitalScene />
               <span className={styles.sceneLabel}>Yoona (My cat!)</span>
             </motion.div>
-          ) : null}
+          ) : null} */}
           <div className={styles.aboutme}>
             <div className={styles.atlScrollFrame} ref={atlScrollRef}>
               <motion.div
