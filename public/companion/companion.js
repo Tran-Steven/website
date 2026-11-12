@@ -139,6 +139,14 @@
   let touchInput;
   let touchTap;
   let roamAfter = 0;
+  let roamPlan;
+  // Keep the cameo work available while the cats are off the site.
+  const catCameosEnabled = false;
+  let catView;
+  let catLoading = false;
+  let catVisit;
+  let previewCat;
+  let nextCatAt = performance.now() + 32_000 + Math.random() * 22_000;
   let running = false;
   let jogging = false;
   let runBlend = 0;
@@ -233,13 +241,16 @@
     introStarted ??= time;
     button.style.visibility = '';
     const perch = perchMarker.getBoundingClientRect();
+    const name = perchMarker.parentElement.getBoundingClientRect();
     const title = perchMarker.closest('h1').getBoundingClientRect();
     const floor = document.querySelector('[data-companion-landing]').getBoundingClientRect();
+    const narrow = innerWidth < 700;
     const besideX = Math.max(title.right + 18, floor.right + 14 - actorWidth * .24);
-    const beside = innerWidth >= 700 && besideX + actorWidth + 8 <= innerWidth;
+    const beside = !narrow && besideX + actorWidth + 8 <= innerWidth;
     const landX = clamp(beside ? besideX : innerWidth - actorWidth - 8, innerWidth - actorWidth);
-    const landY = clamp((beside ? title.bottom + 58 : floor.bottom + actorHeight) - actorHeight * .96,
-      innerHeight - actorHeight);
+    let footLine = beside ? title.bottom + 58 : floor.bottom + actorHeight;
+    if (narrow) footLine = Math.min(name.bottom + 24, floor.top - 8);
+    const landY = clamp(footLine - actorHeight * .96, innerHeight - actorHeight);
     const startX = clamp(perch.left - actorWidth / 2, innerWidth - actorWidth);
     const startY = perch.top - actorHeight * .72;
     const elapsed = time - introStarted;
@@ -254,8 +265,8 @@
     const impact = ease(1340, 1435) * (1 - ease(1460, 1680));
     const catchStep = ease(1440, 1555) * (1 - ease(1555, 1690));
     const rise = ease(1570, 1840);
-    const turnToViewer = ease(1510, 2070);
-    const spotViewer = ease(1430, 1720) * (1 - ease(1770, 2070));
+    const turnToViewer = ease(1480, 1900);
+    const spotViewer = ease(1430, 1650) * (1 - ease(1700, 1900));
     const hello = ease(1910, 2120) * (1 - ease(2900, 3140));
     const waveProgress = clamp((elapsed - 2120) / 780, 1);
     const done = elapsed >= 3140 || reduced.matches || perch.top < 0 || perch.top > innerHeight;
@@ -292,7 +303,7 @@
     liftShadow.hidden = done || elapsed < 850;
     liftShadow.style.transform = 'translateY(' + clearance + 'px) scale(' + (1 - .45 * clamp(clearance / 140, 1)) + ')';
     liftShadow.style.opacity = String((.72 - .53 * clamp(clearance / 140, 1)) * (1 - rise));
-    yaw = done ? .20 : .20 + (.50 + .23 * launch - .06 * ease(980, 1370)) * (1 - turnToViewer);
+    yaw = done ? 0 : (.70 + .23 * launch - .06 * ease(980, 1370)) * (1 - turnToViewer);
     view3d?.draw(time, 0, 0, yaw, 0, 0,
       [.33 * glance - .32 * spotViewer, .53 * glance - .08 * spotViewer, -.12 * glance], 0, 0,
       done ? {} : {
@@ -314,9 +325,138 @@
       button.style.pointerEvents = 'auto';
       button.tabIndex = 0;
       lastActivity = time;
-      roamAfter = time + 6500;
+      scheduleRoam(time);
     }
     frame = requestAnimationFrame(tick);
+  }
+
+  function endCatVisit(time) {
+    if (!catVisit) return;
+    x = targetX = clamp(catVisit.x, innerWidth - actorWidth);
+    y = targetY = catVisit.y;
+    catVisit = undefined;
+    catView.hide();
+    button.style.visibility = '';
+    button.style.pointerEvents = 'auto';
+    button.tabIndex = 0;
+    placeCompanion(window.scrollY || 0);
+    scheduleRoam(time);
+  }
+
+  function startCatVisit(time) {
+    if (catLoading) return;
+    if (!catView) {
+      catLoading = true;
+      import('./cat.js').then(({ createCatView }) => {
+        catView = createCatView();
+      }).catch(() => {
+        nextCatAt = Infinity;
+        previewCat = undefined;
+      }).finally(() => { catLoading = false; });
+      return;
+    }
+    const name = previewCat?.name ?? (Math.random() < .5 ? 'yoona' : 'kaguya');
+    const chase = previewCat ? previewCat.action === 'chase' : Math.random() < .45;
+    previewCat = undefined;
+    nextCatAt = time + 52_000 + Math.random() * 48_000;
+    const center = x + actorWidth / 2;
+    let side = center < innerWidth / 2 ? -1 : 1;
+    if (!chase && Math.min(center, innerWidth - center) < 92) side = -side;
+    const edge = side < 0 ? 0 : innerWidth;
+    const catStart = edge + side * 57;
+    const catStop = 56 + clamp(center + side * (chase ? 64 : 44) - 56, innerWidth - 112);
+    const catDistance = Math.abs(catStart - catStop);
+    const exitX = side < 0 ? -actorWidth - 12 : innerWidth + 12;
+    catVisit = {
+      x, y, side, exitX, time, chase, catStart, catStop, catDistance,
+      entryTime: 360 + catDistance * 4.3,
+      exitTime: 290 + catDistance * 1.75,
+      travelTime: 690 + Math.abs(exitX - x) * 2.35
+    };
+    catView.show(name);
+    greeting.hidden = sleepMark.hidden = true;
+    button.style.pointerEvents = 'none';
+    button.tabIndex = -1;
+  }
+
+  function drawCatVisit(time, scrollY) {
+    const visit = catVisit;
+    const elapsed = time - visit.time;
+    const ease = (start, duration) => {
+      const amount = clamp((elapsed - start) / duration, 1);
+      return amount * amount * (3 - 2 * amount);
+    };
+    const rubAt = visit.entryTime + 330;
+    const turnAt = visit.chase ? visit.entryTime + 960 : rubAt + 700;
+    const stepOutAt = turnAt + 330;
+    const petAt = stepOutAt + 340;
+    const dartAt = visit.chase ? turnAt + 260 : petAt + 1750;
+    const catGoneAt = dartAt + visit.exitTime;
+    const departure = dartAt + 330;
+    const returnAt = departure + visit.travelTime + 660;
+    const returnTime = visit.travelTime + 230;
+    const finish = visit.chase ? returnAt + returnTime + 240 : catGoneAt + 440;
+    if (elapsed >= finish || reduced.matches) {
+      endCatVisit(time);
+      return;
+    }
+
+    const entry = clamp(elapsed / visit.entryTime, 1);
+    const catEnter = entry + Math.sin(entry * Math.PI * 2) * -.055;
+    const exit = clamp((elapsed - dartAt) / visit.exitTime, 1);
+    const catExit = exit ** 1.37;
+    const turn = ease(turnAt, 260);
+    const rub = visit.chase ? 0 : ease(rubAt, 640);
+    const stepOut = visit.chase ? 0 : ease(stepOutAt, 340);
+    const contact = visit.chase ? 0 : ease(rubAt + 170, 380) * (1 - ease(turnAt, 260));
+    const crouch = visit.chase ? 0 : ease(petAt - 240, 650) * (1 - ease(dartAt - 260, 650));
+    const pet = visit.chase ? 0 : ease(petAt + 410, 220) * (1 - ease(dartAt - 390, 280));
+    const stroke = .5 - .5 * Math.cos(clamp((elapsed - petAt - 650) / 700, 1) * Math.PI * 4);
+    const settledX = visit.catStop - visit.side * (rub * 22 - stepOut * 13);
+    const catX = visit.catStart + (settledX - visit.catStart) * catEnter * (1 - catExit);
+    let petPoint;
+    if (elapsed <= catGoneAt) {
+      const stride = elapsed < visit.entryTime ? ease(0, 115) * (1 - ease(visit.entryTime - 170, 170))
+        : elapsed > dartAt ? 1 + ease(dartAt, 140) * .55
+        : Math.max(Math.sin(rub * Math.PI) * .65, Math.sin(stepOut * Math.PI) * .62);
+      const distance = elapsed > dartAt ? Math.abs(settledX - visit.catStart) * catExit
+        : visit.catDistance * catEnter + rub * 22 + stepOut * 13;
+      const catFloor = visit.y - scrollY + actorHeight * .96 + rub * (1 - .8 * stepOut) * 10;
+      petPoint = catView.draw(time, catX, catFloor, {
+        facing: -visit.side, distance, stride, nuzzle: contact, turn, stroke, pet,
+        gallop: elapsed > dartAt,
+        foreground: !visit.chase && rub > .12 && stepOut < .8,
+        curious: ease(visit.entryTime - 70, 240) * (1 - turn)
+      });
+    } else catView.hide();
+
+    const outbound = visit.chase ? ease(departure, visit.travelTime) : 0;
+    const inbound = visit.chase ? ease(returnAt, returnTime) : 0;
+    const runningOut = visit.chase && elapsed >= departure && elapsed < returnAt;
+    const comingBack = visit.chase && elapsed >= returnAt && inbound < 1;
+    const pace = runningOut ? Math.sin(Math.PI * outbound) : comingBack ? Math.sin(Math.PI * inbound) * .7 : 0;
+    const reactionAt = visit.entryTime * .55;
+    const glance = ease(reactionAt, 270);
+    const recoil = ease(reactionAt + 100, 170) * (1 - ease(reactionAt + 325, 320));
+    const catDirection = Math.sign(visit.catStop - (visit.x + actorWidth / 2)) || visit.side;
+    x = clamp(visit.x - catDirection * recoil * 7, innerWidth - actorWidth) +
+      (visit.exitX - visit.x) * outbound * (1 - inbound);
+    const facing = runningOut ? visit.side : comingBack ? -visit.side :
+      catDirection * glance * (1 - ease(finish - 420, 400));
+    yaw += (facing * (1.05 - crouch * .21) - yaw) * .22;
+    button.style.visibility = x < -actorWidth || x >= innerWidth ? 'hidden' : '';
+    button.dataset.state = visit.chase && elapsed >= returnAt ? 'cat-return'
+      : runningOut ? 'cat-chase' : elapsed >= visit.entryTime ? 'cat-visit' : 'cat-notice';
+    placeCompanion(scrollY);
+    const surprise = ease(reactionAt + 75, 240) * (1 - ease(reactionAt + 445, 360));
+    const gait = Math.abs(visit.exitX - visit.x) * (outbound + inbound) * .071;
+    view3d.draw(time, gait, pace * .48, yaw, 0, 0,
+      [facing * .39, -.10 + crouch * .27, -catDirection * crouch * .13], 0, 0,
+      { surprise, running: pace * .7, catCrouch: crouch, catPet: petPoint && pet > 0 ? {
+        amount: pet, side: catDirection,
+        x: (petPoint.x - x) / actorWidth,
+        y: (petPoint.y - (y - scrollY)) / actorHeight
+      } : undefined });
   }
 
   function tick(time) {
@@ -353,6 +493,17 @@
     if (introStarted !== undefined) {
       drawIntro(time, scrollY);
       return;
+    }
+    if (catVisit) {
+      drawCatVisit(time, scrollY);
+      frame = requestAnimationFrame(tick);
+      return;
+    }
+    if (catCameosEnabled && (previewCat || time >= nextCatAt) && view3d && !reduced.matches && !document.hidden &&
+        !hold && !drop && !hovered && time >= scrollingUntil &&
+        (previewCat || time - lastActivity < sleepAfter - 7000) &&
+        button.dataset.state === 'idle' && y >= scrollY && y + actorHeight <= scrollY + innerHeight) {
+      startCatVisit(time);
     }
     if (hold && !grabbed && (time - hold.started >= grabDelay || hold.moved)) {
       grabbed = true;
@@ -413,7 +564,7 @@
         returning = !reduced.matches;
         if (onTouch && !reduced.matches) {
           aimWander(targetY, room, offscreen ? 32 : 66);
-          roamAfter = time + 5500;
+          scheduleRoam(time);
         }
         // After a jump of multiple screens, shorten only the invisible trip.
         if (reduced.matches) y = targetY;
@@ -425,11 +576,19 @@
     const waking = wakeStarted !== undefined && time - wakeStarted < wakeTime;
     const wakeProgress = waking ? (time - wakeStarted) / wakeTime : 0;
     const canMove = !reduced.matches && !hovered && !dizzy && !waking && !hold && !drop && time >= scrollingUntil;
-    if (canMove && (touchInput ?? coarsePointer.matches) && time >= roamAfter &&
-        time - lastActivity < sleepAfter - 1800 && Math.hypot(targetX - x, targetY - y) < 2 &&
+    const roamOnTouch = touchInput ?? (coarsePointer.matches || innerWidth < 700);
+    if (canMove && roamOnTouch && time >= roamAfter &&
+        time - lastActivity < sleepAfter - 5000 && Math.hypot(targetX - x, targetY - y) < 2 &&
         (pantStarted === undefined || time - pantStarted >= (breathingTime + recoveryTime) * 1000)) {
-      aimWander(y, Math.max(0, innerHeight - actorHeight), 84);
-      roamAfter = time + 4300 + Math.random() * 3800;
+      if (!roamPlan) {
+        if (Math.random() < .25) scheduleRoam(time);
+        else roamPlan = planWander(time, scrollY);
+      } else if (time >= roamPlan.leaveAt) {
+        targetX = roamPlan.x;
+        targetY = roamPlan.y;
+        cursorX = targetX + actorWidth / 2;
+        scheduleRoam(time);
+      }
     }
     const dx = clamp(targetX, innerWidth - actorWidth) - x;
     const dy = scrollY + clamp(targetY - scrollY, innerHeight - actorHeight) - y;
@@ -515,6 +674,7 @@
       idleLook(time, !reduced.matches && mood === 'idle', dt);
       let goal = hovered || grabbed || drop || dizzy || resting || waking || sleepTime > 0 ? 0
         : returning ? direction * .42 : moving ? direction * 1.12 : direction * .20;
+      if (roamPlan && mood === 'idle') goal = Math.sign(roamPlan.x - x) * .54;
       const walkTowardCamera = velocityY > 18
         ? Math.max(0, (velocityY - Math.abs(velocityX) * .90) / velocityY) : 0;
       const headingBlend = Math.max(runBlend, walkTowardCamera * .92);
@@ -638,12 +798,36 @@
 
   function registerActivity() {
     lastActivity = performance.now();
-    roamAfter = lastActivity + 6500;
+    scheduleRoam(lastActivity);
     if (sleepLevel > 0 && !reduced.matches) {
       wakeFrom = sleepLevel;
       wakeStarted = lastActivity;
       sleepLevel = 0;
     }
+  }
+
+  function scheduleRoam(time) {
+    roamPlan = undefined;
+    roamAfter = time + 4700 + Math.random() * 8200;
+  }
+
+  function planWander(time, scrollY) {
+    const width = Math.max(0, innerWidth - actorWidth);
+    const height = Math.max(0, innerHeight - actorHeight);
+    const sideInset = Math.min(12, width / 2);
+    const verticalInset = Math.min(48, height * .2);
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 58 + Math.random() * Math.min(132, innerWidth * .34);
+    const dx = Math.cos(angle) * distance;
+    const dy = Math.sin(angle) * distance;
+    const screenY = y - scrollY;
+    const turnX = x + dx < sideInset || x + dx > width - sideInset;
+    const turnY = screenY + dy < verticalInset || screenY + dy > height - verticalInset;
+    return {
+      x: sideInset + clamp(x + (turnX ? -dx : dx) - sideInset, width - sideInset * 2),
+      y: scrollY + verticalInset + clamp(screenY + (turnY ? -dy : dy) - verticalInset, height - verticalInset * 2),
+      leaveAt: time + 350 + Math.random() * 750
+    };
   }
 
   function aimWander(pageY, room, reach) {
@@ -661,7 +845,7 @@
 
   function follow(event) {
     registerActivity();
-    if (popped || introStarted !== undefined || hold || drop || performance.now() < scrollingUntil || event.target.closest?.(interactiveTarget)) return;
+    if (popped || catVisit || introStarted !== undefined || hold || drop || performance.now() < scrollingUntil || event.target.closest?.(interactiveTarget)) return;
     returning = false;
     if (event.pointerType === 'mouse') trackCircles(event.clientX, event.clientY, performance.now());
     aimAtPointer(event.clientX, event.clientY, window.scrollY || 0);
@@ -679,6 +863,7 @@
 
   function followTap(event) {
     if (popped || introStarted !== undefined || hold || drop || event.target.closest?.(interactiveTarget)) return;
+    endCatVisit(performance.now());
     registerActivity();
     scrollingUntil = 0;
     reentryPending = returning = hovered = false;
@@ -700,6 +885,7 @@
 
   function reset(playIntro = false) {
     cancelAnimationFrame(frame);
+    endCatVisit(performance.now());
     button.getAnimations().forEach(animation => animation.cancel());
     if (hold && button.hasPointerCapture(hold.id)) button.releasePointerCapture(hold.id);
     hold = drop = undefined;
@@ -710,7 +896,7 @@
     button.style.cursor = 'grab';
     greeting.hidden = sleepMark.hidden = liftShadow.hidden = arrivalBurst.hidden = true;
     lastActivity = performance.now();
-    roamAfter = lastActivity + 6500;
+    scheduleRoam(lastActivity);
     wakeStarted = undefined;
     sleepLevel = wakeFrom = 0;
     scrollingUntil = 0;
@@ -836,6 +1022,7 @@
   });
   window.addEventListener('scroll', () => {
     if (popped) return;
+    endCatVisit(performance.now());
     touchTap = undefined;
     registerActivity();
     scrollingUntil = performance.now() + 170;
@@ -850,6 +1037,7 @@
     hovered = false;
     greeting.hidden = true;
   }, { passive: true });
+  window.addEventListener('resize', () => endCatVisit(performance.now()), { passive: true });
   button.addEventListener('click', async event => {
     if (popped || (event.detail > 0 && performance.now() < suppressClickUntil)) return;
     popped = true;
@@ -937,5 +1125,13 @@
   document.addEventListener('companion:respawn', () => {
     if (popped && button.hidden) reset(true);
   });
+  if (catCameosEnabled && (location.hostname === '127.0.0.1' || location.hostname === 'localhost')) {
+    document.addEventListener('companion:preview-cat', event => {
+      const { name, action } = event.detail ?? {};
+      if (name !== 'yoona' && name !== 'kaguya') return;
+      registerActivity();
+      previewCat = { name, action };
+    });
+  }
   reset(Boolean(perchMarker));
 })();

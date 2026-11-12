@@ -7,17 +7,14 @@ import {
 } from "framer-motion";
 
 import Image from "next/image";
-import atlmorning from "../public/atlantamorning.jpg";
+import atlantaNight from "../public/atlantanight.jpg";
 import dtla from "../public/dtla.jpg";
 import Head from "next/head";
 import Script from "next/script";
 import styles from "../styles/Home.module.css";
-import Repos from "../public/repos.png";
-import triangle from "../public/dropdown-icon.svg";
 import Blurb from "../components/Blurb";
 // import OrbitalScene from "@components/OrbitalScene";
 export default function Home() {
-  const [show, setShow] = useState(false);
   // const [showScene, setShowScene] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -31,13 +28,7 @@ export default function Home() {
 
   const scrollSectionRef = useRef(null);
   const reposScrollRef = useRef(null);
-  const atlScrollRef = useRef(null);
   const shouldReduceMotion = useReducedMotion();
-
-  const { scrollYProgress: atlScrollProgress } = useScroll({
-    target: atlScrollRef,
-    offset: ["start 80%", "end 20%"],
-  });
 
   const { scrollYProgress } = useScroll({
     target: scrollSectionRef,
@@ -94,9 +85,6 @@ export default function Home() {
     [isMobile ? 0.3 : 0.08, isMobile ? 0.5 : 0.2],
     [1, 0]
   );
-  const atlWidth = useTransform(atlScrollProgress, [0, 0.28], ["92vw", "100vw"]);
-  const atlHeight = useTransform(atlScrollProgress, [0, 0.28], [isMobile ? "44vw" : "44vh", isMobile ? "53vw" : "75vh"]);
-  const atlRadius = useTransform(atlScrollProgress, [0, 0.28], ["20px", "0px"]);
   const containerWidth = useTransform(scrollYProgress, [0.2, 0.42], [isMobile ? "84vw" : "52vw", "100vw"]);
   const containerHeight = useTransform(scrollYProgress, [0.2, 0.42], [isMobile ? "50vh" : "min(44vh, 30rem)", "100vh"]);
   const borderRadius = useTransform(scrollYProgress, [0.2, 0.42], ["24px", "0px"]);
@@ -109,6 +97,8 @@ export default function Home() {
   return (
     <>
       <Script src="/companion/companion.js" strategy="afterInteractive" />
+      <Script src="/repos/browser.js" strategy="afterInteractive" />
+      <Script src="/project-reveal.js" strategy="afterInteractive" />
       <div className={styles.scrolltracker}></div>
       <div className={styles.container}>
         <div className={styles.scrolltracker}></div>
@@ -167,20 +157,9 @@ export default function Home() {
 
             <div className={styles.nameblurb}>
               <p className={styles.titlep} data-companion-landing>LA based Software Engineer</p>
-              <button
-                className={styles.dropdownholder}
-                type="button"
-                aria-label={show ? "Hide about Steven" : "Read more about Steven"}
-                aria-expanded={show}
-                onClick={() => setShow(!show)}
-              >
-                <span className={styles.dropdownFloat}>
-                  <Image src={triangle} alt="" className={styles.drop} />
-                </span>
-              </button>
             </div>
+            <Blurb />
           </div>
-          <Blurb isVisible={show} />
           {/* {showScene ? (
             <motion.div
               className={styles.heroScene}
@@ -193,23 +172,18 @@ export default function Home() {
             </motion.div>
           ) : null} */}
           <div className={styles.aboutme}>
-            <div className={styles.atlScrollFrame} ref={atlScrollRef}>
-              <motion.div
-                className={styles.atlScrollStage}
-                style={{
-                  width: atlWidth,
-                  height: atlHeight,
-                  borderRadius: atlRadius,
-                }}
-              >
+            <div className={styles.atlScrollFrame} data-georgia-reveal>
+              <div className={styles.atlScrollStage}>
                 <div className={styles.hide}>
-                <Image
-                  src={atlmorning}
-                  alt="Atlanta Cityscape Morning with text on the image saying From Georgia."
-                  className={styles.atl}
-                />
+                  <Image
+                    src={atlantaNight}
+                    alt="Atlanta skyline at dusk"
+                    className={styles.atl}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1140px) 96vw, 1100px"
+                  />
                 </div>
-              </motion.div>
+                <h2 data-georgia-title>From<br />Georgia.</h2>
+              </div>
             </div>
             <div className={styles.appleScrollSection} ref={scrollSectionRef}>
               <motion.h2
@@ -256,19 +230,15 @@ export default function Home() {
                 y: reposY,
               }}
             >
-              <motion.a
-                href="https://github.com/Tran-Steven?tab=repositories/"
-                rel="noopener noreferrer"
-                target="_blank"
+              <motion.div
                 className={styles.reposimg}
+                data-repo-browser
                 style={{ scale: reposImageScale, x: reposImageX }}
               >
-                <Image
-                  src={Repos}
-                  alt="List of my repos"
-                  className={styles.reposimg}
-                />
-              </motion.a>
+                <a href="https://github.com/Tran-Steven?tab=repositories">
+                  Browse my GitHub repositories
+                </a>
+              </motion.div>
 
               <motion.h2
                 className={styles.reposmobile}
@@ -285,13 +255,13 @@ export default function Home() {
               </motion.h2>
             </motion.div>
           </div>
-          <div className={styles.projects}>
+          <div className={styles.projects} data-project-gallery>
             <div className={styles.sectionHeading}>
               <h2 className={styles.projectstext} id="projects">
                 Things I&apos;ve Built.
               </h2>
             </div>
-            <div className={styles.projectGrid}>
+            <div className={styles.projectGrid} data-project-grid>
               <a
                 href="https://github.com/Tran-Steven/COVID19-KG-Integration"
                 className={`${styles.card} ${styles.cardFeatured}`}
@@ -377,9 +347,6 @@ export default function Home() {
               <div className={styles.contactcontainer}>
                 <p className={styles.contactdescription}>
                   Want To Get In Touch?
-                </p>
-                <p className={styles.contactSubtext}>
-                  Have a project, idea, or opportunity in mind? I&apos;d love to hear about it.
                 </p>
                 <form
                   autoComplete="off"

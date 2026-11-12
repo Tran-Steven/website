@@ -431,6 +431,16 @@ export function createView(width, height) {
   const thighLength = .220;
   const shinLength = sole.length();
   const plantedRotation = new THREE.Quaternion();
+  const catFloor = new THREE.Vector3();
+  const catFoot = new THREE.Vector3();
+  const petTarget = new THREE.Vector3();
+  const petHand = new THREE.Vector3();
+  const petElbow = new THREE.Vector3();
+  const petAxis = new THREE.Vector3();
+  const petBend = new THREE.Vector3();
+  const petRotation = new THREE.Quaternion();
+  const palm = new THREE.Vector3(0, -.131, .014);
+  const palmDirection = palm.clone().normalize();
   let landing;
   let landingLeg;
   let landingKnee;
@@ -529,6 +539,7 @@ export function createView(width, height) {
     const walkHeight = Math.abs(swing) * .093 + Math.sin(time / 460) * .008;
     figure.hips.position.y = .455 + (bracing || emotion.entrance ? 0 : THREE.MathUtils.lerp(walkHeight,
       sampleGait(runningHeight, halfStride, 1), running));
+    figure.hips.position.z = 0;
     figure.hips.rotation.x = bracing ? 0 : stride * .23;
     figure.torso.rotation.x = fatigue * 1.04 + running * .34 + sleep * .074;
     figure.torso.position.set(0, -fatigue * .053 + breath * .047, -fatigue * .073);
@@ -559,6 +570,7 @@ export function createView(width, height) {
         sampleGait(runningStride, cycle, 3), running);
       const elbowPhase = Math.sin(cycle * Math.PI * 2 + .63);
       figure.elbows[i].rotation.set(-running * (.73 + .36 * elbowPhase) - (1 - running) * stride * .21, 0, 0);
+      figure.elbows[i].scale.y = 1;
       figure.arms[i].rotation.y = (i === 0 ? -1 : 1) * running * (.075 + .10 * elbowPhase);
     }
     const dizzy = emotion.dizzy ?? 0;
@@ -766,6 +778,50 @@ export function createView(width, height) {
       const ground = (1 - grab) * ((1 - running) * (.55 + .37 * frontWalk) + running * verticalTravel * .86);
       figure.ankles[i].rotation.x = -legPitch * ground + grab * (.075 + limbPitch * .30);
       figure.ankles[i].rotation.z = grab * limbLean * .28;
+    }
+    if (emotion.catCrouch) {
+      const crouch = emotion.catCrouch;
+      figure.root.worldToLocal(figure.ankles[0].getWorldPosition(catFloor));
+      for (let i = 0; i < figure.legs.length; i++) {
+        figure.legs[i].rotation.x -= crouch * 1.28;
+        figure.knees[i].rotation.x += crouch * 2.18;
+        figure.ankles[i].rotation.x -= crouch * .90;
+      }
+      figure.root.worldToLocal(figure.ankles[0].getWorldPosition(catFoot));
+      figure.hips.position.y += catFloor.y - catFoot.y;
+      figure.hips.position.z = catFloor.z - catFoot.z;
+      figure.torso.rotation.x += crouch * .78;
+      figure.torso.position.z += crouch * .055;
+      figure.neck.rotation.x += crouch * .23;
+    }
+    if (emotion.catPet) {
+      const pet = emotion.catPet;
+      const i = pet.side > 0 ? 1 : 0;
+      const arm = figure.arms[i];
+      const elbow = figure.elbows[i];
+      arm.getWorldPosition(petHand).project(camera);
+      // The palm center sits just above the projected contact, so its lower edge meets the coat.
+      petTarget.set(pet.x * 2 - 1, 1 - (pet.y - .010) * 2, petHand.z).unproject(camera);
+      figure.torso.worldToLocal(petTarget);
+      petAxis.copy(petTarget).sub(arm.position);
+      const upper = .150;
+      const lower = palm.length();
+      const distance = petAxis.length();
+      const reach = THREE.MathUtils.clamp(distance, .035, upper + lower - .004);
+      petAxis.normalize();
+      petBend.set(pet.side * .26, 0, -.7).addScaledVector(petAxis, -petBend.dot(petAxis)).normalize();
+      const along = (upper ** 2 + reach ** 2 - lower ** 2) / (2 * reach);
+      petElbow.copy(petAxis).multiplyScalar(along)
+        .addScaledVector(petBend, Math.sqrt(Math.max(0, upper ** 2 - along ** 2))).normalize();
+      petRotation.setFromUnitVectors(legDown, petElbow);
+      arm.quaternion.slerp(petRotation, pet.amount);
+      petTarget.copy(arm.position).addScaledVector(petAxis, reach);
+      figure.torso.localToWorld(petTarget);
+      arm.worldToLocal(petTarget);
+      petTarget.sub(elbow.position).normalize();
+      petRotation.setFromUnitVectors(palmDirection, petTarget);
+      elbow.quaternion.slerp(petRotation, pet.amount);
+      elbow.scale.y = 1 + Math.min(.08, Math.max(0, distance - reach) / lower) * pet.amount;
     }
     renderer.render(scene, camera);
   }
