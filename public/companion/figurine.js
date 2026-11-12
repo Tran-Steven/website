@@ -20,6 +20,8 @@ function oval(parent, material, position, radii) {
 
 const hair = new THREE.MeshStandardMaterial({ color: 0x35343a, roughness: .91, side: THREE.DoubleSide });
 const ink = new THREE.MeshStandardMaterial({ color: 0x292622, roughness: .73 });
+const mouthInterior = new THREE.MeshStandardMaterial({ color: 0x3a2929, roughness: .88 });
+const tongue = new THREE.MeshStandardMaterial({ color: 0xa56a64, roughness: .9 });
 const tee = new THREE.MeshStandardMaterial({ color: 0xe4e4dc, roughness: .89 });
 const pants = new THREE.MeshStandardMaterial({ color: 0x4e5862, roughness: .87 });
 const trim = new THREE.MeshStandardMaterial({ color: 0x292928, roughness: .86 });
@@ -253,6 +255,11 @@ function sculptHead(head) {
   heldMouth.visible = false;
   const mouth = oval(head, ink, [0, y(687), front(0, y(687)) + .008], [.041,.048,.019]);
   mouth.visible = false;
+  const reactionY = y(716);
+  const reactionMouth = group(head, 0, reactionY, front(0, reactionY) + .009);
+  oval(reactionMouth, mouthInterior, [0, 0, 0], [1, 1, 1]);
+  oval(reactionMouth, tongue, [0, -.44, .83], [.52, .23, .23]);
+  reactionMouth.visible = false;
   const swirls = group(head);
   for (const pixel of [411,625]) {
     const spiral = [];
@@ -266,7 +273,7 @@ function sculptHead(head) {
     stroke(swirls, ink, spiral, .0055);
   }
   swirls.visible = false;
-  return { eyes, closedEyes, brows: [leftBrow,rightBrow], smile, heldMouth, mouth, swirls };
+  return { eyes, closedEyes, brows: [leftBrow,rightBrow], smile, heldMouth, mouth, reactionMouth, swirls };
 }
 
 function lathe(parent, material, profile, depth) {
@@ -569,11 +576,17 @@ export function createView(width, height) {
     const alarmBeat = grabAge === undefined ? 0 : Math.sin(grabAge * 8.5) * whoa;
     const effortMouth = heldFace && effort > .60;
     const bracingForImpact = landingSquash > .38;
+    const reacting = surprise > 0 || dizzy > 0 || startledSwing;
     face.smile.visible = !exhausted && !dizzy && !surprise && (!heldFace || effort < .16) && !startledSwing && !bracingForImpact;
     face.heldMouth.visible = bracingForImpact || (heldFace && effort >= .16 && !effortMouth && !startledSwing);
-    face.mouth.visible = exhausted || dizzy > 0 || surprise > 0 || effortMouth || startledSwing;
-    face.mouth.scale.set(startledSwing ? .033 + whoa * .020 : effortMouth ? .028 : exhausted ? .031 + .010 * breath : .039,
-      surprise ? .062 : startledSwing ? .027 + whoa * (.064 + .004 * alarmBeat) : effortMouth ? .017 + effort * .009 : exhausted ? .012 + .018 * breath : .031, .020);
+    face.mouth.visible = !reacting && (exhausted || effortMouth);
+    face.mouth.scale.set(effortMouth ? .028 : .031 + .010 * breath,
+      effortMouth ? .017 + effort * .009 : .012 + .018 * breath, .020);
+    face.reactionMouth.visible = reacting;
+    const popOpen = THREE.MathUtils.smoothstep(surprise, 0, .36);
+    const opening = surprise ? .026 + .023 * popOpen
+      : dizzy ? .021 + .009 * dizzy : .021 + whoa * (.030 + .003 * alarmBeat);
+    face.reactionMouth.scale.set(dizzy ? .035 : .040 + .008 * Math.max(whoa, popOpen), opening, .016);
     face.swirls.visible = dizzy > 0;
     const wakeBlink = wake > .69 && wake < .83;
     const eyelidsShut = sleep > .70 || (doze > .27 && doze < .43) || wakeBlink;
@@ -583,9 +596,9 @@ export function createView(width, height) {
       eye.visible = !dizzy && !face.closedEyes.visible;
       const lid = sleep > 0 ? .037 - .031 * Math.min(1, sleep * 1.8) : time % 3800 > 3690 ? .006 : .037;
       eye.position.x = eye.userData.restX + heldGaze;
-      eye.scale.y = surprise ? .052 : heldFace ? .037 - effort * .013 * (1 - whoa) + whoa * .033 : lid + startle * .014;
+      eye.scale.y = surprise ? .037 + .009 * popOpen : heldFace ? .037 - effort * .013 * (1 - whoa) + whoa * .017 : lid + startle * .014;
       if (bracingForImpact) eye.scale.y *= 1 - landingSquash * .56;
-      eye.scale.x = .027 + whoa * .012;
+      eye.scale.x = .027 + whoa * .005;
       const eyebrowBeat = i === 0 ? Math.sin(reachBeat) : -Math.sin(reachBeat);
       face.brows[i].position.y = surprise ? .047 : heldFace ? .006 + effort * .012 + eyebrowBeat * motion * .005 + whoa * .047 : startle * .022;
       face.brows[i].rotation.z = heldFace ? (i === 0 ? 1 : -1) * (.025 + effort * .175) * (1 - .82 * whoa) : 0;

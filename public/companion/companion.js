@@ -58,6 +58,32 @@
   liftShadow.hidden = true;
   liftShadow.style.cssText = 'position:absolute;left:33%;right:33%;bottom:2px;height:7px;border-radius:50%;background:#27253230;filter:blur(2px);pointer-events:none;';
   button.append(liftShadow);
+  const arrivalBurst = document.createElement('span');
+  arrivalBurst.setAttribute('aria-hidden', 'true');
+  arrivalBurst.hidden = true;
+  arrivalBurst.style.cssText = 'position:absolute;inset:0;z-index:1;pointer-events:none;';
+  // Each mark has its own origin, direction, size, and timing.
+  const arrivalMarks = [
+    [30, 27, 215, 16, 18, 54, 246],
+    [42, 17, 256, 7, 12, 96, 188],
+    [68, 23, 315, 12, 20, 75, 258],
+    [78, 35, 344, 19, 17, 59, 242],
+    [80, 48, 18, 5, 13, 131, 218],
+    [22, 47, 164, 10, 16, 112, 243],
+    [30, 59, 144, 3, 10, 153, 216]
+  ].map(([left, top, angle, length, distance, delay, duration]) => {
+    const mark = document.createElement('span');
+    mark.style.cssText = 'position:absolute;transform-origin:left center;border-radius:3px;background:currentColor;';
+    Object.assign(mark.style, {
+      left: left + '%', top: top + '%', width: length + 'px',
+      height: (length <= 5 ? 3 : 2) + 'px'
+    });
+    arrivalBurst.append(mark);
+    const radians = angle * Math.PI / 180;
+    return { mark, angle, delay, duration, dx: Math.cos(radians) * distance, dy: Math.sin(radians) * distance };
+  });
+  button.append(arrivalBurst);
+  const darkTheme = matchMedia('(prefers-color-scheme: dark)');
   const parts = Object.fromEntries([...svg.querySelectorAll('[data-part]')].map(part => [part.dataset.part, part]));
   let view3d;
   let modelLoading = true;
@@ -112,6 +138,7 @@
   let mousePosition;
   let touchInput;
   let touchTap;
+  let roamAfter = 0;
   let running = false;
   let jogging = false;
   let runBlend = 0;
@@ -159,9 +186,10 @@
     Math.max(scrollY - 300, Math.min(scrollY + innerHeight + 185, pageY));
   let x, y, targetX, targetY, cursorX, frame, previous, phase, stride, direction, popped;
 
-  function placeCompanion(scrollY) {
+  function placeCompanion(scrollY, scale = 1) {
     const top = documentAnchored ? y : y - scrollY;
-    button.style.transform = 'translate(' + x + 'px,' + top + 'px)';
+    const position = 'translate(' + x + 'px,' + top + 'px)';
+    button.style.transform = scale === 1 ? position : position + ' scale(' + scale + ')';
   }
 
   function pose(time, state) {
@@ -198,11 +226,11 @@
 
   function drawIntro(time, scrollY) {
     if (modelLoading) {
-      introStarted = time;
       button.style.visibility = 'hidden';
       frame = requestAnimationFrame(tick);
       return;
     }
+    introStarted ??= time;
     button.style.visibility = '';
     const perch = perchMarker.getBoundingClientRect();
     const title = perchMarker.closest('h1').getBoundingClientRect();
@@ -215,8 +243,8 @@
     const startX = clamp(perch.left - actorWidth / 2, innerWidth - actorWidth);
     const startY = perch.top - actorHeight * .72;
     const elapsed = time - introStarted;
-    const ease = (start, end) => {
-      const progress = clamp((elapsed - start) / (end - start), 1);
+    const ease = (start, end, clock = elapsed) => {
+      const progress = clamp((clock - start) / (end - start), 1);
       return progress * progress * (3 - 2 * progress);
     };
     const glance = ease(130, 390) * (1 - ease(620, 870));
@@ -239,7 +267,25 @@
     x = targetX = done ? landX : takeoffX + (landX - stepWidth - takeoffX) * flight
       + stepWidth * ease(1360, 1650);
     y = targetY = scrollY + (done ? landY : takeoffY + airY);
-    placeCompanion(scrollY);
+    const popTime = elapsed / 1.7;
+    const appearing = !done && popTime < 380;
+    const arrivalScale = appearing ? .34 + .90 * ease(0, 165, popTime) - .24 * ease(165, 380, popTime) : 1;
+    placeCompanion(scrollY, arrivalScale);
+    button.style.transformOrigin = appearing ? '50% 72%' : '';
+    button.style.opacity = appearing ? String(.25 + .75 * ease(0, 115, popTime)) : '';
+    arrivalBurst.hidden = !appearing;
+    if (appearing) {
+      arrivalBurst.style.color = darkTheme.matches ? '#fff' : '#000';
+      for (const { mark, angle, delay, duration, dx, dy } of arrivalMarks) {
+        const end = delay + duration;
+        const reveal = ease(delay, delay + 62, popTime);
+        const fade = ease(delay + duration * .46, end, popTime);
+        const travel = ease(delay, end, popTime);
+        mark.style.opacity = String(reveal * (1 - fade));
+        const length = .2 + .8 * reveal - .65 * fade;
+        mark.style.transform = 'translate(' + dx * travel + 'px,' + dy * travel + 'px) rotate(' + angle + 'deg) scaleX(' + length + ')';
+      }
+    }
     button.dataset.state = done ? 'idle' : elapsed < 850 ? 'perch'
       : flight < 1 ? 'hop' : elapsed < 1910 ? 'land' : 'hello';
     const clearance = Math.max(0, landY - (y - scrollY));
@@ -268,6 +314,7 @@
       button.style.pointerEvents = 'auto';
       button.tabIndex = 0;
       lastActivity = time;
+      roamAfter = time + 6500;
     }
     frame = requestAnimationFrame(tick);
   }
@@ -364,19 +411,29 @@
         targetY = scrollY + Math.max(inset, Math.min(room - inset, screenY));
         cursorX = undefined;
         returning = !reduced.matches;
+        if (onTouch && !reduced.matches) {
+          aimWander(targetY, room, offscreen ? 32 : 66);
+          roamAfter = time + 5500;
+        }
         // After a jump of multiple screens, shorten only the invisible trip.
         if (reduced.matches) y = targetY;
         else if (offscreen) y = limitOffscreenTrip(y, scrollY);
       }
     }
-    const dx = clamp(targetX, innerWidth - actorWidth) - x;
-    const dy = scrollY + clamp(targetY - scrollY, innerHeight - actorHeight) - y;
-    const distance = Math.hypot(dx, dy);
     const dizzyTime = time - (dizzyStarted ?? -Infinity);
     const dizzy = !reduced.matches && dizzyTime < dizzyDuration;
     const waking = wakeStarted !== undefined && time - wakeStarted < wakeTime;
     const wakeProgress = waking ? (time - wakeStarted) / wakeTime : 0;
     const canMove = !reduced.matches && !hovered && !dizzy && !waking && !hold && !drop && time >= scrollingUntil;
+    if (canMove && (touchInput ?? coarsePointer.matches) && time >= roamAfter &&
+        time - lastActivity < sleepAfter - 1800 && Math.hypot(targetX - x, targetY - y) < 2 &&
+        (pantStarted === undefined || time - pantStarted >= (breathingTime + recoveryTime) * 1000)) {
+      aimWander(y, Math.max(0, innerHeight - actorHeight), 84);
+      roamAfter = time + 4300 + Math.random() * 3800;
+    }
+    const dx = clamp(targetX, innerWidth - actorWidth) - x;
+    const dy = scrollY + clamp(targetY - scrollY, innerHeight - actorHeight) - y;
+    const distance = Math.hypot(dx, dy);
     const cursorOffset = cursorX === undefined ? 0 : cursorX - (x + actorWidth / 2);
     if (Math.abs(cursorOffset) > 7) {
       const nextDirection = Math.sign(cursorOffset);
@@ -581,11 +638,25 @@
 
   function registerActivity() {
     lastActivity = performance.now();
+    roamAfter = lastActivity + 6500;
     if (sleepLevel > 0 && !reduced.matches) {
       wakeFrom = sleepLevel;
       wakeStarted = lastActivity;
       sleepLevel = 0;
     }
+  }
+
+  function aimWander(pageY, room, reach) {
+    const scrollY = window.scrollY || 0;
+    const sideRoom = Math.max(0, innerWidth - actorWidth);
+    const edge = Math.min(14, sideRoom / 2);
+    const step = reach * (.55 + Math.random() * .45);
+    const right = x < edge + step || (x <= sideRoom - edge - step && Math.random() < .5);
+    targetX = edge + clamp(x + (right ? step : -step) - edge, sideRoom - edge * 2);
+    const inset = Math.min(72, room * .22);
+    const nextY = pageY - scrollY + (Math.random() - .5) * reach;
+    targetY = scrollY + inset + clamp(nextY - inset, room - inset * 2);
+    cursorX = targetX + actorWidth / 2;
   }
 
   function follow(event) {
@@ -637,8 +708,9 @@
     Object.assign(bodySwing, {x: 0, y: 0, vx: 0, vy: 0});
     Object.assign(limbSwing, {x: 0, y: 0, vx: 0, vy: 0});
     button.style.cursor = 'grab';
-    greeting.hidden = sleepMark.hidden = liftShadow.hidden = true;
+    greeting.hidden = sleepMark.hidden = liftShadow.hidden = arrivalBurst.hidden = true;
     lastActivity = performance.now();
+    roamAfter = lastActivity + 6500;
     wakeStarted = undefined;
     sleepLevel = wakeFrom = 0;
     scrollingUntil = 0;
@@ -653,8 +725,9 @@
     puff?.remove();
     button.hidden = false;
     button.style.visibility = '';
+    button.style.opacity = button.style.transformOrigin = '';
     button.style.pointerEvents = 'auto';
-    introStarted = playIntro && perchMarker ? performance.now() : undefined;
+    introStarted = playIntro && perchMarker ? null : undefined;
     if (introStarted !== undefined) {
       button.style.pointerEvents = 'none';
       button.tabIndex = -1;
