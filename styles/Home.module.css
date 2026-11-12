@@ -2345,12 +2345,12 @@
   --panel-radius: clamp(1.65rem, 3.2vw, 2.6rem);
 }
 
-.atlScrollFrame.atlScrollFrame[data-georgia-reveal] {
+.atlScrollFrame[data-georgia-reveal] {
   --georgia-width: min(calc(100% - 2.5rem), 1100px);
   height: auto;
 }
 
-.atlScrollFrame.atlScrollFrame[data-georgia-reveal] > div {
+.atlScrollFrame[data-georgia-reveal] > div {
   position: relative;
   width: var(--georgia-width);
   flex-shrink: 0;
@@ -2363,7 +2363,7 @@
   will-change: auto;
 }
 
-.atlScrollFrame.atlScrollFrame[data-georgia-reveal] > div::after {
+.atlScrollFrame[data-georgia-reveal] > div::after {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -2373,13 +2373,13 @@
   pointer-events: none;
 }
 
-.atlScrollFrame.atlScrollFrame[data-georgia-reveal] img {
+.atlScrollFrame[data-georgia-reveal] img {
   border-radius: 0;
   object-fit: cover;
   object-position: 61% center;
 }
 
-.atlScrollFrame .atlScrollFrame [data-georgia-title] {
+.atlScrollFrame [data-georgia-title] {
   position: absolute;
   bottom: 12%;
   left: 7%;
@@ -2393,7 +2393,7 @@
   text-align: left;
 }
 
-.projects.projects[data-project-gallery] {
+.projects[data-project-gallery] {
   --gallery-gutter: max(1.5rem, calc((100vw - 1100px) / 2));
   --gallery-surface: #f5f4f6;
   --card-ink: #232126;
@@ -2412,7 +2412,7 @@
   background: var(--gallery-surface);
 }
 
-.projects.projects[data-project-gallery] > [class] > #projects {
+.projects[data-project-gallery] > [class] > [id="projects"] {
   margin: 0;
   color: #1d1d1f;
   font-size: clamp(2.9rem, 5.4vw, 5rem);
@@ -2420,13 +2420,13 @@
   scroll-margin-top: 7rem;
 }
 
-.projects.projects[data-project-gallery] > [class]:has(> #projects) {
+.projects[data-project-gallery] > [class]:has(> [id="projects"]) {
   width: auto;
   max-width: none;
   margin: 0 var(--gallery-gutter) clamp(1.75rem, 4vw, 3.5rem);
 }
 
-.projects.projects[data-project-gallery] > [data-project-grid] {
+.projects[data-project-gallery] > [data-project-grid] {
   position: relative;
   box-sizing: border-box;
   display: grid;
@@ -2438,7 +2438,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .projects[data-gallery-reveal] #projects {
+  .projects[data-gallery-reveal] [id="projects"] {
     opacity: calc(.5 + .5 * var(--heading-in));
     translate: 0 calc(14px * (1 - var(--heading-in)));
   }
@@ -2477,7 +2477,7 @@
   }
 }
 
-.projects.projects[data-project-gallery] > [data-project-grid] > a {
+.projects[data-project-gallery] > [data-project-grid] > a {
   grid-area: auto;
   min-height: clamp(14rem, 23vw, 18rem);
   padding: clamp(1.5rem, 3.5vw, 3rem);
@@ -2491,28 +2491,28 @@
   box-shadow: none;
 }
 
-.projectGrid.projectGrid[data-project-grid] > a:nth-child(2),
+.projectGrid[data-project-grid] > a:nth-child(2),
 .projectGrid[data-project-grid] > a:nth-child(4) { --card-background: var(--card-glacier); }
 .projectGrid[data-project-grid] > a:first-child { --card-background: var(--card-burgundy); }
 .projectGrid[data-project-grid] > a:last-child { --card-background: var(--card-graphite); }
 
-.projects.projects[data-project-gallery] > [data-project-grid] > a h2 {
+.projects[data-project-gallery] > [data-project-grid] > a h2 {
   font-size: clamp(1.8rem, 3.35vw, 3.25rem);
   line-height: .95;
 }
 
-.projects.projects[data-project-gallery] > [data-project-grid] > a p {
+.projects[data-project-gallery] > [data-project-grid] > a p {
   max-width: 36ch;
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   color: var(--card-copy);
 }
 
-.projects.projects[data-project-gallery] > [data-project-grid] > a > span[aria-hidden] {
+.projects[data-project-gallery] > [data-project-grid] > a > span[aria-hidden] {
   right: 1.5rem;
   font-size: clamp(6rem, 12vw, 10rem);
 }
 
-.projects.projects[data-project-gallery] > [data-project-grid] > a:focus-visible {
+.projects[data-project-gallery] > [data-project-grid] > a:focus-visible {
   outline: 3px solid #0071e3;
   outline-offset: -4px;
 }
@@ -2527,7 +2527,7 @@
     --card-burgundy: #40242f;
     --card-graphite: #242428;
   }
-  .projects[data-project-gallery] > [class] > #projects { color: #f5f5f7; }
+  .projects[data-project-gallery] > [class] > [id="projects"] { color: #f5f5f7; }
 }
 
 @media (max-width: 640px) {
